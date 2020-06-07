@@ -35,9 +35,9 @@ enum class Key(private val root: Note, private val accidentals: Int) {
             .drop(Math.abs(this.accidentals)))
             .union(
                 Companion.fifths
-                .asReversed()
-                .takeLast(Math.abs(this.accidentals))
-                .map { it -> it.flat() })
+                    .asReversed()
+                    .takeLast(Math.abs(this.accidentals))
+                    .map { it -> it.flat() })
     }
 
     private fun sharpKey(): Set<Note> {
@@ -45,8 +45,8 @@ enum class Key(private val root: Note, private val accidentals: Int) {
             .drop(this.accidentals))
             .union(
                 Companion.fifths
-                .takeLast(this.accidentals)
-                .map { it -> it.sharp() })
+                    .takeLast(this.accidentals)
+                    .map { it -> it.sharp() })
     }
 
     private fun allNotes(): Set<Note> {
