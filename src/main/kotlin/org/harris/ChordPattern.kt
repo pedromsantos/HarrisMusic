@@ -1,6 +1,6 @@
 package org.harris
 
-import org.harris.Interval.*
+import org.harris.Interval.Unisson
 
 enum class ChordPattern(private val patternName: String, private val abbreviation: String, private val pattern: List<Interval>) {
     Major("Major", "Maj", listOf(Unisson)),

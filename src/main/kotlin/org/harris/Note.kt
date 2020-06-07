@@ -57,7 +57,7 @@ enum class Note(val noteName: String, val pitch: Int) {
         override fun sharp(): Note = ASharp
         override fun flat(): Note = AFlat
     },
-    ASharp("A#", 10){
+    ASharp("A#", 10) {
         override fun sharp(): Note = B
         override fun flat(): Note = A
     },
@@ -70,13 +70,13 @@ enum class Note(val noteName: String, val pitch: Int) {
         override fun flat(): Note = BFlat
     };
 
-    public fun measureAbsoluteSemitones(to: Note) : Int {
+    fun measureAbsoluteSemitones(to: Note): Int {
         return to.pitch - this.pitch
     }
 
-    public fun transpose(interval : Interval) : Note {
+    fun transpose(interval: Interval): Note {
         return when (interval) {
-            Interval.Unisson -> this;
+            Interval.Unisson -> this
             else -> this
         }
     }

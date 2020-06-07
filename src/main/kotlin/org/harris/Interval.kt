@@ -26,7 +26,7 @@ enum class Interval(private val intervalName: String, private val abreviature: S
     MinorThirteenth("MinorThirteenth", "m13", 20),
     MajorThirteenth("MajorThirteenth", "M13", 21);
 
-    public fun fromDistance(distance: Int) : Interval {
+    fun fromDistance(distance: Int): Interval {
         return values().find { it -> it.distance == this.distance }
             ?: Unisson
     }

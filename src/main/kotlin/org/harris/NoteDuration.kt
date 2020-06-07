@@ -5,7 +5,7 @@ enum class NoteDuration(private val durationName: String, private val multiplier
     Half("Half", 1.0F / 2.0F),
     Quarter("Quarter", 1.0F / 4.0F);
 
-    public fun toBeats(timeSignature : Float) : Float {
+    fun toBeats(timeSignature: Float): Float {
         return this.multiplier * timeSignature
     }
 }
