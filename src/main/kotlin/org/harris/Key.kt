@@ -1,6 +1,5 @@
 package org.harris
 
-import com.ginsberg.cirkle.circular
 import org.harris.Note.*
 import kotlin.math.abs
 
@@ -21,13 +20,13 @@ enum class Key(private val root: Note, private val accidentals: Int) {
     AMinor(A, 0),
     BMinor(B, 2),
     BFlatMinor(BFlat, -5),
-    CMinor(C, 3),
+    CMinor(C, -3),
     CSharpMinor(CSharp, 4),
-    DMinor(D, 1),
+    DMinor(D, -1),
     EMinor(E, 1),
-    FMinor(F, 4),
+    FMinor(F, -4),
     FSharpMinor(FSharp, 3),
-    GMinor(G, 2),
+    GMinor(G, -2),
     GSharpMinor(GSharp, 5),
     EFlatMinor(EFlat, -6);
 

@@ -70,4 +70,64 @@ class KeyShould {
     fun `Generate correct notes for F Major key`() {
         assertThat(Key.FMajor.notes(), equalTo(setOf(F, G, A, BFlat, C, D, E)))
     }
+
+    @Test
+    fun `Generate correct notes for A Minor key`() {
+        assertThat(Key.AMinor.notes(), equalTo(setOf(A, B, C, D, E, F, G)))
+    }
+
+    @Test
+    fun `Generate correct notes for E Minor key`() {
+        assertThat(Key.EMinor.notes(), equalTo(setOf(E, FSharp, G, A, B, C, D)))
+    }
+
+    @Test
+    fun `Generate correct notes for B Minor key`() {
+        assertThat(Key.BMinor.notes(), equalTo(setOf(B, CSharp, D, E, FSharp, G, A)))
+    }
+
+    @Test
+    fun `Generate correct notes for F sharp Minor key`() {
+        assertThat(Key.FSharpMinor.notes(), equalTo(setOf(FSharp, GSharp, A, B, CSharp, D, E)))
+    }
+
+    @Test
+    fun `Generate correct notes for C sharp Minor key`() {
+        assertThat(Key.CSharpMinor.notes(), equalTo(setOf(CSharp, DSharp, E, FSharp, GSharp, A, B)))
+    }
+
+    @Test
+    fun `Generate correct notes for G sharp Minor key`() {
+        assertThat(Key.GSharpMinor.notes(), equalTo(setOf(GSharp, ASharp, B, CSharp, DSharp, E, FSharp)))
+    }
+
+    @Test
+    fun `Generate correct notes for E flat Minor key`() {
+        assertThat(Key.EFlatMinor.notes(), equalTo(setOf(EFlat, F, GFlat, AFlat, BFlat, B, DFlat)))
+    }
+
+    @Test
+    fun `Generate correct notes for B flat Minor key`() {
+        assertThat(Key.BFlatMinor.notes(), equalTo(setOf( BFlat, C, DFlat, EFlat, F, GFlat, AFlat)))
+    }
+
+    @Test
+    fun `Generate correct notes for F Minor key`() {
+        assertThat(Key.FMinor.notes(), equalTo(setOf(F, G, AFlat, BFlat, C, DFlat, EFlat)))
+    }
+
+    @Test
+    fun `Generate correct notes for C Minor key`() {
+        assertThat(Key.CMinor.notes(), equalTo(setOf(C, D, EFlat, F, G, AFlat, BFlat)))
+    }
+
+    @Test
+    fun `Generate correct notes for G Minor key`() {
+        assertThat(Key.GMinor.notes(), equalTo(setOf(G, A, BFlat, C, D, EFlat, F)))
+    }
+
+    @Test
+    fun `Generate correct notes for D Minor key`() {
+        assertThat(Key.DMinor.notes(), equalTo(setOf(D, E, F, G, A, BFlat, C)))
+    }
 }
