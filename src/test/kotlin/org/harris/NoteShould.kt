@@ -86,8 +86,28 @@ class NoteShould {
         assertThat(C.intervalBetween(GSharp), equalTo(AugmentedFifth))
         assertThat(C.intervalBetween(AFlat), equalTo(MinorSixth))
         assertThat(C.intervalBetween(A), equalTo(MajorSixth))
-        assertThat(C.intervalBetween(ASharp), equalTo(MinorSeventh))
         assertThat(C.intervalBetween(BFlat), equalTo(MinorSeventh))
         assertThat(C.intervalBetween(B), equalTo(MajorSeventh))
+    }
+
+    @Test
+    fun `transpose using interval`() {
+        assertThat(C.transpose(Unison), equalTo(C))
+        assertThat(C.transpose(AugmentedUnison), equalTo(CSharp))
+        assertThat(C.transpose(MinorSecond), equalTo(DFlat))
+        assertThat(C.transpose(MajorSecond), equalTo(D))
+        assertThat(C.transpose(AugmentedSecond), equalTo(DSharp))
+        assertThat(C.transpose(MinorThird), equalTo(EFlat))
+        assertThat(C.transpose(MajorThird), equalTo(E))
+        assertThat(C.transpose(PerfectFourth), equalTo(F))
+        assertThat(C.transpose(AugmentedFourth), equalTo(FSharp))
+        assertThat(C.transpose(DiminishedFifth), equalTo(GFlat))
+        assertThat(C.transpose(Tritone), equalTo(GFlat))
+        assertThat(C.transpose(PerfectFifth), equalTo(G))
+        assertThat(C.transpose(AugmentedFifth), equalTo(GSharp))
+        assertThat(C.transpose(MinorSixth), equalTo(AFlat))
+        assertThat(C.transpose(MajorSixth), equalTo(A))
+        assertThat(C.transpose(MinorSeventh), equalTo(BFlat))
+        assertThat(C.transpose(MajorSeventh), equalTo(B))
     }
 }

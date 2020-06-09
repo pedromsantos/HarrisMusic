@@ -13,6 +13,7 @@ enum class Interval(private val intervalName: String, private val abreviature: S
     PerfectFourth("PerfectFourth", "P4", 5, C.naturalDistance(F)),
     AugmentedFourth("AugmentedFourth", "A4", 6, C.naturalDistance(FSharp)),
     DiminishedFifth("DiminishedFifth", "d5", 6, C.naturalDistance(GFlat)),
+    Tritone("DiminishedFifth", "d5", 6, C.naturalDistance(GFlat)),
     PerfectFifth("PerfectFifth", "P5", 7, C.naturalDistance(G)),
     AugmentedFifth("AugmentedFifth", "A5", 8, C.naturalDistance(GSharp)),
     MinorSixth("MinorSixth", "m6", 8, C.naturalDistance(AFlat)),
@@ -30,6 +31,35 @@ enum class Interval(private val intervalName: String, private val abreviature: S
     MajorThirteenth("MajorThirteenth", "M13", 21, C.naturalDistance(A));
 
     fun naturalDistance() =  naturalDistance
+
+    fun transpose(from: Note) : Note {
+        return when (this) {
+            MinorSecond,
+            MajorSecond,
+            AugmentedSecond -> from.transpose(this.distance + 1)
+            PerfectFourth,
+            AugmentedFourth,
+            MajorThird,
+            MinorThird -> from.transpose(this.distance + 2)
+            AugmentedFifth,
+            PerfectFifth,
+            Tritone,
+            DiminishedFifth -> from.transpose(this.distance + 3)
+            MajorSixth,
+            MinorSixth -> from.transpose(this.distance + 4)
+            AugmentedNinth,
+            PerfectEleventh,
+            AugmentedEleventh,
+            MajorThirteenth,
+            MinorNinth,
+            MajorNinth,
+            MinorThirteenth,
+            DiminishedSeventh,
+            MajorSeventh,
+            MinorSeventh -> from.transpose(this.distance + 5)
+            else -> from.transpose(this.distance)
+        }
+    }
 
     companion object {
         fun from(distance: Int): List<Interval> {
