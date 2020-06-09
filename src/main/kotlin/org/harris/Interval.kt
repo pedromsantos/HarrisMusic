@@ -1,33 +1,39 @@
 package org.harris
 
-enum class Interval(private val intervalName: String, private val abreviature: String, private val distance: Int) {
-    Unisson("Unisson", "U", 0),
-    MinorSecond("MinorSecond", "m2", 1),
-    MajorSecond("MajorSecond", "M2", 2),
-    AugmentedSecond("AugmentedSecond", "A2", 3),
-    MinorThird("MinorThird", "m3", 3),
-    MajorThird("MajorThird", "M3", 4),
-    PerfectFourth("PerfectFourth", "P4", 5),
-    AugmentedFourth("AugmentedFourth", "A4", 6),
-    DiminishedFifth("DiminishedFifth", "d5", 6),
-    PerfectFifth("PerfectFifth", "P5", 7),
-    AugmentedFifth("AugmentedFifth", "A5", 8),
-    MinorSixth("MinorSixth", "m6", 8),
-    MajorSixth("MajorSixth", "M6", 9),
-    DiminishedSeventh("DiminishedSeventh", "d7", 9),
-    MinorSeventh("MinorSeventh", "m7", 10),
-    MajorSeventh("MajorSeventh", "M7", 11),
-    PerfectOctave("PerfectOctave", "PO", 12),
-    MinorNinth("MinorNinth", "m9", 13),
-    MajorNinth("MajorNinth", "M9", 14),
-    AugmentedNinth("AugmentedNinth", "A9", 15),
-    PerfectEleventh("PerfectEleventh", "P11", 17),
-    AugmentedEleventh("AugmentedEleventh", "A11", 18),
-    MinorThirteenth("MinorThirteenth", "m13", 20),
-    MajorThirteenth("MajorThirteenth", "M13", 21);
+import org.harris.Note.*
 
-    fun fromDistance(distance: Int): Interval {
-        return values().find { it -> it.distance == this.distance }
-            ?: Unisson
+enum class Interval(private val intervalName: String, private val abreviature: String, private val distance: Int, private val naturalDistance: Int) {
+    Unison("Unisson", "U", 0, C.naturalDistance(C)),
+    DiminishedSecond("DiminishedSecond", "d2", 1, C.naturalDistance(CSharp)),
+    MinorSecond("MinorSecond", "m2", 1, C.naturalDistance(DFlat)),
+    MajorSecond("MajorSecond", "M2", 2, C.naturalDistance(D)),
+    AugmentedSecond("AugmentedSecond", "A2", 3, C.naturalDistance(DSharp)),
+    MinorThird("MinorThird", "m3", 3, C.naturalDistance(EFlat)),
+    MajorThird("MajorThird", "M3", 4, C.naturalDistance(E)),
+    PerfectFourth("PerfectFourth", "P4", 5, C.naturalDistance(F)),
+    AugmentedFourth("AugmentedFourth", "A4", 6, C.naturalDistance(FSharp)),
+    DiminishedFifth("DiminishedFifth", "d5", 6, C.naturalDistance(GFlat)),
+    PerfectFifth("PerfectFifth", "P5", 7, C.naturalDistance(G)),
+    AugmentedFifth("AugmentedFifth", "A5", 8, C.naturalDistance(GSharp)),
+    MinorSixth("MinorSixth", "m6", 8, C.naturalDistance(AFlat)),
+    MajorSixth("MajorSixth", "M6", 9, C.naturalDistance(A)),
+    DiminishedSeventh("DiminishedSeventh", "d7", 9, C.naturalDistance(A)),
+    MinorSeventh("MinorSeventh", "m7", 10, C.naturalDistance(BFlat)),
+    MajorSeventh("MajorSeventh", "M7", 11, C.naturalDistance(B)),
+    PerfectOctave("PerfectOctave", "PO", 12, C.naturalDistance(C)),
+    MinorNinth("MinorNinth", "m9", 13, C.naturalDistance(DFlat)),
+    MajorNinth("MajorNinth", "M9", 14, C.naturalDistance(D)),
+    AugmentedNinth("AugmentedNinth", "A9", 15, C.naturalDistance(DSharp)),
+    PerfectEleventh("PerfectEleventh", "P11", 17, C.naturalDistance(F)),
+    AugmentedEleventh("AugmentedEleventh", "A11", 18, C.naturalDistance(FSharp)),
+    MinorThirteenth("MinorThirteenth", "m13", 20, C.naturalDistance(AFlat)),
+    MajorThirteenth("MajorThirteenth", "M13", 21, C.naturalDistance(A));
+
+    fun naturalDistance() =  naturalDistance
+
+    companion object {
+        fun from(distance: Int): List<Interval> {
+            return values().filter { it.distance == distance }
+        }
     }
 }

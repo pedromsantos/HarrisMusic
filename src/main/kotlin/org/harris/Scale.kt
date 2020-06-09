@@ -5,7 +5,7 @@ import org.harris.Interval.*
 enum class Scale(private val pattern: List<Interval>) {
     Ionian(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -16,7 +16,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Dorian(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -27,7 +27,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Phrygian(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             MinorThird,
             PerfectFourth,
@@ -38,7 +38,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Lydian(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             AugmentedFourth,
@@ -49,7 +49,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Mixolydian(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -60,7 +60,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Aolian(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -71,7 +71,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Locrian(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             MinorThird,
             PerfectFourth,
@@ -82,7 +82,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MajorPentatonic(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFifth,
@@ -91,7 +91,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MinorPentatonic(
         listOf(
-            Unisson,
+            Unison,
             MinorThird,
             PerfectFourth,
             PerfectFifth,
@@ -100,7 +100,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Blues(
         listOf(
-            Unisson,
+            Unison,
             MinorThird,
             PerfectFourth,
             DiminishedFifth,
@@ -111,7 +111,7 @@ enum class Scale(private val pattern: List<Interval>) {
     HarmonicMinor
         (
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -122,7 +122,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MelodicMinor(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -133,7 +133,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     DorianFlat2(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             MinorThird,
             PerfectFourth,
@@ -144,7 +144,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     NeapolitanMinor(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             MinorThird,
             PerfectFourth,
@@ -155,7 +155,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     LydianAugmented(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             AugmentedFourth,
@@ -166,7 +166,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     LydianDominant(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             AugmentedFourth,
@@ -177,7 +177,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MixolydianFlat6(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -188,7 +188,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     Bebop(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -200,7 +200,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     LocrianSharp2(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -211,7 +211,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     AlteredDominant(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             AugmentedSecond,
             MajorThird,
@@ -222,7 +222,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     HalfWholeDiminished(
         listOf(
-            Unisson,
+            Unison,
             MinorSecond,
             MinorThird,
             MajorThird,
@@ -234,7 +234,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     WholeTone(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             DiminishedFifth,
@@ -244,7 +244,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MajorSixthDiminishedScale(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -256,7 +256,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     MinorSixthDiminishedScale(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
@@ -268,7 +268,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     DominantDiminishedScale(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
@@ -280,7 +280,7 @@ enum class Scale(private val pattern: List<Interval>) {
     ),
     DominantFlat5DiminishedScale(
         listOf(
-            Unisson,
+            Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,

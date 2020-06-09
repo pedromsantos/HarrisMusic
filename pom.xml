@@ -46,6 +46,11 @@
             <artifactId>hamkrest</artifactId>
             <version>1.7.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.ginsberg</groupId>
+            <artifactId>cirkle</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

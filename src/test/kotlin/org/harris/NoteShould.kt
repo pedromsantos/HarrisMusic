@@ -1,14 +1,14 @@
 package org.harris
 
-import junitparams.Parameters
-import org.harris.Note.*
-import org.junit.Test
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import org.harris.Interval.*
+import org.harris.Note.*
+import org.junit.Test
 
 class NoteShould {
     @Test
-    fun `transpose note by a half step up when sharped`() {
+    fun `sharp to note above`() {
         assertThat(C.sharp(), equalTo(CSharp))
         assertThat(CSharp.sharp(), equalTo(D))
         assertThat(DFlat.sharp(), equalTo(D))
@@ -29,7 +29,7 @@ class NoteShould {
     }
 
     @Test
-    fun `transpose note by a half step down when flated`() {
+    fun `flat to note below`() {
         assertThat(C.flat(), equalTo(B))
         assertThat(CSharp.flat(), equalTo(C))
         assertThat(DFlat.flat(), equalTo(C))
@@ -47,5 +47,47 @@ class NoteShould {
         assertThat(ASharp.flat(), equalTo(A))
         assertThat(BFlat.flat(), equalTo(A))
         assertThat(B.flat(), equalTo(BFlat))
+    }
+    
+    @Test
+    fun `measure semitones between notes`() {
+        assertThat(C.measureAbsoluteSemitones(C), equalTo(0))
+        assertThat(C.measureAbsoluteSemitones(CSharp), equalTo(1))
+        assertThat(C.measureAbsoluteSemitones(DFlat), equalTo(1))
+        assertThat(C.measureAbsoluteSemitones(D), equalTo(2))
+        assertThat(C.measureAbsoluteSemitones(DSharp), equalTo(3))
+        assertThat(C.measureAbsoluteSemitones(EFlat), equalTo(3))
+        assertThat(C.measureAbsoluteSemitones(E), equalTo(4))
+        assertThat(C.measureAbsoluteSemitones(F), equalTo(5))
+        assertThat(C.measureAbsoluteSemitones(FSharp), equalTo(6))
+        assertThat(C.measureAbsoluteSemitones(GFlat), equalTo(6))
+        assertThat(C.measureAbsoluteSemitones(G), equalTo(7))
+        assertThat(C.measureAbsoluteSemitones(GSharp), equalTo(8))
+        assertThat(C.measureAbsoluteSemitones(AFlat), equalTo(8))
+        assertThat(C.measureAbsoluteSemitones(A), equalTo(9))
+        assertThat(C.measureAbsoluteSemitones(ASharp), equalTo(10))
+        assertThat(C.measureAbsoluteSemitones(BFlat), equalTo(10))
+        assertThat(C.measureAbsoluteSemitones(B), equalTo(11))
+    }
+
+    @Test
+    fun `measure interval between notes`() {
+        assertThat(C.intervalBetween(C), equalTo(Unison))
+        assertThat(C.intervalBetween(CSharp), equalTo(DiminishedSecond))
+        assertThat(C.intervalBetween(DFlat), equalTo(MinorSecond))
+        assertThat(C.intervalBetween(D), equalTo(MajorSecond))
+        assertThat(C.intervalBetween(DSharp), equalTo(AugmentedSecond))
+        assertThat(C.intervalBetween(EFlat), equalTo(MinorThird))
+        assertThat(C.intervalBetween(E), equalTo(MajorThird))
+        assertThat(C.intervalBetween(F), equalTo(PerfectFourth))
+        assertThat(C.intervalBetween(FSharp), equalTo(AugmentedFourth))
+        assertThat(C.intervalBetween(GFlat), equalTo(DiminishedFifth))
+        assertThat(C.intervalBetween(G), equalTo(PerfectFifth))
+        assertThat(C.intervalBetween(GSharp), equalTo(AugmentedFifth))
+        assertThat(C.intervalBetween(AFlat), equalTo(MinorSixth))
+        assertThat(C.intervalBetween(A), equalTo(MajorSixth))
+        assertThat(C.intervalBetween(ASharp), equalTo(MinorSeventh))
+        assertThat(C.intervalBetween(BFlat), equalTo(MinorSeventh))
+        assertThat(C.intervalBetween(B), equalTo(MajorSeventh))
     }
 }
