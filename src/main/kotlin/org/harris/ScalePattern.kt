@@ -242,50 +242,50 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MinorSeventh
         )
     ),
-    MajorSixthDiminishedScale(
+    MajorSixthDiminished(
         arrayOf(
             Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
             PerfectFifth,
-            AugmentedFifth,
+            MinorSixth,
             MajorSixth,
             MajorSeventh
         )
     ),
-    MinorSixthDiminishedScale(
+    MinorSixthDiminished(
         arrayOf(
             Unison,
             MajorSecond,
             MinorThird,
             PerfectFourth,
             PerfectFifth,
-            AugmentedFifth,
+            MinorSixth,
             MajorSixth,
             MajorSeventh
         )
     ),
-    DominantDiminishedScale(
+    DominantDiminished(
         arrayOf(
             Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
             PerfectFifth,
-            AugmentedFifth,
+            MinorSixth,
             MinorSeventh,
             MajorSeventh
         )
     ),
-    DominantFlat5DiminishedScale(
+    DominantFlat5Diminished(
         arrayOf(
             Unison,
             MajorSecond,
             MajorThird,
             PerfectFourth,
             DiminishedFifth,
-            AugmentedFifth,
+            MinorSixth,
             MinorSeventh,
             MajorSeventh
         )
