@@ -1,24 +1,26 @@
 package org.harris
 
+import com.ginsberg.cirkle.circular
 import org.harris.Note.*
+import kotlin.math.abs
 
 enum class Key(private val root: Note, private val accidentals: Int) {
     AFlatMajor(AFlat, -4),
     AMajor(A, 3),
     BMajor(B, 5),
-    BFlatMajor(BFlat, 2),
+    BFlatMajor(BFlat, -2),
     CMajor(C, 0),
-    DFlatMajor(DFlat, 5),
+    DFlatMajor(DFlat, -5),
     DMajor(D, 2),
     EMajor(E, 4),
-    EFlatMajor(EFlat, 3),
-    FMajor(F, 1),
+    EFlatMajor(EFlat, -3),
+    FMajor(F, -1),
     FSharpMajor(FSharp, 6),
     GMajor(G, 1),
-    GFlatMajor(GFlat, 6),
+    GFlatMajor(GFlat, -6),
     AMinor(A, 0),
     BMinor(B, 2),
-    BFlatMinor(BFlat, 5),
+    BFlatMinor(BFlat, -5),
     CMinor(C, 3),
     CSharpMinor(CSharp, 4),
     DMinor(D, 1),
@@ -27,16 +29,16 @@ enum class Key(private val root: Note, private val accidentals: Int) {
     FSharpMinor(FSharp, 3),
     GMinor(G, 2),
     GSharpMinor(GSharp, 5),
-    EFlatMinor(EFlat, 6);
+    EFlatMinor(EFlat, -6);
 
     private fun flatKey(): Set<Note> {
         return (Companion.fifths
             .asReversed()
-            .drop(Math.abs(this.accidentals)))
+            .drop(abs(this.accidentals)))
             .union(
                 Companion.fifths
                     .asReversed()
-                    .takeLast(Math.abs(this.accidentals))
+                    .take(abs(this.accidentals))
                     .map { it -> it.flat() })
     }
 
@@ -45,7 +47,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
             .drop(this.accidentals))
             .union(
                 Companion.fifths
-                    .takeLast(this.accidentals)
+                    .take(this.accidentals)
                     .map { it -> it.sharp() })
     }
 
@@ -65,7 +67,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
             .union(
                 notes
                     .sortedBy { it.pitch() }
-                    .takeLastWhile { it -> it != this.root }
+                    .takeWhile { it -> it != this.root }
             )
     }
 
