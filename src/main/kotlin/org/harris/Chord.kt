@@ -1,11 +1,12 @@
 package org.harris
 
-class Scale {
-    private val pattern: ScalePattern
+class Chord {
+    private val pattern: ChordPattern
+
     private val root: Note
     private val notes: Array<Note>
 
-    constructor(pattern: ScalePattern, root: Note) {
+    constructor(pattern: ChordPattern, root: Note) {
         this.pattern = pattern
         this.root = root
         this.notes = pattern.notes(root)
@@ -13,4 +14,3 @@ class Scale {
 
     fun notes(): Array<Note> = notes
 }
-

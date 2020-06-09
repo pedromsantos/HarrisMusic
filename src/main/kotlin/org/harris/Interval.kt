@@ -18,19 +18,19 @@ enum class Interval(private val intervalName: String, private val abreviature: S
     AugmentedFifth("AugmentedFifth", "A5", 8, C.naturalDistance(GSharp), 11),
     MinorSixth("MinorSixth", "m6", 8, C.naturalDistance(AFlat), 12),
     MajorSixth("MajorSixth", "M6", 9, C.naturalDistance(A), 13),
-    DiminishedSeventh("DiminishedSeventh", "d7", 9, C.naturalDistance(A), 14),
+    DiminishedSeventh("DiminishedSeventh", "d7", 9, C.naturalDistance(A), 13),
     MinorSeventh("MinorSeventh", "m7", 10, C.naturalDistance(BFlat), 15),
     MajorSeventh("MajorSeventh", "M7", 11, C.naturalDistance(B), 16),
     PerfectOctave("PerfectOctave", "PO", 12, C.naturalDistance(C), 17),
-    MinorNinth("MinorNinth", "m9", 13, C.naturalDistance(DFlat), 18),
-    MajorNinth("MajorNinth", "M9", 14, C.naturalDistance(D), 19),
-    AugmentedNinth("AugmentedNinth", "A9", 15, C.naturalDistance(DSharp), 20),
-    PerfectEleventh("PerfectEleventh", "P11", 17, C.naturalDistance(F), 21),
-    AugmentedEleventh("AugmentedEleventh", "A11", 18, C.naturalDistance(FSharp), 22),
-    MinorThirteenth("MinorThirteenth", "m13", 20, C.naturalDistance(AFlat), 23),
-    MajorThirteenth("MajorThirteenth", "M13", 21, C.naturalDistance(A), 24);
+    MinorNinth("MinorNinth", "m9", 13, C.naturalDistance(DFlat), 19),
+    MajorNinth("MajorNinth", "M9", 14, C.naturalDistance(D), 20),
+    AugmentedNinth("AugmentedNinth", "A9", 15, C.naturalDistance(DSharp), 21),
+    PerfectEleventh("PerfectEleventh", "P11", 17, C.naturalDistance(F), 24),
+    AugmentedEleventh("AugmentedEleventh", "A11", 18, C.naturalDistance(FSharp), 25),
+    MinorThirteenth("MinorThirteenth", "m13", 20, C.naturalDistance(AFlat), 29),
+    MajorThirteenth("MajorThirteenth", "M13", 21, C.naturalDistance(A), 30);
 
-    fun naturalDistance() =  naturalDistance
+    fun hasSameNaturalDistance(otherNaturalDistance: Int) =  naturalDistance == otherNaturalDistance
 
     fun transpose(from: Note) : Note {
         return from.transpose(this.transposeValue)

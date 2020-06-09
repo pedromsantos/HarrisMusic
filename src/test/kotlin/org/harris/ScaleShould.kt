@@ -181,4 +181,11 @@ class ScaleShould {
         assertThat(Scale(DominantFlat5Diminished, C).notes().toSet(), equalTo(expected))
         assertThat(DominantFlat5Diminished.createScale(C).notes().toSet(), equalTo(expected))
     }
+
+    @Test
+    fun `Generate correct notes for C Bebop`() {
+        val expected = setOf(C, D, E, F, G, A, BFlat, B)
+        assertThat(Scale(Bebop, C).notes().toSet(), equalTo(expected))
+        assertThat(Bebop.createScale(C).notes().toSet(), equalTo(expected))
+    }
 }

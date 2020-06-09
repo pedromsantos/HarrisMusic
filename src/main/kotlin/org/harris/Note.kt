@@ -110,7 +110,7 @@ enum class Note {
         return interval.transpose(this)
     }
 
-    fun transpose(amount: Int) : Note {
+    internal fun transpose(amount: Int) : Note {
         return values().toList().circular()[this.pitch + amount]
     }
 
@@ -134,7 +134,7 @@ enum class Note {
             return intervals.first()
         }
 
-        return intervals.first{ it.naturalDistance() == naturalDistance }
+        return intervals.first{ it.hasSameNaturalDistance(naturalDistance) }
     }
 
     abstract fun sharp(): Note
