@@ -4,7 +4,7 @@ import org.harris.Note.*
 
 enum class Interval(private val intervalName: String, private val abreviature: String, private val distance: Int, private val naturalDistance: Int) {
     Unison("Unisson", "U", 0, C.naturalDistance(C)),
-    DiminishedSecond("DiminishedSecond", "d2", 1, C.naturalDistance(CSharp)),
+    AugmentedUnison("AugmentedUnison", "A1", 1, C.naturalDistance(CSharp)),
     MinorSecond("MinorSecond", "m2", 1, C.naturalDistance(DFlat)),
     MajorSecond("MajorSecond", "M2", 2, C.naturalDistance(D)),
     AugmentedSecond("AugmentedSecond", "A2", 3, C.naturalDistance(DSharp)),

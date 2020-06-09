@@ -73,7 +73,7 @@ class NoteShould {
     @Test
     fun `measure interval between notes`() {
         assertThat(C.intervalBetween(C), equalTo(Unison))
-        assertThat(C.intervalBetween(CSharp), equalTo(DiminishedSecond))
+        assertThat(C.intervalBetween(CSharp), equalTo(AugmentedUnison))
         assertThat(C.intervalBetween(DFlat), equalTo(MinorSecond))
         assertThat(C.intervalBetween(D), equalTo(MajorSecond))
         assertThat(C.intervalBetween(DSharp), equalTo(AugmentedSecond))
