@@ -46,11 +46,13 @@ internal data class ChordNote(val note: Note, val function: ChordNoteFunction)
 
 internal class ChordNotes {
     private val notes: Array<ChordNote>
-    private val root: ChordNote
 
     constructor(root: Note, pattern: ChordPattern) {
-        this.root = ChordNote(root, ChordNoteFunction.Root)
         this.notes = pattern.notes(root)
+    }
+
+    private constructor(notes: Array<ChordNote>) {
+        this.notes = notes
     }
 
     fun notes(): Array<Note> = notes.map { it.note }.toTypedArray()
@@ -63,22 +65,34 @@ internal class ChordNotes {
         return notes.last()
     }
 
-    fun rootName() : String {
-        return root.note.name
-    }
-
     fun noteForFunction(function: ChordNoteFunction) : ChordNote {
         return notes.first { it.function == function }
+    }
+
+    fun remove(function: ChordNoteFunction): ChordNotes {
+        return ChordNotes(notes.filter { it.function != function }.toTypedArray())
+    }
+
+    fun rotate(): ChordNotes {
+        return ChordNotes(notes.rotate(1))
     }
 }
 
 class Chord {
     private val pattern: ChordPattern
     private val notes: ChordNotes
+    private val root: ChordNote
 
-    constructor(pattern: ChordPattern, root: Note) {
+    constructor(root: Note, pattern: ChordPattern) {
         this.pattern = pattern
         this.notes = ChordNotes(root, pattern)
+        this.root = ChordNote(root, ChordNoteFunction.Root)
+    }
+
+    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes) {
+        this.pattern = pattern
+        this.notes = notes
+        this.root = root
     }
 
     fun notes(): Array<Note> = notes.notes()
@@ -92,10 +106,18 @@ class Chord {
     }
 
     fun name(): String {
-        return notes.rootName() + pattern.name
+        return root.note.name + pattern.name
     }
 
     fun noteForFunction(function: ChordNoteFunction) : Note {
         return notes.noteForFunction(function).note
+    }
+
+    fun remove(function: ChordNoteFunction): Chord {
+        return Chord(this.root, this.pattern, this.notes.remove(function))
+    }
+
+    fun invert(): Chord {
+        return Chord(this.root, this.pattern, this.notes.rotate())
     }
 }
