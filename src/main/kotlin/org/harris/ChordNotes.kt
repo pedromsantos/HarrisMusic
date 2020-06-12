@@ -21,7 +21,7 @@ class ChordNotes {
         return notes.last()
     }
 
-    fun noteForFunction(function: ChordNoteFunction) : ChordNote {
+    fun noteForFunction(function: ChordNoteFunction): ChordNote {
         return notes.first { it.function == function }
     }
 
@@ -39,5 +39,9 @@ class ChordNotes {
         }
 
         return ChordNotes(notes.moveElement(1, 2).rotate(1))
+    }
+
+    fun drop3(): ChordNotes? {
+        return drop2()?.drop2()
     }
 }

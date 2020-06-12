@@ -12,6 +12,7 @@ interface Chord {
     fun invert(): Chord
     fun drop2(): Chord
     fun drop3(): Chord
+    fun closed(): Chord
 }
 
 abstract class BaseChord : Chord {
@@ -60,7 +61,15 @@ abstract class BaseChord : Chord {
     }
 
     override fun drop3(): Chord {
-        return drop2().drop2()
+        notes.drop3()?.let {
+            return Drop3Chord(root, pattern, it)
+        }
+
+        return this
+    }
+
+    override fun closed(): Chord {
+        return ClosedChord(root.note, pattern)
     }
 
     abstract override fun remove(function: ChordNoteFunction): Chord
@@ -82,11 +91,15 @@ class ClosedChord : BaseChord {
     override fun invert(): Chord {
         return ClosedChord(root, pattern, notes.rotate())
     }
+
+    override fun closed(): Chord {
+        return this
+    }
 }
 
 class Drop2Chord : BaseChord {
 
-    constructor(root: Note, pattern: ChordPattern)
+    private constructor(root: Note, pattern: ChordPattern)
             :super(root, pattern) {
     }
 
@@ -102,11 +115,15 @@ class Drop2Chord : BaseChord {
     override fun invert(): Chord {
         return Drop2Chord(root, pattern, notes.rotate())
     }
+
+    override fun drop2(): Chord {
+        return this
+    }
 }
 
 class Drop3Chord : BaseChord {
 
-    constructor(root: Note, pattern: ChordPattern)
+    private constructor(root: Note, pattern: ChordPattern)
             :super(root, pattern) {
     }
 
@@ -121,5 +138,9 @@ class Drop3Chord : BaseChord {
 
     override fun invert(): Chord {
         return Drop3Chord(root, pattern, notes.rotate())
+    }
+
+    override fun drop3(): Chord {
+        return this
     }
 }

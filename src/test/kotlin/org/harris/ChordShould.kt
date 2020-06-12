@@ -104,12 +104,92 @@ class ChordShould {
     }
 
     @Test
+    fun `create closed chord from drop 2 chord`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
+                .closed()
+                .notes().toSet(),
+            equalTo(setOf(C, E, G, B)))
+    }
+
+    @Test
+    fun `create drop 2 first inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(E, B, C, G)))
+    }
+
+    @Test
+    fun `create drop 2 second inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(G, C, E, B)))
+    }
+
+    @Test
+    fun `create drop 2 third inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(B, E, G, C)))
+    }
+
+    @Test
     fun `create drop 3 chord`() {
         assertThat(
             ClosedChord(C, Major7)
                 .drop3()
                 .notes().toSet(),
             equalTo(setOf(C, B, E, G)))
+    }
+
+    @Test
+    fun `create closed chord from drop 3 chord`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .closed()
+                .notes().toSet(),
+            equalTo(setOf(C, E, G, B)))
+    }
+
+    @Test
+    fun `create drop 3 first inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(E, C, G, B)))
+    }
+
+    @Test
+    fun `create drop 3 second inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(G, E, B, C)))
+    }
+
+    @Test
+    fun `create drop 3 third inversion`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(B, G, C, E)))
     }
 }
 
