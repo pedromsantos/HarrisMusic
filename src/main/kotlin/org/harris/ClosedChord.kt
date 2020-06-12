@@ -11,6 +11,7 @@ interface Chord {
     fun remove(function: ChordNoteFunction): Chord
     fun invert(): Chord
     fun drop2(): Chord
+    fun drop3(): Chord
 }
 
 abstract class BaseChord : Chord {
@@ -48,11 +49,22 @@ abstract class BaseChord : Chord {
         return notes.noteForFunction(function).note
     }
 
+    override fun drop2(): Chord {
+        if (notes().size == 4) {
+            notes.drop2()?.let {
+                return Drop2Chord(root, pattern, it)
+            }
+        }
+
+        return this
+    }
+
+    override fun drop3(): Chord {
+        return drop2().drop2()
+    }
+
     abstract override fun remove(function: ChordNoteFunction): Chord
-
     abstract override fun invert(): Chord
-
-    abstract override fun drop2(): Chord
 }
 
 class ClosedChord : BaseChord {
@@ -70,20 +82,15 @@ class ClosedChord : BaseChord {
     override fun invert(): Chord {
         return ClosedChord(root, pattern, notes.rotate())
     }
-
-    override fun drop2(): Chord {
-        return Drop2Chord(root.note, pattern)
-    }
 }
 
 class Drop2Chord : BaseChord {
 
     constructor(root: Note, pattern: ChordPattern)
             :super(root, pattern) {
-
     }
 
-    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
+    internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
             :super(root, pattern, notes) {
 
     }
@@ -95,8 +102,24 @@ class Drop2Chord : BaseChord {
     override fun invert(): Chord {
         return Drop2Chord(root, pattern, notes.rotate())
     }
+}
 
-    override fun drop2(): Chord {
-        return this
+class Drop3Chord : BaseChord {
+
+    constructor(root: Note, pattern: ChordPattern)
+            :super(root, pattern) {
+    }
+
+    internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
+            :super(root, pattern, notes) {
+
+    }
+
+    override fun remove(function: ChordNoteFunction): Chord {
+        return Drop3Chord(root, pattern, notes.remove(function))
+    }
+
+    override fun invert(): Chord {
+        return Drop3Chord(root, pattern, notes.rotate())
     }
 }

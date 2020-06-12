@@ -32,4 +32,12 @@ class ChordNotes {
     fun rotate(): ChordNotes {
         return ChordNotes(notes.rotate(1))
     }
+
+    fun drop2(): ChordNotes? {
+        if (notes().size != 4) {
+            return null
+        }
+
+        return ChordNotes(notes.moveElement(1, 2).rotate(1))
+    }
 }

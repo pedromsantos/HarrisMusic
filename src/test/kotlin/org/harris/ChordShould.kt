@@ -102,6 +102,15 @@ class ChordShould {
                 .notes().toSet(),
             equalTo(setOf(C, G, B, E)))
     }
+
+    @Test
+    fun `create drop 3 chord`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .notes().toSet(),
+            equalTo(setOf(C, B, E, G)))
+    }
 }
 
 class ChordShouldCorrectNotesFor {
