@@ -73,6 +73,17 @@ class ChordShould {
     }
 
     @Test
+    fun `return a triad to root inversion when performing third inversion`() {
+        assertThat(
+            Chord(C, Major)
+                .invert()
+                .invert()
+                .invert()
+                .notes().toSet(),
+            equalTo(setOf(C, E, G)))
+    }
+
+    @Test
     fun `invert chord to third inversion`() {
         assertThat(
             Chord(C, Major7)
@@ -82,6 +93,15 @@ class ChordShould {
                 .notes().toSet(),
             equalTo(setOf(B, C, E, G)))
     }
+
+//    @Test
+//    fun `create drop 2 chord`() {
+//        assertThat(
+//            Chord(C, Major7)
+//                .drop2()
+//                .notes().toSet(),
+//            equalTo(setOf(C, G, B, E)))
+//    }
 }
 
 class ChordShouldCorrectNotesFor {

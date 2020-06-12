@@ -114,10 +114,10 @@ class Chord {
     }
 
     fun remove(function: ChordNoteFunction): Chord {
-        return Chord(this.root, this.pattern, this.notes.remove(function))
+        return Chord(root, pattern, notes.remove(function))
     }
 
     fun invert(): Chord {
-        return Chord(this.root, this.pattern, this.notes.rotate())
+        return Chord(root, pattern, notes.rotate())
     }
 }
