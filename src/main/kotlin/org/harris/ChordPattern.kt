@@ -41,8 +41,8 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     Sus4Diminished("Major", "Maj", listOf(PerfectFourth, DiminishedFifth)),
     Sus4Augmented("Major", "Maj", listOf(PerfectFourth, AugmentedFifth));
 
-    fun createChord(root: Note): Chord {
-        return Chord(root, this)
+    fun createChord(root: Note): ClosedChord {
+        return ClosedChord(root, this)
     }
 
     internal fun notes(root: Note) : Array<ChordNote> {

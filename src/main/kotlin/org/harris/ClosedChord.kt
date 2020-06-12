@@ -1,123 +1,102 @@
 package org.harris
 
-import org.harris.Interval.*
+data class ChordNote(val note: Note, val function: ChordNoteFunction)
 
-enum class ChordNoteFunction {
-    Root,
-    Third,
-    Fifth,
-    Sixth,
-    Seventh,
-    Ninth,
-    Eleventh,
-    Thirteenth;
-
-    companion object {
-        internal fun functionForInterval(interval: Interval): ChordNoteFunction {
-            return when (interval) {
-                Unison -> Root
-                MajorThird,
-                MinorThird,
-                MajorSecond,
-                MinorSecond,
-                PerfectFourth,
-                AugmentedFourth -> Third
-                PerfectFifth,
-                DiminishedFifth,
-                AugmentedFifth -> Fifth
-                MinorSixth,
-                MajorSixth -> Sixth
-                MajorSeventh,
-                MinorSeventh,
-                DiminishedSeventh -> Seventh
-                MajorNinth,
-                MinorNinth,
-                AugmentedNinth -> Ninth
-                PerfectEleventh,
-                AugmentedEleventh -> Eleventh
-                MajorThirteenth -> Thirteenth
-                else -> Root
-            }
-        }
-    }
+interface Chord {
+    fun notes(): Array<Note>
+    fun bass(): Note
+    fun lead(): Note
+    fun name(): String
+    fun noteForFunction(function: ChordNoteFunction): Note
+    fun remove(function: ChordNoteFunction): Chord
+    fun invert(): Chord
+    fun drop2(): Chord
 }
 
-internal data class ChordNote(val note: Note, val function: ChordNoteFunction)
+abstract class BaseChord : Chord {
+    protected val pattern: ChordPattern
+    protected val notes: ChordNotes
+    protected val root: ChordNote
 
-internal class ChordNotes {
-    private val notes: Array<ChordNote>
-
-    constructor(root: Note, pattern: ChordPattern) {
-        this.notes = pattern.notes(root)
-    }
-
-    private constructor(notes: Array<ChordNote>) {
-        this.notes = notes
-    }
-
-    fun notes(): Array<Note> = notes.map { it.note }.toTypedArray()
-
-    fun bass(): ChordNote {
-        return notes.first()
-    }
-
-    fun lead(): ChordNote {
-        return notes.last()
-    }
-
-    fun noteForFunction(function: ChordNoteFunction) : ChordNote {
-        return notes.first { it.function == function }
-    }
-
-    fun remove(function: ChordNoteFunction): ChordNotes {
-        return ChordNotes(notes.filter { it.function != function }.toTypedArray())
-    }
-
-    fun rotate(): ChordNotes {
-        return ChordNotes(notes.rotate(1))
-    }
-}
-
-class Chord {
-    private val pattern: ChordPattern
-    private val notes: ChordNotes
-    private val root: ChordNote
-
-    constructor(root: Note, pattern: ChordPattern) {
+    protected constructor(root: Note, pattern: ChordPattern) {
         this.pattern = pattern
         this.notes = ChordNotes(root, pattern)
         this.root = ChordNote(root, ChordNoteFunction.Root)
     }
 
-    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes) {
+    protected constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes) {
         this.pattern = pattern
         this.notes = notes
         this.root = root
     }
 
-    fun notes(): Array<Note> = notes.notes()
+    override fun notes(): Array<Note> = notes.notes()
 
-    fun bass(): Note {
+    override fun bass(): Note {
         return notes.bass().note
     }
 
-    fun lead(): Note {
+    override fun lead(): Note {
         return notes.lead().note
     }
 
-    fun name(): String {
+    override fun name(): String {
         return root.note.name + pattern.name
     }
 
-    fun noteForFunction(function: ChordNoteFunction) : Note {
+    override fun noteForFunction(function: ChordNoteFunction) : Note {
         return notes.noteForFunction(function).note
     }
 
-    fun remove(function: ChordNoteFunction): Chord {
-        return Chord(root, pattern, notes.remove(function))
+    abstract override fun remove(function: ChordNoteFunction): Chord
+
+    abstract override fun invert(): Chord
+
+    abstract override fun drop2(): Chord
+}
+
+class ClosedChord : BaseChord {
+
+    constructor(root: Note, pattern: ChordPattern)
+        :super(root, pattern) {}
+
+    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
+        :super(root, pattern, notes) {}
+
+    override fun remove(function: ChordNoteFunction): Chord {
+        return ClosedChord(root, pattern, notes.remove(function))
     }
 
-    fun invert(): Chord {
-        return Chord(root, pattern, notes.rotate())
+    override fun invert(): Chord {
+        return ClosedChord(root, pattern, notes.rotate())
+    }
+
+    override fun drop2(): Chord {
+        return Drop2Chord(root.note, pattern)
+    }
+}
+
+class Drop2Chord : BaseChord {
+
+    constructor(root: Note, pattern: ChordPattern)
+            :super(root, pattern) {
+
+    }
+
+    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
+            :super(root, pattern, notes) {
+
+    }
+
+    override fun remove(function: ChordNoteFunction): Chord {
+        return Drop2Chord(root, pattern, notes.remove(function))
+    }
+
+    override fun invert(): Chord {
+        return Drop2Chord(root, pattern, notes.rotate())
+    }
+
+    override fun drop2(): Chord {
+        return this
     }
 }
