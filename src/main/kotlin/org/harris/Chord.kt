@@ -113,7 +113,12 @@ class Drop2Chord : BaseChord {
     }
 
     override fun invert(): Chord {
-        return Drop2Chord(root, pattern, notes.rotate())
+        val invertedNotes = notes
+            .rotate(3)
+            .rotateLast()
+            .rotateLast()
+
+        return Drop2Chord(root, pattern, invertedNotes)
     }
 
     override fun drop2(): Chord {
@@ -137,7 +142,13 @@ class Drop3Chord : BaseChord {
     }
 
     override fun invert(): Chord {
-        return Drop3Chord(root, pattern, notes.rotate())
+        val invertedNotes = notes
+            .rotate(2)
+            .rotateLast(2)
+            .rotateLast(1)
+            .rotateLast(1)
+
+        return Drop3Chord(root, pattern, invertedNotes)
     }
 
     override fun drop3(): Chord {

@@ -29,8 +29,13 @@ class ChordNotes {
         return ChordNotes(notes.filter { it.function != function }.toTypedArray())
     }
 
-    fun rotate(): ChordNotes {
-        return ChordNotes(notes.rotate(1))
+    fun rotate(amount: Int = 1): ChordNotes {
+        return ChordNotes(notes.rotate(amount))
+    }
+
+    fun rotateLast(skip: Int = 1): ChordNotes {
+        val lastNotes = notes.drop(skip).toTypedArray().rotate(1).toList()
+        return ChordNotes(notes.take(skip).union(lastNotes).toTypedArray())
     }
 
     fun drop2(): ChordNotes? {
@@ -38,7 +43,7 @@ class ChordNotes {
             return null
         }
 
-        return ChordNotes(notes.moveElement(1, 2).rotate(1))
+        return ChordNotes(notes.moveElement(1, 2).moveElement(2, 3))
     }
 
     fun drop3(): ChordNotes? {
