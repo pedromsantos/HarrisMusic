@@ -212,7 +212,7 @@ class ChordShould {
     }
 
     @Test
-    fun `create drop 3 fourth inversion`() {
+    fun `drop 3 fourth inversion goes back to root inversion`() {
         assertThat(
             ClosedChord(C, Major7)
                 .drop3()

@@ -33,7 +33,7 @@ class ChordNotes {
         return ChordNotes(notes.rotate(amount))
     }
 
-    fun rotateLast(skip: Int = 1): ChordNotes {
+    fun rotateLastSkipFirst(skip: Int = 1): ChordNotes {
         val lastNotes = notes.drop(skip).toTypedArray().rotate(1).toList()
         return ChordNotes(notes.take(skip).union(lastNotes).toTypedArray())
     }
