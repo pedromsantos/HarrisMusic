@@ -188,4 +188,46 @@ class ScaleShould {
         assertThat(Scale(Bebop, C).notes().toList(), equalTo(expected))
         assertThat(Bebop.createScale(C).notes().toList(), equalTo(expected))
     }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on first degree`() {
+        val expected = listOf(C, E, G, B, D, F, A)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.I).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on second degree`() {
+        val expected = listOf(D, F, A, C, E, G, B)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.II).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on third degree`() {
+        val expected = listOf(E, G, B, D, F, A, C)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.III).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on fourth degree`() {
+        val expected = listOf(F, A, C, E, G, B, D)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.IV).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on fifth degree`() {
+        val expected = listOf(G, B, D, F, A, C, E)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.V).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on sixth degree`() {
+        val expected = listOf(A, C, E, G, B, D, F)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.VI).toList(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds for C Ionian starting on seventh degree`() {
+        val expected = listOf(B, D, F, A, C, E, G)
+        assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.VII).toList(), equalTo(expected))
+    }
 }

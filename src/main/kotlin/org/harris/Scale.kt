@@ -12,5 +12,16 @@ class Scale {
     }
 
     fun notes(): Array<Note> = notes
-}
 
+    fun thirdsFrom(degree: ScaleDegree) : Array<Note> {
+        val twoOctaves = 16
+        return notes
+            .toList()
+            .drop(degree.ordinal)
+            .plus(notes.toList())
+            .plus(notes.toList())
+            .filterIndexed { index, _ -> index % 2 == 0 }
+            .take(7)
+            .toTypedArray()
+    }
+}

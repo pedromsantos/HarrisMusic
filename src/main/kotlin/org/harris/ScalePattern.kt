@@ -300,3 +300,7 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
     }
 }
 
+enum class ScaleDegree {
+    I, II, III, IV, V, VI, VII
+}
+
