@@ -110,11 +110,11 @@ enum class Note {
         return interval.transpose(this)
     }
 
-    internal fun transpose(amount: Int) : Note {
-        return values().toList().circular()[this.pitch + amount]
+    internal fun transpose(semitones: Int) : Note {
+        return values().toList().circular()[this.pitch + semitones]
     }
 
-    fun naturalDistance(to: Note) : Int {
+    fun semitoneDistance(to: Note) : Int {
         if (this.natural().ordinal == to.natural().ordinal) {
             return 0
         }
@@ -128,7 +128,7 @@ enum class Note {
 
     fun intervalBetween(to: Note): Interval {
         val intervals = Interval.from(measureAbsoluteSemitones(to))
-        val naturalDistance = naturalDistance(to)
+        val naturalDistance = semitoneDistance(to)
 
         if (intervals.size == 1 || naturalDistance == 0) {
             return intervals.first()
