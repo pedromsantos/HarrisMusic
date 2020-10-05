@@ -45,6 +45,12 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
         return ClosedChord(root, this)
     }
 
+    companion object {
+        internal fun from(notes: ChordNotes) : ChordPattern {
+            return Major
+        }
+    }
+
     internal fun notes(root: Note) : Array<ChordNote> {
         return listOf(ChordNote(root, ChordNoteFunction.Root))
             .union(pattern.map{ createChordNote(it, root) })

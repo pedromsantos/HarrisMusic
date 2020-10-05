@@ -73,7 +73,7 @@ class ChordShould {
     }
 
     @Test
-    fun `return a triad to root inversion when performing third inversion`() {
+    fun `go back to root inversion when performing third inversion on triad`() {
         assertThat(
             ClosedChord(C, Major)
                 .invert()
@@ -147,7 +147,7 @@ class ChordShould {
     }
 
     @Test
-    fun `drop 2 fourth inversion goes back to root inversion`() {
+    fun `go back to root inversion on fourth inversion of drop 2`() {
         assertThat(
             ClosedChord(C, Major7)
                 .drop2()
@@ -212,7 +212,7 @@ class ChordShould {
     }
 
     @Test
-    fun `drop 3 fourth inversion goes back to root inversion`() {
+    fun `go back to root inversion on fourth inversion of drop 3`() {
         assertThat(
             ClosedChord(C, Major7)
                 .drop3()

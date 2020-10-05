@@ -1,44 +1,46 @@
 package org.harris
 
+data class ChordNote(val note: Note, val function: ChordNoteFunction)
+
 class ChordNotes {
     private val notes: Array<ChordNote>
 
-    constructor(root: Note, pattern: ChordPattern) {
+    internal constructor(root: Note, pattern: ChordPattern) {
         this.notes = pattern.notes(root)
     }
 
-    private constructor(notes: Array<ChordNote>) {
+    internal constructor(notes: Array<ChordNote>) {
         this.notes = notes
     }
 
-    fun notes(): Array<Note> = notes.map { it.note }.toTypedArray()
+    internal fun notes(): Array<Note> = notes.map { it.note }.toTypedArray()
 
-    fun bass(): ChordNote {
+    internal fun bass(): ChordNote {
         return notes.first()
     }
 
-    fun lead(): ChordNote {
+    internal fun lead(): ChordNote {
         return notes.last()
     }
 
-    fun noteForFunction(function: ChordNoteFunction): ChordNote {
+    internal fun noteForFunction(function: ChordNoteFunction): ChordNote {
         return notes.first { it.function == function }
     }
 
-    fun remove(function: ChordNoteFunction): ChordNotes {
+    internal fun remove(function: ChordNoteFunction): ChordNotes {
         return ChordNotes(notes.filter { it.function != function }.toTypedArray())
     }
 
-    fun rotate(amount: Int = 1): ChordNotes {
+    internal fun rotate(amount: Int = 1): ChordNotes {
         return ChordNotes(notes.rotate(amount))
     }
 
-    fun rotateLastSkipFirst(skip: Int = 1): ChordNotes {
+    internal fun rotateLastSkipFirst(skip: Int = 1): ChordNotes {
         val lastNotes = notes.drop(skip).toTypedArray().rotate(1).toList()
         return ChordNotes(notes.take(skip).union(lastNotes).toTypedArray())
     }
 
-    fun drop2(): ChordNotes? {
+    internal fun drop2(): ChordNotes? {
         if (notes().size != 4) {
             return null
         }
@@ -46,7 +48,7 @@ class ChordNotes {
         return ChordNotes(notes.moveElement(1, 2).moveElement(2, 3))
     }
 
-    fun drop3(): ChordNotes? {
+    internal fun drop3(): ChordNotes? {
         return drop2()?.drop2()
     }
 }

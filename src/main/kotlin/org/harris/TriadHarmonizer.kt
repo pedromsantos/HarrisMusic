@@ -4,6 +4,12 @@ class TriadHarmonizer(private val scale: Scale) {
     fun chordForScaleDegree(degree: ScaleDegree): Chord {
         val thirds = scale.thirdsFrom(degree)
 
-        return ClosedChord(Note.C, ChordPattern.Major)
+        val chordNotes = arrayOf(
+            ChordNote(thirds[0], ChordNoteFunction.Root),
+            ChordNote(thirds[1], ChordNoteFunction.Third),
+            ChordNote(thirds[2], ChordNoteFunction.Fifth)
+        )
+        val pattern =  ChordPattern.from(ChordNotes(chordNotes))
+        return ClosedChord(thirds.first(), pattern)
     }
 }

@@ -1,7 +1,5 @@
 package org.harris
 
-data class ChordNote(val note: Note, val function: ChordNoteFunction)
-
 interface Chord {
     fun notes(): Array<Note>
     fun bass(): Note
