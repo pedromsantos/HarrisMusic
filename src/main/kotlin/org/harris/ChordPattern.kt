@@ -24,7 +24,7 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     Dominant9("Major", "Maj", listOf(MajorThird, PerfectFifth, MinorSeventh, MajorNinth)),
     Dominant11("Major", "Maj", listOf(MajorThird, PerfectFifth, MinorSeventh, MajorNinth, PerfectEleventh)),
     Dominant13("Major", "Maj", listOf(MajorThird, PerfectFifth, MinorSeventh, MajorNinth, PerfectEleventh, MajorThirteenth)),
-    Minor("Major", "Maj", listOf(MinorThird, PerfectFifth)),
+    Minor("Minor", "Maj", listOf(MinorThird, PerfectFifth)),
     Diminished("Major", "Maj", listOf(MinorThird, DiminishedFifth)),
     Minor7("Major", "Maj", listOf(MinorThird, PerfectFifth, MinorSeventh)),
     Minor6("Major", "Maj", listOf(MinorThird, PerfectFifth, MajorSixth)),

@@ -79,7 +79,7 @@ class ClosedChord : BaseChord {
     constructor(root: Note, pattern: ChordPattern)
         :super(root, pattern) {}
 
-    private constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
+    internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
         :super(root, pattern, notes) {}
 
     override fun remove(function: ChordNoteFunction): Chord {

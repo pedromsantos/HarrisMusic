@@ -473,7 +473,7 @@ class NoteShould {
     }
 
     @Test
-    fun `transpose using a AugmentedFourth from C to F sjhrp`() {
+    fun `transpose using a AugmentedFourth from C to F sharp`() {
         assertThat(C.transpose(AugmentedFourth), equalTo(FSharp))
     }
 
@@ -493,6 +493,11 @@ class NoteShould {
     }
 
     @Test
+    fun `transpose using a PerfectFifth from D to A`() {
+        assertThat(D.transpose(PerfectFifth), equalTo(A))
+    }
+
+    @Test
     fun `transpose using a AugmentedFifth from C to G sharp`() {
         assertThat(C.transpose(AugmentedFifth), equalTo(GSharp))
     }
@@ -508,7 +513,7 @@ class NoteShould {
     }
 
     @Test
-    fun `transpose using a Unison from C to B flat`() {
+    fun `transpose using a minor seventh from C to B flat`() {
         assertThat(C.transpose(MinorSeventh), equalTo(BFlat))
     }
 

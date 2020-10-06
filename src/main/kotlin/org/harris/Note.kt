@@ -2,6 +2,7 @@ package org.harris
 
 import com.ginsberg.cirkle.circular
 import org.harris.Accidental.*
+import kotlin.math.abs
 
 enum class Note {
     C("C", 0, Natural) {
@@ -120,46 +121,36 @@ enum class Note {
     fun pitch() = pitch
 
     fun measureAbsoluteSemitones(to: Note): Int {
-        return to.pitch - this.pitch
+        if(this.pitch <= to.pitch)
+            return to.pitch - this.pitch
+
+        return 12 + (to.pitch - this.pitch)
     }
 
     fun transpose(interval: Interval): Note {
         return interval.transpose(this)
     }
 
-    internal fun transpose(semitones: Int) : Note {
-        return values().toList().circular()[this.pitch + semitones]
-    }
-
-    fun semitoneDistance(to: Note) : Int {
-        if (this.natural().ordinal == to.natural().ordinal) {
-            return 0
-        }
-
-        if (this.natural().pitch < to.natural().pitch) {
-            return to.natural().pitch - this.natural().pitch
-        }
-
-        return this.natural().pitch - to.natural().pitch
+    internal fun transpose(naturalDistance: Int) : Note {
+        return values()
+            .toList()
+            .circular()
+            .first { it.naturalIndex() == this.naturalIndex() + naturalDistance }.natural()
     }
 
     fun intervalBetween(to: Note): Interval {
-        val intervals = Interval.from(measureAbsoluteSemitones(to))
-        val naturalDistance = naturalDistance(to)
-
-        if (intervals.size == 1 || naturalDistance == 0) {
-            return intervals.first()
-        }
-
-        return intervals.first{ it.hasSameNaturalDistance(naturalDistance) }
+        val intervals = Interval.from(naturalDistance(to))
+        return intervals.first { it.hasSameDistance(measureAbsoluteSemitones(to)) }
     }
 
     fun naturalDistance(to: Note) : Int {
-        if (this.naturalIndex() < to.naturalIndex()) {
-            return to.naturalIndex() - this.naturalIndex()
+        val distance = to.naturalIndex() - this.naturalIndex()
+
+        if (distance < 0) {
+            return abs(7 + distance)
         }
 
-        return this.naturalIndex() - to.naturalIndex()
+        return distance
     }
 
     abstract fun sharp(): Note
