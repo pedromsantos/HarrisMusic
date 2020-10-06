@@ -14,7 +14,6 @@ class Scale {
     fun notes(): Array<Note> = notes
 
     fun thirdsFrom(degree: ScaleDegree) : Array<Note> {
-        val twoOctaves = 16
         return notes
             .toList()
             .drop(degree.ordinal)

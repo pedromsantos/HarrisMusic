@@ -9,7 +9,7 @@ class TriadHarmonizer(private val scale: Scale) {
             ChordNote(thirds[1], ChordNoteFunction.Third),
             ChordNote(thirds[2], ChordNoteFunction.Fifth)
         )
-        val pattern =  ChordPattern.from(ChordNotes(chordNotes))
+        val pattern =  ChordPattern.from(ChordNotes(chordNotes).toIntervals())
         return ClosedChord(thirds.first(), pattern)
     }
 }

@@ -46,8 +46,8 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     }
 
     companion object {
-        internal fun from(notes: ChordNotes) : ChordPattern {
-            return Major
+        internal fun from(intervals: List<Interval>) : ChordPattern {
+            return values().first { it.pattern == intervals }
         }
     }
 

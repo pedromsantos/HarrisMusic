@@ -183,8 +183,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and C to zero`() {
+        assertThat(C.naturalDistance(C), equalTo(0))
+    }
+
+    @Test
     fun `measure semitones between C and C sharp to one semitone`() {
         assertThat(C.measureAbsoluteSemitones(CSharp), equalTo(1))
+    }
+
+    @Test
+    fun `measure natural distance between C and C sharp to zero`() {
+        assertThat(C.naturalDistance(CSharp), equalTo(0))
     }
 
     @Test
@@ -193,8 +203,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and D flat to one`() {
+        assertThat(C.naturalDistance(DFlat), equalTo(1))
+    }
+
+    @Test
     fun `measure semitones between C and D to two semitones`() {
         assertThat(C.measureAbsoluteSemitones(D), equalTo(2))
+    }
+
+    @Test
+    fun `measure natural distance between C and D to one`() {
+        assertThat(C.naturalDistance(D), equalTo(1))
     }
 
     @Test
@@ -203,8 +223,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and D sharp to one`() {
+        assertThat(C.naturalDistance(DSharp), equalTo(1))
+    }
+
+    @Test
     fun `measure semitones between C and E flat to three semitones`() {
         assertThat(C.measureAbsoluteSemitones(EFlat), equalTo(3))
+    }
+
+    @Test
+    fun `measure natural distance between C and E flat to two`() {
+        assertThat(C.naturalDistance(EFlat), equalTo(2))
     }
 
     @Test
@@ -213,8 +243,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and E to two`() {
+        assertThat(C.naturalDistance(E), equalTo(2))
+    }
+
+    @Test
     fun `measure semitones between C and F to five semitones`() {
         assertThat(C.measureAbsoluteSemitones(F), equalTo(5))
+    }
+
+    @Test
+    fun `measure natural distance between C and F to three`() {
+        assertThat(C.naturalDistance(F), equalTo(3))
     }
 
     @Test
@@ -223,8 +263,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and F sharp to three`() {
+        assertThat(C.naturalDistance(FSharp), equalTo(3))
+    }
+
+    @Test
     fun `measure semitones between C and G flat to six semitones`() {
         assertThat(C.measureAbsoluteSemitones(GFlat), equalTo(6))
+    }
+
+    @Test
+    fun `measure natural distance between C and G flat to four`() {
+        assertThat(C.naturalDistance(GFlat), equalTo(4))
     }
 
     @Test
@@ -233,8 +283,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and G to four`() {
+        assertThat(C.naturalDistance(G), equalTo(4))
+    }
+
+    @Test
     fun `measure semitones between C and G sharp to eight semitones`() {
         assertThat(C.measureAbsoluteSemitones(GSharp), equalTo(8))
+    }
+
+    @Test
+    fun `measure natural distance between C and G sharp to four`() {
+        assertThat(C.naturalDistance(GSharp), equalTo(4))
     }
 
     @Test
@@ -243,8 +303,18 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and A flat to five`() {
+        assertThat(C.naturalDistance(AFlat), equalTo(5))
+    }
+
+    @Test
     fun `measure semitones between C and A to nine semitones`() {
         assertThat(C.measureAbsoluteSemitones(A), equalTo(9))
+    }
+
+    @Test
+    fun `measure natural distance between C and A to five`() {
+        assertThat(C.naturalDistance(A), equalTo(5))
     }
 
     @Test
@@ -253,13 +323,28 @@ class NoteShould {
     }
 
     @Test
+    fun `measure natural distance between C and A sharp to five`() {
+        assertThat(C.naturalDistance(ASharp), equalTo(5))
+    }
+
+    @Test
     fun `measure semitones between C and B flat to ten semitones`() {
         assertThat(C.measureAbsoluteSemitones(BFlat), equalTo(10))
     }
 
     @Test
+    fun `measure natural distance between C and B flat to six`() {
+        assertThat(C.naturalDistance(BFlat), equalTo(6))
+    }
+
+    @Test
     fun `measure semitones between C and B to eleven semitones`() {
         assertThat(C.measureAbsoluteSemitones(B), equalTo(11))
+    }
+
+    @Test
+    fun `measure natural distance between C and B to six`() {
+        assertThat(C.naturalDistance(B), equalTo(6))
     }
 
     @Test
@@ -340,6 +425,11 @@ class NoteShould {
     @Test
     fun `measure interval between C and B as MajorSeventh`() {
         assertThat(C.intervalBetween(B), equalTo(MajorSeventh))
+    }
+
+    @Test
+    fun `measure interval between D and F as MinorThird`() {
+        assertThat(D.intervalBetween(F), equalTo(MinorThird))
     }
 
     @Test

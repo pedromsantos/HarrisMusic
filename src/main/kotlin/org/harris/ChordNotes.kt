@@ -51,4 +51,16 @@ class ChordNotes {
     internal fun drop3(): ChordNotes? {
         return drop2()?.drop2()
     }
+
+    internal fun toIntervals() : List<Interval> {
+        val root = noteForFunction(ChordNoteFunction.Root).note
+        var intervals = mutableListOf<Interval>()
+
+        for(note in notes.drop(1)) {
+            val interval = root.intervalBetween(note.note)
+            intervals.add(interval)
+        }
+
+        return intervals
+    }
 }
