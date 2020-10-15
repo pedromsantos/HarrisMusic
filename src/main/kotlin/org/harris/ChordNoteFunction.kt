@@ -30,7 +30,6 @@ enum class ChordNoteFunction {
                 Interval.DiminishedSeventh -> Seventh
                 Interval.MajorNinth,
                 Interval.MinorNinth,
-                Interval.AugmentedNinth -> Ninth
                 Interval.PerfectEleventh,
                 Interval.AugmentedEleventh -> Eleventh
                 Interval.MajorThirteenth -> Thirteenth

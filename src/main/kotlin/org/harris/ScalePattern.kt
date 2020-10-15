@@ -213,7 +213,7 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
         arrayOf(
             Unison,
             MinorSecond,
-            AugmentedSecond,
+            AugmentedNinth,
             MajorThird,
             DiminishedFifth,
             AugmentedFifth,

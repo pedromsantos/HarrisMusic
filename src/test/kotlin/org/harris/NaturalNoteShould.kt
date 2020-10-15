@@ -2,14 +2,127 @@ package org.harris
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import io.kotest.matchers.shouldBe
+import io.kotest.property.Exhaustive
+import io.kotest.property.checkAll
+import io.kotest.property.exhaustive.enum
+import io.kotest.property.exhaustive.exhaustive
+import io.kotest.property.exhaustive.ints
+import io.kotest.runner.junit4.StringSpec
 import org.harris.Interval.*
 import org.harris.Note.*
 import org.junit.Test
 
-class NoteShould {
+val notes = listOf<Note>(C, D, E, F, G, A, B)
+
+class NotesShould: StringSpec({
+    "Sharping and flating a note results in the original note pitch" {
+        checkAll(notes.exhaustive()) { note ->
+            note.sharp().flat().pitch() shouldBe note.pitch()
+        }
+    }
+
+    "Flating and sharping a note results in the original note pitch" {
+        checkAll(notes.exhaustive()) { note ->
+            note.flat().sharp().pitch() shouldBe note.pitch()
+        }
+    }
+
+    "A sharped note has a higher pitch except B" {
+        checkAll(notes.exhaustive()) { note ->
+            if (note == B) {
+                note.sharp() == C
+            }
+            else {
+                note.sharp().pitch() > note.pitch()
+            }
+        }
+    }
+
+    "A ftated note has a lower pitch except C" {
+        checkAll(notes.exhaustive()) { note ->
+            if (note == C) {
+                note.flat() == B
+            }
+            else {
+                note.flat().pitch() < note.pitch()
+            }
+        }
+    }
+
+    "measure semitones between a note and itself sharp n times to n semitones" {
+        checkAll(notes.exhaustive(), Exhaustive.ints(0..12)) { note, distance ->
+            var transposed = note
+
+            for(d in 0 until distance) {
+                transposed = transposed.sharp()
+            }
+
+            if(distance == 12) {
+                note.absoluteDistance(transposed) shouldBe 0
+            }
+            else {
+                note.absoluteDistance(transposed) shouldBe distance
+            }
+        }
+    }
+
+    "measure semitones between a note and itself flat n times to n semitones" {
+        checkAll(notes.exhaustive(), Exhaustive.ints(0..12)) { note, distance ->
+            var transposed = note
+
+            for(d in 0 until distance) {
+                transposed = transposed.flat()
+            }
+
+            if(distance == 12 || distance == 0) {
+                note.absoluteDistance(transposed) shouldBe 0
+            }
+            else {
+                note.absoluteDistance(transposed) shouldBe 12 - distance
+            }
+        }
+    }
+
+    "measure natural distance between a natural note and itself sharp to zero except for E and B" {
+        checkAll(notes.exhaustive()) { note ->
+            if(note.natural() == E || note.natural() == B) {
+                note.natural().naturalDistance(note.natural().sharp()) shouldBe 1
+            }
+            else {
+                note.natural().naturalDistance(note.natural().sharp()) shouldBe 0
+            }
+        }
+    }
+
+    "measure interval between a note and itself transposed by an interval to be the transposing interval" {
+        checkAll(listOf(C, G, D, A, E, B, F).exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
+            val to = note.transpose(interval)
+            val resultingInterval = note.intervalBetween(to)
+            //println("$note:$to:$interval -> $resultingInterval")
+
+            when(interval) {
+                Tritone -> resultingInterval shouldBe DiminishedFifth
+                DiminishedSeventh -> resultingInterval shouldBe MajorSixth
+                PerfectOctave -> resultingInterval shouldBe Unison
+                MinorNinth -> resultingInterval shouldBe MinorSecond
+                MajorNinth -> resultingInterval shouldBe MajorSecond
+                AugmentedNinth -> resultingInterval shouldBe AugmentedSecond
+                PerfectEleventh -> resultingInterval shouldBe PerfectFourth
+                AugmentedEleventh -> resultingInterval shouldBe AugmentedFourth
+                MinorThirteenth -> resultingInterval shouldBe MinorSixth
+                MajorThirteenth -> resultingInterval shouldBe MajorSixth
+                else -> resultingInterval shouldBe interval
+            }
+        }
+    }
+})
+
+class NaturalNoteShould {
+
     @Test
     fun `sharp C to C sharp`() {
-        assertThat(C.sharp(), equalTo(CSharp))
+        assertThat(C.sharp(), equalTo(C.sharp()))
     }
 
     @Test
@@ -179,7 +292,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and C to zero semitones`() {
-        assertThat(C.measureAbsoluteSemitones(C), equalTo(0))
+        assertThat(C.absoluteDistance(C), equalTo(0))
     }
 
     @Test
@@ -189,7 +302,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and C sharp to one semitone`() {
-        assertThat(C.measureAbsoluteSemitones(CSharp), equalTo(1))
+        assertThat(C.absoluteDistance(CSharp), equalTo(1))
     }
 
     @Test
@@ -199,7 +312,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and D flat to one semitone`() {
-        assertThat(C.measureAbsoluteSemitones(DFlat), equalTo(1))
+        assertThat(C.absoluteDistance(DFlat), equalTo(1))
     }
 
     @Test
@@ -209,7 +322,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and D to two semitones`() {
-        assertThat(C.measureAbsoluteSemitones(D), equalTo(2))
+        assertThat(C.absoluteDistance(D), equalTo(2))
     }
 
     @Test
@@ -219,7 +332,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and D sharp to three semitones`() {
-        assertThat(C.measureAbsoluteSemitones(DSharp), equalTo(3))
+        assertThat(C.absoluteDistance(DSharp), equalTo(3))
     }
 
     @Test
@@ -229,7 +342,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and E flat to three semitones`() {
-        assertThat(C.measureAbsoluteSemitones(EFlat), equalTo(3))
+        assertThat(C.absoluteDistance(EFlat), equalTo(3))
     }
 
     @Test
@@ -239,7 +352,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and E to four semitones`() {
-        assertThat(C.measureAbsoluteSemitones(E), equalTo(4))
+        assertThat(C.absoluteDistance(E), equalTo(4))
     }
 
     @Test
@@ -249,7 +362,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and F to five semitones`() {
-        assertThat(C.measureAbsoluteSemitones(F), equalTo(5))
+        assertThat(C.absoluteDistance(F), equalTo(5))
     }
 
     @Test
@@ -259,7 +372,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and F sharp to six semitones`() {
-        assertThat(C.measureAbsoluteSemitones(FSharp), equalTo(6))
+        assertThat(C.absoluteDistance(FSharp), equalTo(6))
     }
 
     @Test
@@ -269,7 +382,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and G flat to six semitones`() {
-        assertThat(C.measureAbsoluteSemitones(GFlat), equalTo(6))
+        assertThat(C.absoluteDistance(GFlat), equalTo(6))
     }
 
     @Test
@@ -279,7 +392,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and G to seven semitones`() {
-        assertThat(C.measureAbsoluteSemitones(G), equalTo(7))
+        assertThat(C.absoluteDistance(G), equalTo(7))
     }
 
     @Test
@@ -289,7 +402,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and G sharp to eight semitones`() {
-        assertThat(C.measureAbsoluteSemitones(GSharp), equalTo(8))
+        assertThat(C.absoluteDistance(GSharp), equalTo(8))
     }
 
     @Test
@@ -299,7 +412,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and A flat to eight semitones`() {
-        assertThat(C.measureAbsoluteSemitones(AFlat), equalTo(8))
+        assertThat(C.absoluteDistance(AFlat), equalTo(8))
     }
 
     @Test
@@ -309,7 +422,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and A to nine semitones`() {
-        assertThat(C.measureAbsoluteSemitones(A), equalTo(9))
+        assertThat(C.absoluteDistance(A), equalTo(9))
     }
 
     @Test
@@ -319,7 +432,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and A sharp to ten semitones`() {
-        assertThat(C.measureAbsoluteSemitones(ASharp), equalTo(10))
+        assertThat(C.absoluteDistance(ASharp), equalTo(10))
     }
 
     @Test
@@ -329,7 +442,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and B flat to ten semitones`() {
-        assertThat(C.measureAbsoluteSemitones(BFlat), equalTo(10))
+        assertThat(C.absoluteDistance(BFlat), equalTo(10))
     }
 
     @Test
@@ -339,7 +452,7 @@ class NoteShould {
 
     @Test
     fun `measure semitones between C and B to eleven semitones`() {
-        assertThat(C.measureAbsoluteSemitones(B), equalTo(11))
+        assertThat(C.absoluteDistance(B), equalTo(11))
     }
 
     @Test
@@ -353,11 +466,6 @@ class NoteShould {
     }
 
     @Test
-    fun `measure interval between C and C sharp as AugmentedUnison`() {
-        assertThat(C.intervalBetween(CSharp), equalTo(AugmentedUnison))
-    }
-
-    @Test
     fun `measure interval between C and D flat as MinorSecond`() {
         assertThat(C.intervalBetween(DFlat), equalTo(MinorSecond))
     }
@@ -365,11 +473,6 @@ class NoteShould {
     @Test
     fun `measure interval between C and D as MajorSecond`() {
         assertThat(C.intervalBetween(D), equalTo(MajorSecond))
-    }
-
-    @Test
-    fun `measure interval between C and D sharp as AugmentedSecond`() {
-        assertThat(C.intervalBetween(DSharp), equalTo(AugmentedSecond))
     }
 
     @Test
@@ -438,8 +541,8 @@ class NoteShould {
     }
 
     @Test
-    fun `transpose using a AugmentedUnison from C to C sharp`() {
-        assertThat(C.transpose(AugmentedUnison), equalTo(CSharp))
+    fun `transpose using a Unison from C# to C#`() {
+        assertThat(CSharp.transpose(Unison), equalTo(CSharp))
     }
 
     @Test
@@ -483,11 +586,6 @@ class NoteShould {
     }
 
     @Test
-    fun `transpose using a Tritone from C to G flat`() {
-        assertThat(C.transpose(Tritone), equalTo(GFlat))
-    }
-
-    @Test
     fun `transpose using a PerfectFifth from C to G`() {
         assertThat(C.transpose(PerfectFifth), equalTo(G))
     }
@@ -513,6 +611,16 @@ class NoteShould {
     }
 
     @Test
+    fun `transpose using a diminished seventh from C to B flat flat`() {
+        assertThat(C.transpose(DiminishedSeventh), equalTo(A))
+    }
+
+    @Test
+    fun `transpose using a diminished seventh from G to E`() {
+        assertThat(G.transpose(DiminishedSeventh), equalTo(E))
+    }
+
+    @Test
     fun `transpose using a minor seventh from C to B flat`() {
         assertThat(C.transpose(MinorSeventh), equalTo(BFlat))
     }
@@ -520,5 +628,30 @@ class NoteShould {
     @Test
     fun `transpose using a MajorSeventh from C to B`() {
         assertThat(C.transpose(MajorSeventh), equalTo(B))
+    }
+
+    @Test
+    fun `transpose using a augmented ninth from G to A#`() {
+        assertThat(G.transpose(AugmentedNinth), equalTo(ASharp))
+    }
+
+    @Test
+    fun `transpose using a perfect eleventh from G to C`() {
+        assertThat(G.transpose(PerfectEleventh), equalTo(C))
+    }
+
+    @Test
+    fun `transpose using a augmented second from D to E#`() {
+        assertThat(D.transpose(AugmentedSecond), equalTo(ESharp))
+    }
+
+    @Test
+    fun `transpose using a minor third from G to Bb`() {
+        assertThat(G.transpose(MinorThird), equalTo(BFlat))
+    }
+
+    @Test
+    fun `transpose using a major third from G to B`() {
+        assertThat(G.transpose(MajorThird), equalTo(B))
     }
 }

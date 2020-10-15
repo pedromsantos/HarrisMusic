@@ -34,12 +34,13 @@ enum class Interval(private val intervalName: String, private val abreviature: S
     fun hasSameDistance(otherDistance: Int) = distance == otherDistance
 
     fun transpose(from: Note) : Note {
-        val transposed = from.transpose(this.naturalDistance)
-        return when(this.transposeValue) {
-            DoubleFlat -> transposed.flat().flat()
-            Flat -> transposed.flat()
-            Sharp -> transposed.sharp()
-            Natural -> transposed
+        val transposed = from.transpose(this.distance).first()
+
+        return when(transposeValue) {
+            DoubleFlat -> transposed.sharp().flat()
+            Flat -> transposed.sharp().flat()
+            Sharp -> transposed.flat().sharp()
+            else -> transposed
         }
     }
 
