@@ -84,11 +84,10 @@ class NotesShould: StringSpec({
         }
     }
 
-    "measure interval between a note and itself transposed by an interval to be the transposing interval" {
+    "measure interval between a note and itself transposed by an interval to be the interval with some exceptions" {
         checkAll(notes.exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
             val to = note.transpose(interval)
             val resultingInterval = note.intervalBetween(to)
-            println("$note:$to:$interval -> $resultingInterval")
 
             when(note) {
                 CSharp, DSharp, FSharp, GSharp, ASharp -> if (interval == MinorSecond) {
