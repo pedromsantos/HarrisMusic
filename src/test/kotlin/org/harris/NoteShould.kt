@@ -91,8 +91,8 @@ class NotesShould: StringSpec({
             println("$note:$to:$interval -> $resultingInterval")
 
             when(note) {
-                B -> if (interval == MinorThird) {
-                    resultingInterval shouldBe AugmentedSecond
+                B -> if (interval == AugmentedSecond) {
+                    resultingInterval shouldBe MinorThird
                 }
                 else -> when(interval) {
                     Tritone -> resultingInterval shouldBe DiminishedFifth
