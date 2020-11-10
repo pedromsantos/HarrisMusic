@@ -1,11 +1,11 @@
 package org.harris
 
 interface Chord {
-    fun notes(): Array<Note>
-    fun bass(): Note
-    fun lead(): Note
+    fun notes(): Array<Pitch>
+    fun bass(): Pitch
+    fun lead(): Pitch
     fun name(): String
-    fun noteForFunction(function: ChordNoteFunction): Note
+    fun noteForFunction(function: ChordNoteFunction): Pitch
     fun remove(function: ChordNoteFunction): Chord
     fun invert(): Chord
     fun drop2(): Chord
@@ -18,7 +18,7 @@ abstract class BaseChord : Chord {
     protected val notes: ChordNotes
     protected val root: ChordNote
 
-    protected constructor(root: Note, pattern: ChordPattern) {
+    protected constructor(root: Pitch, pattern: ChordPattern) {
         this.pattern = pattern
         this.notes = ChordNotes(root, pattern)
         this.root = ChordNote(root, ChordNoteFunction.Root)
@@ -30,22 +30,22 @@ abstract class BaseChord : Chord {
         this.root = root
     }
 
-    override fun notes(): Array<Note> = notes.notes()
+    override fun notes(): Array<Pitch> = notes.notes()
 
-    override fun bass(): Note {
-        return notes.bass().note
+    override fun bass(): Pitch {
+        return notes.bass().pitch
     }
 
-    override fun lead(): Note {
-        return notes.lead().note
+    override fun lead(): Pitch {
+        return notes.lead().pitch
     }
 
     override fun name(): String {
-        return root.note.name + pattern.name
+        return root.pitch.name + pattern.name
     }
 
-    override fun noteForFunction(function: ChordNoteFunction) : Note {
-        return notes.noteForFunction(function).note
+    override fun noteForFunction(function: ChordNoteFunction) : Pitch {
+        return notes.noteForFunction(function).pitch
     }
 
     override fun drop2(): Chord {
@@ -67,7 +67,7 @@ abstract class BaseChord : Chord {
     }
 
     override fun closed(): Chord {
-        return ClosedChord(root.note, pattern)
+        return ClosedChord(root.pitch, pattern)
     }
 
     abstract override fun remove(function: ChordNoteFunction): Chord
@@ -76,7 +76,7 @@ abstract class BaseChord : Chord {
 
 class ClosedChord : BaseChord {
 
-    constructor(root: Note, pattern: ChordPattern)
+    constructor(root: Pitch, pattern: ChordPattern)
         :super(root, pattern) {}
 
     internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
@@ -97,7 +97,7 @@ class ClosedChord : BaseChord {
 
 class Drop2Chord : BaseChord {
 
-    private constructor(root: Note, pattern: ChordPattern)
+    private constructor(root: Pitch, pattern: ChordPattern)
             :super(root, pattern) {
     }
 
@@ -126,7 +126,7 @@ class Drop2Chord : BaseChord {
 
 class Drop3Chord : BaseChord {
 
-    private constructor(root: Note, pattern: ChordPattern)
+    private constructor(root: Pitch, pattern: ChordPattern)
             :super(root, pattern) {
     }
 

@@ -26,7 +26,7 @@ data class MelodicLine(private var fragements : List<MelodicFragment>) {
         fragements = fragements + fragment
     }
 
-    fun hallToneApproachBellowFragments() : MelodicLine {
+    fun hallToneApproachBellowToFragments() : MelodicLine {
         var line = MelodicLine(emptyList())
 
         for(fragment in fragements) {

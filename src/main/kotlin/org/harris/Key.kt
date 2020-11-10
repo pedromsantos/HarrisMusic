@@ -1,9 +1,9 @@
 package org.harris
 
-import org.harris.Note.*
+import org.harris.Pitch.*
 import kotlin.math.abs
 
-enum class Key(private val root: Note, private val accidentals: Int) {
+enum class Key(private val root: Pitch, private val accidentals: Int) {
     AFlatMajor(AFlat, -4),
     AMajor(A, 3),
     BMajor(B, 5),
@@ -30,7 +30,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
     GSharpMinor(GSharp, 5),
     EFlatMinor(EFlat, -6);
 
-    private fun flatKey(): Set<Note> {
+    private fun flatKey(): Set<Pitch> {
         return (fifths
             .asReversed()
             .drop(abs(this.accidentals)))
@@ -41,7 +41,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
                     .map { it.flat() })
     }
 
-    private fun sharpKey(): Set<Note> {
+    private fun sharpKey(): Set<Pitch> {
         return (fifths
             .drop(this.accidentals))
             .union(
@@ -50,7 +50,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
                     .map { it.sharp() })
     }
 
-    private fun allNotes(): Set<Note> {
+    private fun allNotes(): Set<Pitch> {
         return when {
             this.accidentals < 0 -> flatKey()
             this.accidentals > 0 -> sharpKey()
@@ -58,7 +58,7 @@ enum class Key(private val root: Note, private val accidentals: Int) {
         }
     }
 
-    fun notes(): Set<Note> {
+    fun notes(): Set<Pitch> {
         val notes = allNotes()
         return notes
             .sortedBy { it.pitch() }

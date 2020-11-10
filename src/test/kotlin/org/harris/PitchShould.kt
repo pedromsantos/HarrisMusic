@@ -3,10 +3,10 @@ package org.harris
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.harris.Interval.*
-import org.harris.Note.*
+import org.harris.Pitch.*
 import org.junit.Test
 
-class NoteShould {
+class PitchShould {
 
     @Test
     fun `sharp C to C sharp`() {

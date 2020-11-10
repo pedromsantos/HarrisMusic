@@ -9,23 +9,23 @@ import io.kotest.property.exhaustive.ints
 import io.kotest.runner.junit4.StringSpec
 
 val notes = listOf(
-    Note.C,
-    Note.G,
-    Note.D,
-    Note.A,
-    Note.E,
-    Note.B,
-    Note.F,
-    Note.BFlat,
-    Note.EFlat,
-    Note.AFlat,
-    Note.DFlat,
-    Note.GFlat,
-    Note.FSharp,
-    Note.CSharp,
-    Note.GSharp,
-    Note.DSharp,
-    Note.ASharp
+    Pitch.C,
+    Pitch.G,
+    Pitch.D,
+    Pitch.A,
+    Pitch.E,
+    Pitch.B,
+    Pitch.F,
+    Pitch.BFlat,
+    Pitch.EFlat,
+    Pitch.AFlat,
+    Pitch.DFlat,
+    Pitch.GFlat,
+    Pitch.FSharp,
+    Pitch.CSharp,
+    Pitch.GSharp,
+    Pitch.DSharp,
+    Pitch.ASharp
 )
 
 class NotesProperties: StringSpec({
@@ -43,8 +43,8 @@ class NotesProperties: StringSpec({
 
     "A sharped note has a higher pitch except B" {
         checkAll(notes.exhaustive()) { note ->
-            if (note == Note.B) {
-                note.sharp() == Note.C
+            if (note == Pitch.B) {
+                note.sharp() == Pitch.C
             } else {
                 note.sharp().pitch() > note.pitch()
             }
@@ -53,8 +53,8 @@ class NotesProperties: StringSpec({
 
     "A ftated note has a lower pitch except C" {
         checkAll(notes.exhaustive()) { note ->
-            if (note == Note.C) {
-                note.flat() == Note.B
+            if (note == Pitch.C) {
+                note.flat() == Pitch.B
             } else {
                 note.flat().pitch() < note.pitch()
             }
@@ -99,13 +99,13 @@ class NotesProperties: StringSpec({
             val resultingInterval = note.intervalBetween(to)
 
             when (note) {
-                Note.CSharp, Note.DSharp, Note.FSharp, Note.GSharp, Note.ASharp -> if (interval == Interval.MinorSecond) {
+                Pitch.CSharp, Pitch.DSharp, Pitch.FSharp, Pitch.GSharp, Pitch.ASharp -> if (interval == Interval.MinorSecond) {
                     resultingInterval shouldBe Interval.AugmentedUnison
                 }
-                Note.E, Note.B, Note.BFlat, Note.AFlat, Note.DFlat, Note.GFlat, Note.CSharp -> if (interval == Interval.AugmentedSecond) {
+                Pitch.E, Pitch.B, Pitch.BFlat, Pitch.AFlat, Pitch.DFlat, Pitch.GFlat, Pitch.CSharp -> if (interval == Interval.AugmentedSecond) {
                     resultingInterval shouldBe Interval.MinorThird
                 }
-                Note.EFlat -> if (interval == Interval.DiminishedFifth) {
+                Pitch.EFlat -> if (interval == Interval.DiminishedFifth) {
                     resultingInterval shouldBe Interval.AugmentedFourth
                 }
                 else -> when (interval) {

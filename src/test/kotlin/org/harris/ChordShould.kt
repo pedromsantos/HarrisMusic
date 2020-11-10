@@ -4,7 +4,7 @@ import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import com.natpryce.hamkrest.startsWith
 import org.harris.ChordNoteFunction.*
-import org.harris.Note.*
+import org.harris.Pitch.*
 import org.harris.ChordPattern.*
 import org.junit.Test
 
