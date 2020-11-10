@@ -2,7 +2,7 @@ package org.harris
 
 import org.harris.Interval.*
 
-enum class Note {
+enum class Note(private val noteName: String, private val pitch: Int) {
     C("C", 0) {
         override fun sharp(): Note = CSharp
         override fun flat(): Note = B
@@ -377,15 +377,11 @@ enum class Note {
         }
     };
 
-    private val pitch: Int
-    private val noteName: String
-
-    constructor(noteName: String, pitch: Int) {
-        this.noteName = noteName
-        this.pitch = pitch
-    }
-
     fun pitch() = pitch
+
+    fun equals(other: Note): Boolean {
+        return this.pitch == other.pitch
+    }
 
     fun absoluteDistance(to: Note): Int {
         if(this.pitch <= to.pitch)
