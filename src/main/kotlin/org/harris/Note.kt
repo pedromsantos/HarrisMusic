@@ -398,7 +398,7 @@ enum class Note {
     }
 
     fun transpose(interval: Interval): Note {
-        return intervals()[interval] ?: error("Interval not found")
+        return intervals()[interval] ?: error("Interval '${interval.name}' not found on note '${this.noteName}'")
     }
 
     fun intervalBetween(to: Note): Interval {

@@ -31,30 +31,30 @@ enum class Key(private val root: Note, private val accidentals: Int) {
     EFlatMinor(EFlat, -6);
 
     private fun flatKey(): Set<Note> {
-        return (Companion.fifths
+        return (fifths
             .asReversed()
             .drop(abs(this.accidentals)))
             .union(
-                Companion.fifths
+                fifths
                     .asReversed()
                     .take(abs(this.accidentals))
-                    .map { it -> it.flat() })
+                    .map { it.flat() })
     }
 
     private fun sharpKey(): Set<Note> {
-        return (Companion.fifths
+        return (fifths
             .drop(this.accidentals))
             .union(
-                Companion.fifths
+                fifths
                     .take(this.accidentals)
-                    .map { it -> it.sharp() })
+                    .map { it.sharp() })
     }
 
     private fun allNotes(): Set<Note> {
         return when {
             this.accidentals < 0 -> flatKey()
             this.accidentals > 0 -> sharpKey()
-            else -> Companion.fifths.toSet()
+            else -> fifths.toSet()
         }
     }
 
@@ -62,11 +62,11 @@ enum class Key(private val root: Note, private val accidentals: Int) {
         val notes = allNotes()
         return notes
             .sortedBy { it.pitch() }
-            .dropWhile { it -> it != this.root }
+            .dropWhile { it != this.root }
             .union(
                 notes
                     .sortedBy { it.pitch() }
-                    .takeWhile { it -> it != this.root }
+                    .takeWhile { it != this.root }
             )
     }
 
