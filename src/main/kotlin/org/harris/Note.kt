@@ -51,9 +51,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = C
         override fun natural(): Note = D
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return D.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
-            )
+            return D.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
         }
     },
     D("D", 2) {
@@ -96,9 +94,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = D
         override fun natural(): Note = D
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return D.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
-            )
+            return D.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
         }
     },
     EFlat("Eb", 3) {
@@ -106,9 +102,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = D
         override fun natural(): Note = E
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return E.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
-            )
+            return E.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
         }
     },
     E("E", 4) {
@@ -186,9 +180,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = E
         override fun natural(): Note = E
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                Pair(Unison, ESharp)
-            )
+            return F.intervals()
         }
     },
     FSharp("F#", 6) {
@@ -196,9 +188,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = F
         override fun natural(): Note = F
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return F.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
-            )
+            return F.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
         }
     },
     GFlat("Gb", 6) {
@@ -206,9 +196,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = F
         override fun natural(): Note = G
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return G.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
-            )
+            return G.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
         }
     },
     G("G", 7) {
@@ -251,9 +239,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = G
         override fun natural(): Note = G
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return G.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
-            )
+            return G.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
         }
     },
     AFlat("Ab", 8) {
@@ -261,9 +247,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = G
         override fun natural(): Note = A
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return A.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
-            )
+            return A.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
         }
     },
     A("A", 9) {
@@ -306,9 +290,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = A
         override fun natural(): Note = A
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return C.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
-            )
+            return C.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
         }
     },
     BFlat("Bb", 10) {
@@ -316,9 +298,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = A
         override fun natural(): Note = B
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                return B.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
-            )
+            return B.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
         }
     },
     B("B", 11) {
@@ -361,9 +341,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = B
         override fun natural(): Note = B
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                Pair(Unison, BSharp)
-            )
+            return C.intervals()
         }
     },
     CFlat("Cb", 11) {
@@ -371,9 +349,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = B
         override fun natural(): Note = C
         override fun intervals(): Map<Interval, Note> {
-            return mapOf(
-                Pair(Unison, CFlat)
-            )
+            return B.intervals()
         }
     };
 
