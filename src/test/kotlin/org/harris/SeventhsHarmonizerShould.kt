@@ -18,49 +18,49 @@ class SeventhsHarmonizerShould {
 
     @Test
     fun `Create seventh chord for degree I of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.I)
+        var chord = harmonizer.chordFor(ScaleDegree.I)
 
         assertThat(chord.notes().toList(), equalTo(listOf(C, E, G, B)))
     }
 
     @Test
     fun `Create seventh chord for degree II of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.II)
+        var chord = harmonizer.chordFor(ScaleDegree.II)
 
         assertThat(chord.notes().toList(), equalTo(listOf(D, F, A, C)))
     }
 
     @Test
     fun `Create seventh chord for degree III of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.III)
+        var chord = harmonizer.chordFor(ScaleDegree.III)
 
         assertThat(chord.notes().toList(), equalTo(listOf(E, G, B, D)))
     }
 
     @Test
     fun `Create seventh chord for degree IV of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.IV)
+        var chord = harmonizer.chordFor(ScaleDegree.IV)
 
         assertThat(chord.notes().toList(), equalTo(listOf(F, A, C, E)))
     }
 
     @Test
     fun `Create seventh chord for degree V of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.V)
+        var chord = harmonizer.chordFor(ScaleDegree.V)
 
         assertThat(chord.notes().toList(), equalTo(listOf(G, B, D, F)))
     }
 
     @Test
     fun `Create seventh chord for degree VI of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.VI)
+        var chord = harmonizer.chordFor(ScaleDegree.VI)
 
         assertThat(chord.notes().toList(), equalTo(listOf(A, C, E, G)))
     }
 
     @Test
     fun `Create seventh chord for degree VII of C Ionian scale`() {
-        var chord = harmonizer.chordForScaleDegree(ScaleDegree.VII)
+        var chord = harmonizer.chordFor(ScaleDegree.VII)
 
         assertThat(chord.notes().toList(), equalTo(listOf(B, D, F, A)))
     }

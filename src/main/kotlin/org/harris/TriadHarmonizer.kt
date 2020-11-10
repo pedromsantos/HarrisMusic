@@ -1,7 +1,7 @@
 package org.harris
 
-class TriadHarmonizer(private val scale: Scale) {
-    fun chordForScaleDegree(degree: ScaleDegree): Chord {
+class TriadHarmonizer(private val scale: Scale) : Harmonizer {
+    override fun chordFor(degree: ScaleDegree): Chord {
         val thirds = scale.thirdsFrom(degree)
 
         val chordNotes = arrayOf(

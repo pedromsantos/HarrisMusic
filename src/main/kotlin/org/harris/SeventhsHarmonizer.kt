@@ -1,7 +1,7 @@
 package org.harris
 
-class SeventhsHarmonizer(private val scale: Scale) {
-    fun chordForScaleDegree(degree: ScaleDegree): Chord {
+class SeventhsHarmonizer(private val scale: Scale) : Harmonizer {
+    override fun chordFor(degree: ScaleDegree): Chord {
         val thirds = scale.thirdsFrom(degree)
 
         val chordNotes = arrayOf(
