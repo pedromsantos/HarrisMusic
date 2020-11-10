@@ -9,32 +9,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = C
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                Pair(Unison, C),
-                Pair(AugmentedUnison, CSharp),
-                Pair(MinorSecond, DFlat),
-                Pair(MajorSecond, D),
-                Pair(MinorThird, EFlat),
-                Pair(AugmentedSecond, DSharp),
-                Pair(MajorThird, E),
-                Pair(PerfectFourth, F),
-                Pair(AugmentedFourth, FSharp),
-                Pair(DiminishedFifth, GFlat),
-                Pair(Tritone, GFlat),
-                Pair(PerfectFifth, G),
-                Pair(AugmentedFifth, GSharp),
-                Pair(MinorSixth, AFlat),
-                Pair(MajorSixth, A),
-                Pair(DiminishedSeventh, A),
-                Pair(MinorSeventh, BFlat),
-                Pair(MajorSeventh, B),
-                Pair(PerfectOctave, C),
-                Pair(MinorNinth, DFlat),
-                Pair(MajorNinth, D),
-                Pair(AugmentedNinth, DSharp),
-                Pair(PerfectEleventh, F),
-                Pair(AugmentedEleventh, FSharp),
-                Pair(MinorThirteenth, AFlat),
-                Pair(MajorThirteenth, A)
+                Unison to C,
+                AugmentedUnison to CSharp,
+                MinorSecond to DFlat,
+                MajorSecond to D,
+                MinorThird to EFlat,
+                AugmentedSecond to DSharp,
+                MajorThird to E,
+                PerfectFourth to F,
+                AugmentedFourth to FSharp,
+                DiminishedFifth to GFlat,
+                Tritone to GFlat,
+                PerfectFifth to G,
+                AugmentedFifth to GSharp,
+                MinorSixth to AFlat,
+                MajorSixth to A,
+                DiminishedSeventh to A,
+                MinorSeventh to BFlat,
+                MajorSeventh to B,
+                PerfectOctave to C,
+                MinorNinth to DFlat,
+                MajorNinth to D,
+                AugmentedNinth to DSharp,
+                PerfectEleventh to F,
+                AugmentedEleventh to FSharp,
+                MinorThirteenth to AFlat,
+                MajorThirteenth to A
             )
         }
     },
@@ -43,7 +43,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = C
         override fun natural(): Note = C
         override fun intervals(): Map<Interval, Note> {
-             return C.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
+             return C.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     DFlat("Db", 1) {
@@ -51,7 +51,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = C
         override fun natural(): Note = D
         override fun intervals(): Map<Interval, Note> {
-            return D.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
+            return D.intervals().map { it.key to it.value.flat() }.toMap()
         }
     },
     D("D", 2) {
@@ -60,32 +60,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = D
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                    Pair(Unison, D),
-                    Pair(AugmentedUnison, DSharp),
-                    Pair(MinorSecond, EFlat),
-                    Pair(MajorSecond, E),
-                    Pair(MinorThird, F),
-                    Pair(AugmentedSecond, ESharp),
-                    Pair(MajorThird, FSharp),
-                    Pair(PerfectFourth, G),
-                    Pair(AugmentedFourth, GSharp),
-                    Pair(DiminishedFifth, AFlat),
-                    Pair(Tritone, AFlat),
-                    Pair(PerfectFifth, A),
-                    Pair(AugmentedFifth, ASharp),
-                    Pair(MinorSixth, BFlat),
-                    Pair(MajorSixth, B),
-                    Pair(DiminishedSeventh, B),
-                    Pair(MinorSeventh, C),
-                    Pair(MajorSeventh, CSharp),
-                    Pair(PerfectOctave, D),
-                    Pair(MinorNinth, EFlat),
-                    Pair(MajorNinth, E),
-                    Pair(AugmentedNinth, ESharp),
-                    Pair(PerfectEleventh, G),
-                    Pair(AugmentedEleventh, GSharp),
-                    Pair(MinorThirteenth, BFlat),
-                    Pair(MajorThirteenth, B)
+                Unison to D,
+                AugmentedUnison to DSharp,
+                MinorSecond to EFlat,
+                MajorSecond to E,
+                MinorThird to F,
+                AugmentedSecond to ESharp,
+                MajorThird to FSharp,
+                PerfectFourth to G,
+                AugmentedFourth to GSharp,
+                DiminishedFifth to AFlat,
+                Tritone to AFlat,
+                PerfectFifth to A,
+                AugmentedFifth to ASharp,
+                MinorSixth to BFlat,
+                MajorSixth to B,
+                DiminishedSeventh to B,
+                MinorSeventh to C,
+                MajorSeventh to CSharp,
+                PerfectOctave to D,
+                MinorNinth to EFlat,
+                MajorNinth to E,
+                AugmentedNinth to ESharp,
+                PerfectEleventh to G,
+                AugmentedEleventh to GSharp,
+                MinorThirteenth to BFlat,
+                MajorThirteenth to B
                 )
         }
     },
@@ -94,7 +94,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = D
         override fun natural(): Note = D
         override fun intervals(): Map<Interval, Note> {
-            return D.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
+            return D.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     EFlat("Eb", 3) {
@@ -102,7 +102,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = D
         override fun natural(): Note = E
         override fun intervals(): Map<Interval, Note> {
-            return E.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
+            return E.intervals().map { it.key to it.value.flat() }.toMap()
         }
     },
     E("E", 4) {
@@ -111,32 +111,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = E
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                Pair(Unison, E),
-                Pair(AugmentedUnison, ESharp),
-                Pair(MinorSecond, F),
-                Pair(MajorSecond, FSharp),
-                Pair(MinorThird, G),
-                Pair(AugmentedSecond, G),
-                Pair(MajorThird, GSharp),
-                Pair(PerfectFourth, A),
-                Pair(AugmentedFourth, ASharp),
-                Pair(DiminishedFifth, BFlat),
-                Pair(Tritone, BFlat),
-                Pair(PerfectFifth, B),
-                Pair(AugmentedFifth, BSharp),
-                Pair(MinorSixth, C),
-                Pair(MajorSixth, CSharp),
-                Pair(DiminishedSeventh, CSharp),
-                Pair(MinorSeventh, D),
-                Pair(MajorSeventh, DSharp),
-                Pair(PerfectOctave, E),
-                Pair(MinorNinth, F),
-                Pair(MajorNinth, FSharp),
-                Pair(AugmentedNinth, G),
-                Pair(PerfectEleventh, A),
-                Pair(AugmentedEleventh, ASharp),
-                Pair(MinorThirteenth, C),
-                Pair(MajorThirteenth, CSharp)
+                Unison to E,
+                AugmentedUnison to ESharp,
+                MinorSecond to F,
+                MajorSecond to FSharp,
+                MinorThird to G,
+                AugmentedSecond to G,
+                MajorThird to GSharp,
+                PerfectFourth to A,
+                AugmentedFourth to ASharp,
+                DiminishedFifth to BFlat,
+                Tritone to BFlat,
+                PerfectFifth to B,
+                AugmentedFifth to BSharp,
+                MinorSixth to C,
+                MajorSixth to CSharp,
+                DiminishedSeventh to CSharp,
+                MinorSeventh to D,
+                MajorSeventh to DSharp,
+                PerfectOctave to E,
+                MinorNinth to F,
+                MajorNinth to FSharp,
+                AugmentedNinth to G,
+                PerfectEleventh to A,
+                AugmentedEleventh to ASharp,
+                MinorThirteenth to C,
+                MajorThirteenth to CSharp
             )
         }
     },
@@ -146,32 +146,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = F
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                Pair(Unison, F),
-                Pair(AugmentedUnison, FSharp),
-                Pair(MinorSecond, GFlat),
-                Pair(MajorSecond, G),
-                Pair(MinorThird, AFlat),
-                Pair(AugmentedSecond, GSharp),
-                Pair(MajorThird, A),
-                Pair(PerfectFourth, BFlat),
-                Pair(AugmentedFourth, B),
-                Pair(DiminishedFifth, CFlat),
-                Pair(Tritone, CFlat),
-                Pair(PerfectFifth, C),
-                Pair(AugmentedFifth, CSharp),
-                Pair(MinorSixth, DFlat),
-                Pair(MajorSixth, D),
-                Pair(DiminishedSeventh, D),
-                Pair(MinorSeventh, EFlat),
-                Pair(MajorSeventh, E),
-                Pair(PerfectOctave, F),
-                Pair(MinorNinth, GFlat),
-                Pair(MajorNinth, G),
-                Pair(AugmentedNinth, GSharp),
-                Pair(PerfectEleventh, BFlat),
-                Pair(AugmentedEleventh, B),
-                Pair(MinorThirteenth, DFlat),
-                Pair(MajorThirteenth, D)
+                Unison to F,
+                AugmentedUnison to FSharp,
+                MinorSecond to GFlat,
+                MajorSecond to G,
+                MinorThird to AFlat,
+                AugmentedSecond to GSharp,
+                MajorThird to A,
+                PerfectFourth to BFlat,
+                AugmentedFourth to B,
+                DiminishedFifth to CFlat,
+                Tritone to CFlat,
+                PerfectFifth to C,
+                AugmentedFifth to CSharp,
+                MinorSixth to DFlat,
+                MajorSixth to D,
+                DiminishedSeventh to D,
+                MinorSeventh to EFlat,
+                MajorSeventh to E,
+                PerfectOctave to F,
+                MinorNinth to GFlat,
+                MajorNinth to G,
+                AugmentedNinth to GSharp,
+                PerfectEleventh to BFlat,
+                AugmentedEleventh to B,
+                MinorThirteenth to DFlat,
+                MajorThirteenth to D
             )
         }
     },
@@ -188,7 +188,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = F
         override fun natural(): Note = F
         override fun intervals(): Map<Interval, Note> {
-            return F.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
+            return F.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     GFlat("Gb", 6) {
@@ -196,7 +196,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = F
         override fun natural(): Note = G
         override fun intervals(): Map<Interval, Note> {
-            return G.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
+            return G.intervals().map { it.key to it.value.flat() }.toMap()
         }
     },
     G("G", 7) {
@@ -205,32 +205,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = G
         override fun intervals(): Map<Interval, Note> {
                 return mapOf(
-                    Pair(Unison, G),
-                    Pair(AugmentedUnison, GSharp),
-                    Pair(MinorSecond, AFlat),
-                    Pair(MajorSecond, A),
-                    Pair(MinorThird, BFlat),
-                    Pair(AugmentedSecond, ASharp),
-                    Pair(MajorThird, B),
-                    Pair(PerfectFourth, C),
-                    Pair(AugmentedFourth, CSharp),
-                    Pair(DiminishedFifth, DFlat),
-                    Pair(Tritone, DFlat),
-                    Pair(PerfectFifth, D),
-                    Pair(AugmentedFifth, DSharp),
-                    Pair(MinorSixth, EFlat),
-                    Pair(MajorSixth, E),
-                    Pair(DiminishedSeventh, E),
-                    Pair(MinorSeventh, F),
-                    Pair(MajorSeventh, FSharp),
-                    Pair(PerfectOctave, G),
-                    Pair(MinorNinth, AFlat),
-                    Pair(MajorNinth, A),
-                    Pair(AugmentedNinth, ASharp),
-                    Pair(PerfectEleventh, C),
-                    Pair(AugmentedEleventh, CSharp),
-                    Pair(MinorThirteenth, EFlat),
-                    Pair(MajorThirteenth, E)
+                    Unison to G,
+                    AugmentedUnison to GSharp,
+                    MinorSecond to AFlat,
+                    MajorSecond to A,
+                    MinorThird to BFlat,
+                    AugmentedSecond to ASharp,
+                    MajorThird to B,
+                    PerfectFourth to C,
+                    AugmentedFourth to CSharp,
+                    DiminishedFifth to DFlat,
+                    Tritone to DFlat,
+                    PerfectFifth to D,
+                    AugmentedFifth to DSharp,
+                    MinorSixth to EFlat,
+                    MajorSixth to E,
+                    DiminishedSeventh to E,
+                    MinorSeventh to F,
+                    MajorSeventh to FSharp,
+                    PerfectOctave to G,
+                    MinorNinth to AFlat,
+                    MajorNinth to A,
+                    AugmentedNinth to ASharp,
+                    PerfectEleventh to C,
+                    AugmentedEleventh to CSharp,
+                    MinorThirteenth to EFlat,
+                    MajorThirteenth to E
                 )
         }
     },
@@ -239,7 +239,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = G
         override fun natural(): Note = G
         override fun intervals(): Map<Interval, Note> {
-            return G.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
+            return G.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     AFlat("Ab", 8) {
@@ -247,7 +247,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = G
         override fun natural(): Note = A
         override fun intervals(): Map<Interval, Note> {
-            return A.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
+            return A.intervals().map { it.key to it.value.flat() }.toMap()
         }
     },
     A("A", 9) {
@@ -256,32 +256,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = A
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                    Pair(Unison, A),
-                    Pair(AugmentedUnison, ASharp),
-                    Pair(MinorSecond, BFlat),
-                    Pair(MajorSecond, B),
-                    Pair(MinorThird, C),
-                    Pair(AugmentedSecond, BSharp),
-                    Pair(MajorThird, CSharp),
-                    Pair(PerfectFourth, D),
-                    Pair(AugmentedFourth, DSharp),
-                    Pair(DiminishedFifth, EFlat),
-                    Pair(Tritone, EFlat),
-                    Pair(PerfectFifth, E),
-                    Pair(AugmentedFifth, ESharp),
-                    Pair(MinorSixth, F),
-                    Pair(MajorSixth, FSharp),
-                    Pair(DiminishedSeventh, FSharp),
-                    Pair(MinorSeventh, G),
-                    Pair(MajorSeventh, GSharp),
-                    Pair(PerfectOctave, A),
-                    Pair(MinorNinth, BFlat),
-                    Pair(MajorNinth, B),
-                    Pair(AugmentedNinth, BSharp),
-                    Pair(PerfectEleventh, D),
-                    Pair(AugmentedEleventh, DSharp),
-                    Pair(MinorThirteenth, F),
-                    Pair(MajorThirteenth, FSharp)
+                    Unison to A,
+                    AugmentedUnison to ASharp,
+                    MinorSecond to BFlat,
+                    MajorSecond to B,
+                    MinorThird to C,
+                    AugmentedSecond to BSharp,
+                    MajorThird to CSharp,
+                    PerfectFourth to D,
+                    AugmentedFourth to DSharp,
+                    DiminishedFifth to EFlat,
+                    Tritone to EFlat,
+                    PerfectFifth to E,
+                    AugmentedFifth to ESharp,
+                    MinorSixth to F,
+                    MajorSixth to FSharp,
+                    DiminishedSeventh to FSharp,
+                    MinorSeventh to G,
+                    MajorSeventh to GSharp,
+                    PerfectOctave to A,
+                    MinorNinth to BFlat,
+                    MajorNinth to B,
+                    AugmentedNinth to BSharp,
+                    PerfectEleventh to D,
+                    AugmentedEleventh to DSharp,
+                    MinorThirteenth to F,
+                    MajorThirteenth to FSharp
                 )
         }
     },
@@ -290,7 +290,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = A
         override fun natural(): Note = A
         override fun intervals(): Map<Interval, Note> {
-            return C.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
+            return C.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     BFlat("Bb", 10) {
@@ -298,7 +298,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun flat(): Note = A
         override fun natural(): Note = B
         override fun intervals(): Map<Interval, Note> {
-            return B.intervals().map { p -> Pair(p.key, p.value.flat()) }.toMap()
+            return B.intervals().map { it.key to it.value.flat() }.toMap()
         }
     },
     B("B", 11) {
@@ -307,32 +307,32 @@ enum class Note(private val noteName: String, private val pitch: Int) {
         override fun natural(): Note = B
         override fun intervals(): Map<Interval, Note> {
             return mapOf(
-                Pair(Unison, B),
-                Pair(AugmentedUnison, BSharp),
-                Pair(MinorSecond, C),
-                Pair(MajorSecond, CSharp),
-                Pair(MinorThird, D),
-                Pair(AugmentedSecond, D),
-                Pair(MajorThird, DSharp),
-                Pair(PerfectFourth, E),
-                Pair(AugmentedFourth, ESharp),
-                Pair(DiminishedFifth, F),
-                Pair(Tritone, F),
-                Pair(PerfectFifth, FSharp),
-                Pair(AugmentedFifth, FSharp),
-                Pair(MinorSixth, G),
-                Pair(MajorSixth, GSharp),
-                Pair(DiminishedSeventh, GSharp),
-                Pair(MinorSeventh, A),
-                Pair(MajorSeventh, ASharp),
-                Pair(PerfectOctave, B),
-                Pair(MinorNinth, C),
-                Pair(MajorNinth, CSharp),
-                Pair(AugmentedNinth, CSharp),
-                Pair(PerfectEleventh, E),
-                Pair(AugmentedEleventh, ESharp),
-                Pair(MinorThirteenth, G),
-                Pair(MajorThirteenth, GSharp)
+                Unison to B,
+                AugmentedUnison to BSharp,
+                MinorSecond to C,
+                MajorSecond to CSharp,
+                MinorThird to D,
+                AugmentedSecond to D,
+                MajorThird to DSharp,
+                PerfectFourth to E,
+                AugmentedFourth to ESharp,
+                DiminishedFifth to F,
+                Tritone to F,
+                PerfectFifth to FSharp,
+                AugmentedFifth to FSharp,
+                MinorSixth to G,
+                MajorSixth to GSharp,
+                DiminishedSeventh to GSharp,
+                MinorSeventh to A,
+                MajorSeventh to ASharp,
+                PerfectOctave to B,
+                MinorNinth to C,
+                MajorNinth to CSharp,
+                AugmentedNinth to CSharp,
+                PerfectEleventh to E,
+                AugmentedEleventh to ESharp,
+                MinorThirteenth to G,
+                MajorThirteenth to GSharp
             )
         }
     },
@@ -371,7 +371,7 @@ enum class Note(private val noteName: String, private val pitch: Int) {
     }
 
     fun intervalBetween(to: Note): Interval {
-        return intervals().filter { p -> p.value == to }.keys.first()
+        return intervals().filter { it.value == to }.keys.first()
     }
 
     abstract fun sharp(): Note
