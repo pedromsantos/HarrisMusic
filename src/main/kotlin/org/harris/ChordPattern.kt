@@ -58,5 +58,5 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     }
 
     private fun createChordNote(it: Interval, root: Note) =
-        ChordNote(it.transpose(root), ChordNoteFunction.functionForInterval((it)))
+        ChordNote(root.transpose(it), ChordNoteFunction.functionForInterval((it)))
 }

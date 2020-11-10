@@ -84,35 +84,29 @@ class NotesShould: StringSpec({
         }
     }
 
-    "measure natural distance between a natural note and itself sharp to zero except for E and B" {
-        checkAll(notes.exhaustive()) { note ->
-            if(note.natural() == E || note.natural() == B) {
-                note.natural().naturalDistance(note.natural().sharp()) shouldBe 1
-            }
-            else {
-                note.natural().naturalDistance(note.natural().sharp()) shouldBe 0
-            }
-        }
-    }
-
     "measure interval between a note and itself transposed by an interval to be the transposing interval" {
         checkAll(listOf(C, G, D, A, E, B, F).exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
             val to = note.transpose(interval)
             val resultingInterval = note.intervalBetween(to)
-            //println("$note:$to:$interval -> $resultingInterval")
+            println("$note:$to:$interval -> $resultingInterval")
 
-            when(interval) {
-                Tritone -> resultingInterval shouldBe DiminishedFifth
-                DiminishedSeventh -> resultingInterval shouldBe MajorSixth
-                PerfectOctave -> resultingInterval shouldBe Unison
-                MinorNinth -> resultingInterval shouldBe MinorSecond
-                MajorNinth -> resultingInterval shouldBe MajorSecond
-                AugmentedNinth -> resultingInterval shouldBe AugmentedSecond
-                PerfectEleventh -> resultingInterval shouldBe PerfectFourth
-                AugmentedEleventh -> resultingInterval shouldBe AugmentedFourth
-                MinorThirteenth -> resultingInterval shouldBe MinorSixth
-                MajorThirteenth -> resultingInterval shouldBe MajorSixth
-                else -> resultingInterval shouldBe interval
+            when(note) {
+                B -> if (interval == MinorThird) {
+                    resultingInterval shouldBe AugmentedSecond
+                }
+                else -> when(interval) {
+                    Tritone -> resultingInterval shouldBe DiminishedFifth
+                    DiminishedSeventh -> resultingInterval shouldBe MajorSixth
+                    PerfectOctave -> resultingInterval shouldBe Unison
+                    MinorNinth -> resultingInterval shouldBe MinorSecond
+                    MajorNinth -> resultingInterval shouldBe MajorSecond
+                    AugmentedNinth -> resultingInterval shouldBe AugmentedSecond
+                    PerfectEleventh -> resultingInterval shouldBe PerfectFourth
+                    AugmentedEleventh -> resultingInterval shouldBe AugmentedFourth
+                    MinorThirteenth -> resultingInterval shouldBe MinorSixth
+                    MajorThirteenth -> resultingInterval shouldBe MajorSixth
+                    else -> resultingInterval shouldBe interval
+                }
             }
         }
     }
@@ -296,18 +290,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and C to zero`() {
-        assertThat(C.naturalDistance(C), equalTo(0))
-    }
-
-    @Test
     fun `measure semitones between C and C sharp to one semitone`() {
         assertThat(C.absoluteDistance(CSharp), equalTo(1))
-    }
-
-    @Test
-    fun `measure natural distance between C and C sharp to zero`() {
-        assertThat(C.naturalDistance(CSharp), equalTo(0))
     }
 
     @Test
@@ -316,18 +300,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and D flat to one`() {
-        assertThat(C.naturalDistance(DFlat), equalTo(1))
-    }
-
-    @Test
     fun `measure semitones between C and D to two semitones`() {
         assertThat(C.absoluteDistance(D), equalTo(2))
-    }
-
-    @Test
-    fun `measure natural distance between C and D to one`() {
-        assertThat(C.naturalDistance(D), equalTo(1))
     }
 
     @Test
@@ -336,18 +310,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and D sharp to one`() {
-        assertThat(C.naturalDistance(DSharp), equalTo(1))
-    }
-
-    @Test
     fun `measure semitones between C and E flat to three semitones`() {
         assertThat(C.absoluteDistance(EFlat), equalTo(3))
-    }
-
-    @Test
-    fun `measure natural distance between C and E flat to two`() {
-        assertThat(C.naturalDistance(EFlat), equalTo(2))
     }
 
     @Test
@@ -356,18 +320,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and E to two`() {
-        assertThat(C.naturalDistance(E), equalTo(2))
-    }
-
-    @Test
     fun `measure semitones between C and F to five semitones`() {
         assertThat(C.absoluteDistance(F), equalTo(5))
-    }
-
-    @Test
-    fun `measure natural distance between C and F to three`() {
-        assertThat(C.naturalDistance(F), equalTo(3))
     }
 
     @Test
@@ -376,18 +330,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and F sharp to three`() {
-        assertThat(C.naturalDistance(FSharp), equalTo(3))
-    }
-
-    @Test
     fun `measure semitones between C and G flat to six semitones`() {
         assertThat(C.absoluteDistance(GFlat), equalTo(6))
-    }
-
-    @Test
-    fun `measure natural distance between C and G flat to four`() {
-        assertThat(C.naturalDistance(GFlat), equalTo(4))
     }
 
     @Test
@@ -396,18 +340,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and G to four`() {
-        assertThat(C.naturalDistance(G), equalTo(4))
-    }
-
-    @Test
     fun `measure semitones between C and G sharp to eight semitones`() {
         assertThat(C.absoluteDistance(GSharp), equalTo(8))
-    }
-
-    @Test
-    fun `measure natural distance between C and G sharp to four`() {
-        assertThat(C.naturalDistance(GSharp), equalTo(4))
     }
 
     @Test
@@ -416,18 +350,8 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and A flat to five`() {
-        assertThat(C.naturalDistance(AFlat), equalTo(5))
-    }
-
-    @Test
     fun `measure semitones between C and A to nine semitones`() {
         assertThat(C.absoluteDistance(A), equalTo(9))
-    }
-
-    @Test
-    fun `measure natural distance between C and A to five`() {
-        assertThat(C.naturalDistance(A), equalTo(5))
     }
 
     @Test
@@ -436,28 +360,13 @@ class NaturalNoteShould {
     }
 
     @Test
-    fun `measure natural distance between C and A sharp to five`() {
-        assertThat(C.naturalDistance(ASharp), equalTo(5))
-    }
-
-    @Test
     fun `measure semitones between C and B flat to ten semitones`() {
         assertThat(C.absoluteDistance(BFlat), equalTo(10))
     }
 
     @Test
-    fun `measure natural distance between C and B flat to six`() {
-        assertThat(C.naturalDistance(BFlat), equalTo(6))
-    }
-
-    @Test
     fun `measure semitones between C and B to eleven semitones`() {
         assertThat(C.absoluteDistance(B), equalTo(11))
-    }
-
-    @Test
-    fun `measure natural distance between C and B to six`() {
-        assertThat(C.naturalDistance(B), equalTo(6))
     }
 
     @Test

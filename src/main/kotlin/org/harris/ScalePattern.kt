@@ -296,7 +296,7 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
     }
 
     fun notes(root: Note) : Array<Note> {
-        return pattern.map{ it.transpose(root) }.toTypedArray()
+        return pattern.map{ root.transpose(it) }.toTypedArray()
     }
 }
 
