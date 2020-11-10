@@ -23,4 +23,49 @@ class Scale {
             .take(7)
             .toTypedArray()
     }
+
+    fun thirds() : MelodicLine {
+        val line = MelodicLine(emptyList())
+
+        for(scaleDegree in ScaleDegree.values()) {
+            line.add(
+                MelodicFragment(
+                    listOf(
+                        thirdsFrom(scaleDegree)[0],
+                        thirdsFrom(scaleDegree)[1])))
+        }
+
+        return line
+    }
+
+    fun triads() : MelodicLine {
+        val line = MelodicLine(emptyList())
+
+        for(scaleDegree in ScaleDegree.values()) {
+            line.add(
+                MelodicFragment(
+                    listOf(
+                        thirdsFrom(scaleDegree)[0],
+                        thirdsFrom(scaleDegree)[1],
+                        thirdsFrom(scaleDegree)[2])))
+        }
+
+        return line
+    }
+
+    fun chords() : MelodicLine {
+        val line = MelodicLine(emptyList())
+
+        for(scaleDegree in ScaleDegree.values()) {
+            line.add(
+                MelodicFragment(
+                    listOf(
+                        thirdsFrom(scaleDegree)[0],
+                        thirdsFrom(scaleDegree)[1],
+                        thirdsFrom(scaleDegree)[2],
+                        thirdsFrom(scaleDegree)[3])))
+        }
+
+        return line
+    }
 }

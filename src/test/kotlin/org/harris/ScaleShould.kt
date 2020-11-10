@@ -230,4 +230,106 @@ class ScaleShould {
         val expected = listOf(B, D, F, A, C, E, G)
         assertThat(Ionian.createScale(C).thirdsFrom(ScaleDegree.VII).toList(), equalTo(expected))
     }
+
+    @Test
+    fun `Generate thirds melodic line for C Ionian`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(C, E)),
+                MelodicFragment(listOf(D, F)),
+                MelodicFragment(listOf(E, G)),
+                MelodicFragment(listOf(F, A)),
+                MelodicFragment(listOf(G, B)),
+                MelodicFragment(listOf(A, C)),
+                MelodicFragment(listOf(B, D))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.thirds(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate thirds melodic line for C Ionian with half tone approach from bellow`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(B, C, E)),
+                MelodicFragment(listOf(DFlat, D, F)),
+                MelodicFragment(listOf(EFlat, E, G)),
+                MelodicFragment(listOf(E, F, A)),
+                MelodicFragment(listOf(GFlat, G, B)),
+                MelodicFragment(listOf(AFlat, A, C)),
+                MelodicFragment(listOf(BFlat, B, D))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.thirds().hallToneApproachBellowFragments(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate triads melodic line for C Ionian`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(C, E, G)),
+                MelodicFragment(listOf(D, F, A)),
+                MelodicFragment(listOf(E, G, B)),
+                MelodicFragment(listOf(F, A, C)),
+                MelodicFragment(listOf(G, B, D)),
+                MelodicFragment(listOf(A, C, E)),
+                MelodicFragment(listOf(B, D, F))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.triads(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate triads melodic line for C Ionian with half tone approach from bellow`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(B, C, E, G)),
+                MelodicFragment(listOf(DFlat, D, F, A)),
+                MelodicFragment(listOf(EFlat, E, G, B)),
+                MelodicFragment(listOf(E, F, A, C)),
+                MelodicFragment(listOf(GFlat, G, B, D)),
+                MelodicFragment(listOf(AFlat, A, C, E)),
+                MelodicFragment(listOf(BFlat, B, D, F))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.triads().hallToneApproachBellowFragments(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate chords melodic line for C Ionian`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(C, E, G, B)),
+                MelodicFragment(listOf(D, F, A, C)),
+                MelodicFragment(listOf(E, G, B, D)),
+                MelodicFragment(listOf(F, A, C, E)),
+                MelodicFragment(listOf(G, B, D, F)),
+                MelodicFragment(listOf(A, C, E, G)),
+                MelodicFragment(listOf(B, D, F, A))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.chords(), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate chords melodic line for C Ionian with half tone approach from bellow`() {
+        val expected = MelodicLine(
+            listOf(
+                MelodicFragment(listOf(B, C, E, G, B)),
+                MelodicFragment(listOf(DFlat, D, F, A, C)),
+                MelodicFragment(listOf(EFlat, E, G, B, D)),
+                MelodicFragment(listOf(E, F, A, C, E)),
+                MelodicFragment(listOf(GFlat, G, B, D, F)),
+                MelodicFragment(listOf(AFlat, A, C, E, G)),
+                MelodicFragment(listOf(BFlat, B, D, F, A))))
+
+        val scale = Scale(Ionian, C)
+
+        assertThat(scale.chords().hallToneApproachBellowFragments(), equalTo(expected))
+    }
 }
