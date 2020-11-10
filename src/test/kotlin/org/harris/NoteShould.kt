@@ -93,7 +93,7 @@ class NotesShould: StringSpec({
                 CSharp, DSharp, FSharp, GSharp, ASharp -> if (interval == MinorSecond) {
                     resultingInterval shouldBe AugmentedUnison
                 }
-                B, BFlat, AFlat, DFlat, GFlat, CSharp -> if (interval == AugmentedSecond) {
+                E, B, BFlat, AFlat, DFlat, GFlat, CSharp -> if (interval == AugmentedSecond) {
                     resultingInterval shouldBe MinorThird
                 }
                 EFlat -> if (interval == DiminishedFifth) {
