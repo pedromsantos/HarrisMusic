@@ -1,10 +1,9 @@
 package org.harris
 
-import org.harris.Accidental.*
 import org.harris.Interval.*
 
 enum class Note {
-    C("C", 0, Natural) {
+    C("C", 0) {
         override fun sharp(): Note = CSharp
         override fun flat(): Note = B
         override fun natural(): Note = C
@@ -39,7 +38,7 @@ enum class Note {
             )
         }
     },
-    CSharp("C#", 1, Sharp) {
+    CSharp("C#", 1) {
         override fun sharp(): Note = D
         override fun flat(): Note = C
         override fun natural(): Note = C
@@ -47,7 +46,7 @@ enum class Note {
              return C.intervals().map { p -> Pair(p.key, p.value.sharp()) }.toMap()
         }
     },
-    DFlat("Db", 1, Flat) {
+    DFlat("Db", 1) {
         override fun sharp(): Note = D
         override fun flat(): Note = C
         override fun natural(): Note = D
@@ -57,7 +56,7 @@ enum class Note {
             )
         }
     },
-    D("D", 2, Natural) {
+    D("D", 2) {
         override fun sharp(): Note = DSharp
         override fun flat(): Note = DFlat
         override fun natural(): Note = D
@@ -92,7 +91,7 @@ enum class Note {
                 )
         }
     },
-    DSharp("D#", 3, Sharp) {
+    DSharp("D#", 3) {
         override fun sharp(): Note = E
         override fun flat(): Note = D
         override fun natural(): Note = D
@@ -102,7 +101,7 @@ enum class Note {
             )
         }
     },
-    EFlat("Eb", 3, Flat) {
+    EFlat("Eb", 3) {
         override fun sharp(): Note = E
         override fun flat(): Note = D
         override fun natural(): Note = E
@@ -112,7 +111,7 @@ enum class Note {
             )
         }
     },
-    E("E", 4, Natural) {
+    E("E", 4) {
         override fun sharp(): Note = F
         override fun flat(): Note = EFlat
         override fun natural(): Note = E
@@ -147,7 +146,7 @@ enum class Note {
             )
         }
     },
-    F("F", 5, Natural) {
+    F("F", 5) {
         override fun sharp(): Note = FSharp
         override fun flat(): Note = E
         override fun natural(): Note = F
@@ -182,7 +181,7 @@ enum class Note {
             )
         }
     },
-    ESharp("E#", 5, Sharp) {
+    ESharp("E#", 5) {
         override fun sharp(): Note = F
         override fun flat(): Note = E
         override fun natural(): Note = E
@@ -192,7 +191,7 @@ enum class Note {
             )
         }
     },
-    FSharp("F#", 6, Sharp) {
+    FSharp("F#", 6) {
         override fun sharp(): Note = G
         override fun flat(): Note = F
         override fun natural(): Note = F
@@ -202,7 +201,7 @@ enum class Note {
             )
         }
     },
-    GFlat("Gb", 6, Flat) {
+    GFlat("Gb", 6) {
         override fun sharp(): Note = G
         override fun flat(): Note = F
         override fun natural(): Note = G
@@ -212,7 +211,7 @@ enum class Note {
             )
         }
     },
-    G("G", 7, Natural) {
+    G("G", 7) {
         override fun sharp(): Note = GSharp
         override fun flat(): Note = GFlat
         override fun natural(): Note = G
@@ -247,7 +246,7 @@ enum class Note {
                 )
         }
     },
-    GSharp("G#", 8, Sharp) {
+    GSharp("G#", 8) {
         override fun sharp(): Note = A
         override fun flat(): Note = G
         override fun natural(): Note = G
@@ -257,7 +256,7 @@ enum class Note {
             )
         }
     },
-    AFlat("Ab", 8, Flat) {
+    AFlat("Ab", 8) {
         override fun sharp(): Note = A
         override fun flat(): Note = G
         override fun natural(): Note = A
@@ -267,7 +266,7 @@ enum class Note {
             )
         }
     },
-    A("A", 9, Natural) {
+    A("A", 9) {
         override fun sharp(): Note = ASharp
         override fun flat(): Note = AFlat
         override fun natural(): Note = A
@@ -302,7 +301,7 @@ enum class Note {
                 )
         }
     },
-    ASharp("A#", 10, Sharp) {
+    ASharp("A#", 10) {
         override fun sharp(): Note = B
         override fun flat(): Note = A
         override fun natural(): Note = A
@@ -312,7 +311,7 @@ enum class Note {
             )
         }
     },
-    BFlat("Bb", 10, Flat) {
+    BFlat("Bb", 10) {
         override fun sharp(): Note = B
         override fun flat(): Note = A
         override fun natural(): Note = B
@@ -322,7 +321,7 @@ enum class Note {
             )
         }
     },
-    B("B", 11, Natural) {
+    B("B", 11) {
         override fun sharp(): Note = C
         override fun flat(): Note = BFlat
         override fun natural(): Note = B
@@ -357,7 +356,7 @@ enum class Note {
             )
         }
     },
-    BSharp("B#", 0, Sharp) {
+    BSharp("B#", 0) {
         override fun sharp(): Note = C
         override fun flat(): Note = B
         override fun natural(): Note = B
@@ -367,7 +366,7 @@ enum class Note {
             )
         }
     },
-    CFlat("Cb", 11, Sharp) {
+    CFlat("Cb", 11) {
         override fun sharp(): Note = C
         override fun flat(): Note = B
         override fun natural(): Note = C
@@ -380,12 +379,10 @@ enum class Note {
 
     private val pitch: Int
     private val noteName: String
-    private val accidental: Accidental
 
-    constructor(noteName: String, pitch: Int, accidental: Accidental) {
+    constructor(noteName: String, pitch: Int) {
         this.noteName = noteName
         this.pitch = pitch
-        this.accidental = accidental
     }
 
     fun pitch() = pitch
