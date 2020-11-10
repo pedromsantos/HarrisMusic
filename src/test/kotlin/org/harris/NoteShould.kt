@@ -13,7 +13,7 @@ import org.harris.Interval.*
 import org.harris.Note.*
 import org.junit.Test
 
-val notes = listOf<Note>(C, D, E, F, G, A, B)
+val notes = listOf(C, D, E, F, G, A, B)
 
 class NotesShould: StringSpec({
     "Sharping and flating a note results in the original note pitch" {
@@ -85,14 +85,17 @@ class NotesShould: StringSpec({
     }
 
     "measure interval between a note and itself transposed by an interval to be the transposing interval" {
-        checkAll(listOf(C, G, D, A, E, B, F).exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
+        checkAll(listOf(C, G, D, A, E, B, F, BFlat, EFlat, AFlat, DFlat, GFlat).exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
             val to = note.transpose(interval)
             val resultingInterval = note.intervalBetween(to)
             println("$note:$to:$interval -> $resultingInterval")
 
             when(note) {
-                B -> if (interval == AugmentedSecond) {
+                B, BFlat, AFlat, DFlat, GFlat -> if (interval == AugmentedSecond) {
                     resultingInterval shouldBe MinorThird
+                }
+                EFlat -> if (interval == DiminishedFifth) {
+                    resultingInterval shouldBe AugmentedFourth
                 }
                 else -> when(interval) {
                     Tritone -> resultingInterval shouldBe DiminishedFifth
