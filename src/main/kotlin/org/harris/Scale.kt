@@ -57,7 +57,7 @@ class Scale {
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
-                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree+ 4)))))
+                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)))))
         }
 
         return line

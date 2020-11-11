@@ -8,13 +8,13 @@ import org.harris.ScalePattern.*
 import org.junit.Test
 
 class MelodicLineShould {
-    private val b = Note.chromaticNote(B)
-    private val db = Note.chromaticNote(DFlat)
-    private val eb = Note.chromaticNote(EFlat)
-    private val e = Note.chromaticNote(E)
-    private val gb = Note.chromaticNote(GFlat)
-    private val ab = Note.chromaticNote(AFlat)
-    private val bb = Note.chromaticNote(BFlat)
+    private val b = Note(B)
+    private val db = Note(DFlat)
+    private val eb = Note(EFlat)
+    private val e = Note(E)
+    private val gb = Note(GFlat)
+    private val ab = Note(AFlat)
+    private val bb = Note(BFlat)
 
     @Test
     fun `Generate thirds melodic line for C Ionian with half tone approach from bellow`() {
