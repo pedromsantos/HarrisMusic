@@ -99,15 +99,18 @@ class PitchProperties: StringSpec({
             val resultingInterval = pitch.intervalBetween(to)
 
             when (pitch) {
-                Pitch.CSharp, Pitch.DSharp, Pitch.FSharp, Pitch.GSharp, Pitch.ASharp -> if (interval == Interval.MinorSecond) {
-                    resultingInterval shouldBe Interval.AugmentedUnison
-                }
-                Pitch.E, Pitch.B, Pitch.BFlat, Pitch.AFlat, Pitch.DFlat, Pitch.GFlat, Pitch.CSharp -> if (interval == Interval.AugmentedSecond) {
-                    resultingInterval shouldBe Interval.MinorThird
-                }
-                Pitch.EFlat -> if (interval == Interval.DiminishedFifth) {
-                    resultingInterval shouldBe Interval.AugmentedFourth
-                }
+                Pitch.CSharp, Pitch.DSharp, Pitch.FSharp, Pitch.GSharp, Pitch.ASharp ->
+                    if (interval == Interval.MinorSecond) {
+                        resultingInterval shouldBe Interval.AugmentedUnison
+                    }
+                Pitch.E, Pitch.B, Pitch.BFlat, Pitch.AFlat, Pitch.DFlat, Pitch.GFlat, Pitch.CSharp ->
+                    if (interval == Interval.AugmentedSecond) {
+                        resultingInterval shouldBe Interval.MinorThird
+                    }
+                Pitch.EFlat ->
+                    if (interval == Interval.DiminishedFifth) {
+                        resultingInterval shouldBe Interval.AugmentedFourth
+                    }
                 else -> when (interval) {
                     Interval.Tritone -> resultingInterval shouldBe Interval.DiminishedFifth
                     Interval.DiminishedSeventh -> resultingInterval shouldBe Interval.MajorSixth
