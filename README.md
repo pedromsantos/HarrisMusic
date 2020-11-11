@@ -1,4 +1,4 @@
-# HarrisMusic - Jotlin music library
+# HarrisMusic - Kotlin music library
 
 ## About
 
