@@ -2,7 +2,7 @@ package org.harris
 
 import org.harris.Interval.*
 
-enum class Pitch(private val noteName: String, private val pitch: Int) {
+enum class Pitch(private val noteName: String, private val value: Int) {
     C("C", 0) {
         override fun sharp(): Pitch = CSharp
         override fun flat(): Pitch = B
@@ -353,21 +353,21 @@ enum class Pitch(private val noteName: String, private val pitch: Int) {
         }
     };
 
-    fun pitch() = pitch
+    fun value() = value
 
     fun equals(other: Pitch): Boolean {
-        return this.pitch == other.pitch
+        return this.value == other.value
     }
 
     fun absoluteDistance(to: Pitch): Int {
-        if(this.pitch <= to.pitch)
-            return to.pitch - this.pitch
+        if(this.value <= to.value)
+            return to.value - this.value
 
-        return 12 + (to.pitch - this.pitch)
+        return 12 + (to.value - this.value)
     }
 
     fun transpose(interval: Interval): Pitch {
-        return intervals()[interval] ?: error("Interval '${interval.name}' not found on note '${this.noteName}'")
+        return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.noteName}'")
     }
 
     fun intervalBetween(to: Pitch): Interval {

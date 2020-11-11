@@ -8,7 +8,7 @@ import io.kotest.property.exhaustive.exhaustive
 import io.kotest.property.exhaustive.ints
 import io.kotest.runner.junit4.StringSpec
 
-val notes = listOf(
+val pitches = listOf(
     Pitch.C,
     Pitch.G,
     Pitch.D,
@@ -28,77 +28,77 @@ val notes = listOf(
     Pitch.ASharp
 )
 
-class NotesProperties: StringSpec({
+class PitchProperties: StringSpec({
     "Sharping and flating a note results in the original note pitch" {
-        checkAll(notes.exhaustive()) { note ->
-            note.sharp().flat().pitch() shouldBe note.pitch()
+        checkAll(pitches.exhaustive()) { pitch ->
+            pitch.sharp().flat().value() shouldBe pitch.value()
         }
     }
 
     "Flating and sharping a note results in the original note pitch" {
-        checkAll(notes.exhaustive()) { note ->
-            note.flat().sharp().pitch() shouldBe note.pitch()
+        checkAll(pitches.exhaustive()) { pitch ->
+            pitch.flat().sharp().value() shouldBe pitch.value()
         }
     }
 
     "A sharped note has a higher pitch except B" {
-        checkAll(notes.exhaustive()) { note ->
-            if (note == Pitch.B) {
-                note.sharp() == Pitch.C
+        checkAll(pitches.exhaustive()) { pitch ->
+            if (pitch == Pitch.B) {
+                pitch.sharp() == Pitch.C
             } else {
-                note.sharp().pitch() > note.pitch()
+                pitch.sharp().value() > pitch.value()
             }
         }
     }
 
     "A ftated note has a lower pitch except C" {
-        checkAll(notes.exhaustive()) { note ->
-            if (note == Pitch.C) {
-                note.flat() == Pitch.B
+        checkAll(pitches.exhaustive()) { pitch ->
+            if (pitch == Pitch.C) {
+                pitch.flat() == Pitch.B
             } else {
-                note.flat().pitch() < note.pitch()
+                pitch.flat().value() < pitch.value()
             }
         }
     }
 
     "semitones between a note and itself sharp n times is n semitones" {
-        checkAll(notes.exhaustive(), Exhaustive.ints(0..12)) { note, distance ->
-            var transposed = note
+        checkAll(pitches.exhaustive(), Exhaustive.ints(0..12)) { pitch, distance ->
+            var transposed = pitch
 
             for (d in 0 until distance) {
                 transposed = transposed.sharp()
             }
 
             if (distance == 12) {
-                note.absoluteDistance(transposed) shouldBe 0
+                pitch.absoluteDistance(transposed) shouldBe 0
             } else {
-                note.absoluteDistance(transposed) shouldBe distance
+                pitch.absoluteDistance(transposed) shouldBe distance
             }
         }
     }
 
     "semitones between a note and itself flat n times is n semitones" {
-        checkAll(notes.exhaustive(), Exhaustive.ints(0..12)) { note, distance ->
-            var transposed = note
+        checkAll(pitches.exhaustive(), Exhaustive.ints(0..12)) { pitch, distance ->
+            var transposed = pitch
 
             for (d in 0 until distance) {
                 transposed = transposed.flat()
             }
 
             if (distance == 12 || distance == 0) {
-                note.absoluteDistance(transposed) shouldBe 0
+                pitch.absoluteDistance(transposed) shouldBe 0
             } else {
-                note.absoluteDistance(transposed) shouldBe 12 - distance
+                pitch.absoluteDistance(transposed) shouldBe 12 - distance
             }
         }
     }
 
     "interval between a note and itself transposed by an interval is the interval with some exceptions" {
-        checkAll(notes.exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
-            val to = note.transpose(interval)
-            val resultingInterval = note.intervalBetween(to)
+        checkAll(pitches.exhaustive(), Exhaustive.enum<Interval>()) { pitch, interval ->
+            val to = pitch.transpose(interval)
+            val resultingInterval = pitch.intervalBetween(to)
 
-            when (note) {
+            when (pitch) {
                 Pitch.CSharp, Pitch.DSharp, Pitch.FSharp, Pitch.GSharp, Pitch.ASharp -> if (interval == Interval.MinorSecond) {
                     resultingInterval shouldBe Interval.AugmentedUnison
                 }

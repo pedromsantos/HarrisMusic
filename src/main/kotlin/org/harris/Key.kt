@@ -61,11 +61,11 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
     fun notes(): Set<Pitch> {
         val notes = allNotes()
         return notes
-            .sortedBy { it.pitch() }
+            .sortedBy { it.value() }
             .dropWhile { it != this.root }
             .union(
                 notes
-                    .sortedBy { it.pitch() }
+                    .sortedBy { it.value() }
                     .takeWhile { it != this.root }
             )
     }
