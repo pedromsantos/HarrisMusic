@@ -2,7 +2,7 @@ package org.harris
 
 data class MelodicFragment(private var notes: List<Note> = listOf()) {
     fun addHalfToneApproach() : MelodicFragment {
-        return MelodicFragment(listOf(notes.first().flat()) + notes)
+        return MelodicFragment(listOf(Note.chromaticNote(notes.first().flat())) + notes)
     }
 
     override fun equals(other: Any?): Boolean {
