@@ -370,7 +370,7 @@ enum class Pitch(private val noteName: String, private val value: Int) {
         return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.noteName}'")
     }
 
-    fun intervalBetween(to: Pitch): Interval {
+    fun intervalTo(to: Pitch): Interval {
         return intervals().filter { it.value == to }.keys.first()
     }
 

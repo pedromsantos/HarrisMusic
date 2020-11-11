@@ -265,77 +265,77 @@ class PitchShould {
 
     @Test
     fun `measure interval between C and C as Unison`() {
-        assertThat(C.intervalBetween(C), equalTo(Unison))
+        assertThat(C.intervalTo(C), equalTo(Unison))
     }
 
     @Test
     fun `measure interval between C and D flat as MinorSecond`() {
-        assertThat(C.intervalBetween(DFlat), equalTo(MinorSecond))
+        assertThat(C.intervalTo(DFlat), equalTo(MinorSecond))
     }
 
     @Test
     fun `measure interval between C and D as MajorSecond`() {
-        assertThat(C.intervalBetween(D), equalTo(MajorSecond))
+        assertThat(C.intervalTo(D), equalTo(MajorSecond))
     }
 
     @Test
     fun `measure interval between C and E flat as MinorThird`() {
-        assertThat(C.intervalBetween(EFlat), equalTo(MinorThird))
+        assertThat(C.intervalTo(EFlat), equalTo(MinorThird))
     }
 
     @Test
     fun `measure interval between C and E as MajorThird`() {
-        assertThat(C.intervalBetween(E), equalTo(MajorThird))
+        assertThat(C.intervalTo(E), equalTo(MajorThird))
     }
 
     @Test
     fun `measure interval between C and F as PerfectFourth`() {
-        assertThat(C.intervalBetween(F), equalTo(PerfectFourth))
+        assertThat(C.intervalTo(F), equalTo(PerfectFourth))
     }
 
     @Test
     fun `measure interval between C and F sharp as AugmentedFourth`() {
-        assertThat(C.intervalBetween(FSharp), equalTo(AugmentedFourth))
+        assertThat(C.intervalTo(FSharp), equalTo(AugmentedFourth))
     }
 
     @Test
     fun `measure interval between C and G flat as DiminishedFifth`() {
-        assertThat(C.intervalBetween(GFlat), equalTo(DiminishedFifth))
+        assertThat(C.intervalTo(GFlat), equalTo(DiminishedFifth))
     }
 
     @Test
     fun `measure interval between C and G as PerfectFifth`() {
-        assertThat(C.intervalBetween(G), equalTo(PerfectFifth))
+        assertThat(C.intervalTo(G), equalTo(PerfectFifth))
     }
 
     @Test
     fun `measure interval between C and G sharp as AugmentedFifth`() {
-        assertThat(C.intervalBetween(GSharp), equalTo(AugmentedFifth))
+        assertThat(C.intervalTo(GSharp), equalTo(AugmentedFifth))
     }
 
     @Test
     fun `measure interval between C and A flat as MinorSixth`() {
-        assertThat(C.intervalBetween(AFlat), equalTo(MinorSixth))
+        assertThat(C.intervalTo(AFlat), equalTo(MinorSixth))
     }
 
     @Test
     fun `measure interval between C and A as MajorSixth`() {
-        assertThat(C.intervalBetween(A), equalTo(MajorSixth))
+        assertThat(C.intervalTo(A), equalTo(MajorSixth))
     }
 
     @Test
     fun `measure interval between C and B flat as MinorSeventh`() {
-        assertThat(C.intervalBetween(BFlat), equalTo(MinorSeventh))
+        assertThat(C.intervalTo(BFlat), equalTo(MinorSeventh))
     }
 
     @Test
     fun `measure interval between C and B as MajorSeventh`() {
-        assertThat(C.intervalBetween(B), equalTo(MajorSeventh))
+        assertThat(C.intervalTo(B), equalTo(MajorSeventh))
     }
 
     @Test
     fun `measure interval between D and F as MinorThird`() {
-        assertThat(D.intervalBetween(F), equalTo(MinorThird))
+        assertThat(D.intervalTo(F), equalTo(MinorThird))
     }
 
     @Test

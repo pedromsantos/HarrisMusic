@@ -96,7 +96,7 @@ class PitchProperties: StringSpec({
     "interval between a note and itself transposed by an interval is the interval with some exceptions" {
         checkAll(pitches.exhaustive(), Exhaustive.enum<Interval>()) { pitch, interval ->
             val to = pitch.transpose(interval)
-            val resultingInterval = pitch.intervalBetween(to)
+            val resultingInterval = pitch.intervalTo(to)
 
             when (pitch) {
                 Pitch.CSharp, Pitch.DSharp, Pitch.FSharp, Pitch.GSharp, Pitch.ASharp ->

@@ -57,7 +57,7 @@ class ChordNotes {
         var intervals = mutableListOf<Interval>()
 
         for(note in notes.drop(1)) {
-            val interval = root.intervalBetween(note.pitch)
+            val interval = root.intervalTo(note.pitch)
             intervals.add(interval)
         }
 
