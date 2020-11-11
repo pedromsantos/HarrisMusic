@@ -54,6 +54,26 @@ class ChordShould {
     }
 
     @Test
+    fun `remove function from drop 2 chord`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
+                .remove(Fifth)
+                .notes().toList(),
+            equalTo(listOf(C, B, E)))
+    }
+
+    @Test
+    fun `remove function from drop 3 chord`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .remove(Fifth)
+                .notes().toList(),
+            equalTo(listOf(C, B, E)))
+    }
+
+    @Test
     fun `invert chord to first inversion`() {
         assertThat(
             ClosedChord(C, Major)
@@ -95,9 +115,37 @@ class ChordShould {
     }
 
     @Test
+    fun `not change chord to closed it it is already closed`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .closed()
+                .notes().toList(),
+            equalTo(listOf(C, E, G, B)))
+    }
+
+    @Test
     fun `create drop 2 chord`() {
         assertThat(
             ClosedChord(C, Major7)
+                .drop2()
+                .notes().toList(),
+            equalTo(listOf(C, G, B, E)))
+    }
+
+    @Test
+    fun `not create drop 2 chord if chord does not have 4 notes`() {
+        assertThat(
+            ClosedChord(C, Major)
+                .drop2()
+                .notes().toList(),
+            equalTo(listOf(C, E, G)))
+    }
+
+    @Test
+    fun `not create drop 2 chord if chord is already drop 2`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop2()
                 .drop2()
                 .notes().toList(),
             equalTo(listOf(C, G, B, E)))
@@ -220,6 +268,25 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
+                .notes().toList(),
+            equalTo(listOf(C, B, E, G)))
+    }
+
+    @Test
+    fun `not create drop 3 chord if chord does not have 4 notes`() {
+        assertThat(
+            ClosedChord(C, Major)
+                .drop3()
+                .notes().toList(),
+            equalTo(listOf(C, E, G)))
+    }
+
+    @Test
+    fun `not create drop 3 chord if chord is already drop 3`() {
+        assertThat(
+            ClosedChord(C, Major7)
+                .drop3()
+                .drop3()
                 .notes().toList(),
             equalTo(listOf(C, B, E, G)))
     }

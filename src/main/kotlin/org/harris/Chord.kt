@@ -97,10 +97,6 @@ class ClosedChord : BaseChord {
 
 class Drop2Chord : BaseChord {
 
-    private constructor(root: Pitch, pattern: ChordPattern)
-            :super(root, pattern) {
-    }
-
     internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
             :super(root, pattern, notes) {
 
@@ -125,10 +121,6 @@ class Drop2Chord : BaseChord {
 }
 
 class Drop3Chord : BaseChord {
-
-    private constructor(root: Pitch, pattern: ChordPattern)
-            :super(root, pattern) {
-    }
 
     internal constructor(root: ChordNote, pattern: ChordPattern, notes: ChordNotes)
             :super(root, pattern, notes) {
