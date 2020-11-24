@@ -50,7 +50,7 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
                     .map { it.sharp() })
     }
 
-    private fun allNotes(): Set<Pitch> {
+    private fun allPitches(): Set<Pitch> {
         return when {
             this.accidentals < 0 -> flatKey()
             this.accidentals > 0 -> sharpKey()
@@ -58,8 +58,8 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
         }
     }
 
-    fun notes(): Set<Pitch> {
-        val notes = allNotes()
+    fun pitches(): Set<Pitch> {
+        val notes = allPitches()
         return notes
             .sortedBy { it.value() }
             .dropWhile { it != this.root }
