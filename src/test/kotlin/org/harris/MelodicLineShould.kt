@@ -15,11 +15,10 @@ class MelodicLineShould {
     private val gb = Note(GFlat)
     private val ab = Note(AFlat)
     private val bb = Note(BFlat)
+    private val scale = Scale(Ionian, C)
 
     @Test
     fun `Generate thirds melodic line for C Ionian with half tone approach from bellow`() {
-        val scale = Scale(Ionian, C)
-
         val expected = MelodicLine(
             listOf(
                 MelodicFragment(listOf(b, scale.note(I), scale.note(III))),
@@ -35,8 +34,6 @@ class MelodicLineShould {
 
     @Test
     fun `Generate triads melodic line for C Ionian with half tone approach from bellow`() {
-        val scale = Scale(Ionian, C)
-
         val expected = MelodicLine(
             listOf(
                 MelodicFragment(listOf(b, scale.note(I), scale.note(III), scale.note(V))),
@@ -52,8 +49,6 @@ class MelodicLineShould {
 
     @Test
     fun `Generate chords melodic line for C Ionian with half tone approach from bellow`() {
-        val scale = Scale(Ionian, C)
-
         val expected = MelodicLine(
             listOf(
                 MelodicFragment(listOf(b, scale.note(I), scale.note(III), scale.note(V), scale.note(VII))),
@@ -69,8 +64,6 @@ class MelodicLineShould {
 
     @Test
     fun `Generate pivot chords melodic line for C Ionian with half tone approach from bellow`() {
-        val scale = Scale(Ionian, C)
-
         val expected = MelodicLine(
             listOf(
                 MelodicFragment(listOf(b, scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
