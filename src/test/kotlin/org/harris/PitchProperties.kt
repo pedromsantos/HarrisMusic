@@ -103,7 +103,7 @@ class PitchProperties: StringSpec({
                     if (interval == Interval.MinorSecond) {
                         resultingInterval shouldBe Interval.AugmentedUnison
                     }
-                Pitch.E, Pitch.B, Pitch.BFlat, Pitch.AFlat, Pitch.DFlat, Pitch.GFlat, Pitch.CSharp ->
+                Pitch.E, Pitch.B, Pitch.BFlat, Pitch.AFlat, Pitch.DFlat, Pitch.GFlat ->
                     if (interval == Interval.AugmentedSecond) {
                         resultingInterval shouldBe Interval.MinorThird
                     }
