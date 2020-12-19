@@ -289,18 +289,40 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MinorSeventh,
             MajorSeventh
         )
+    ),
+    Chromatic(
+        arrayOf(
+            Unison,
+            AugmentedUnison,
+            MajorSecond,
+            AugmentedSecond,
+            MajorThird,
+            PerfectFourth,
+            AugmentedFourth,
+            PerfectFifth,
+            AugmentedFifth,
+            MajorSixth,
+            MinorSeventh,
+            MajorSeventh
+        )
     );
 
-    fun createScale(root: Note) : Scale {
+    fun createScale(root: Pitch) : Scale {
         return Scale(this, root)
     }
 
-    fun notes(root: Note) : Array<Note> {
-        return pattern.map{ it.transpose(root) }.toTypedArray()
+    fun notes(root: Pitch) : Array<Pitch> {
+        return pattern
+            .map{ root.transpose(it) }
+            .toTypedArray()
     }
 }
 
 enum class ScaleDegree {
-    I, II, III, IV, V, VI, VII
+    I, II, III, IV, V, VI, VII;
+
+    operator fun plus(increment: Int): ScaleDegree {
+        return values()[(this.ordinal + increment) % 7]
+    }
 }
 

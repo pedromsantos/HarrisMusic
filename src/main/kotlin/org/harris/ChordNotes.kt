@@ -1,11 +1,11 @@
 package org.harris
 
-data class ChordNote(val note: Note, val function: ChordNoteFunction)
+data class ChordNote(val pitch: Pitch, val function: ChordNoteFunction)
 
 class ChordNotes {
     private val notes: Array<ChordNote>
 
-    internal constructor(root: Note, pattern: ChordPattern) {
+    internal constructor(root: Pitch, pattern: ChordPattern) {
         this.notes = pattern.notes(root)
     }
 
@@ -13,7 +13,7 @@ class ChordNotes {
         this.notes = notes
     }
 
-    internal fun notes(): Array<Note> = notes.map { it.note }.toTypedArray()
+    internal fun notes(): Array<Pitch> = notes.map { it.pitch }.toTypedArray()
 
     internal fun bass(): ChordNote {
         return notes.first()
@@ -53,11 +53,11 @@ class ChordNotes {
     }
 
     internal fun toIntervals() : List<Interval> {
-        val root = noteForFunction(ChordNoteFunction.Root).note
+        val root = noteForFunction(ChordNoteFunction.Root).pitch
         var intervals = mutableListOf<Interval>()
 
         for(note in notes.drop(1)) {
-            val interval = root.intervalBetween(note.note)
+            val interval = root.intervalTo(note.pitch)
             intervals.add(interval)
         }
 

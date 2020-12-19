@@ -1,9 +1,9 @@
 package org.harris
 
-import org.harris.Note.*
+import org.harris.Pitch.*
 import kotlin.math.abs
 
-enum class Key(private val root: Note, private val accidentals: Int) {
+enum class Key(private val root: Pitch, private val accidentals: Int) {
     AFlatMajor(AFlat, -4),
     AMajor(A, 3),
     BMajor(B, 5),
@@ -30,43 +30,43 @@ enum class Key(private val root: Note, private val accidentals: Int) {
     GSharpMinor(GSharp, 5),
     EFlatMinor(EFlat, -6);
 
-    private fun flatKey(): Set<Note> {
-        return (Companion.fifths
+    private fun flatKey(): Set<Pitch> {
+        return (fifths
             .asReversed()
             .drop(abs(this.accidentals)))
             .union(
-                Companion.fifths
+                fifths
                     .asReversed()
                     .take(abs(this.accidentals))
-                    .map { it -> it.flat() })
+                    .map { it.flat() })
     }
 
-    private fun sharpKey(): Set<Note> {
-        return (Companion.fifths
+    private fun sharpKey(): Set<Pitch> {
+        return (fifths
             .drop(this.accidentals))
             .union(
-                Companion.fifths
+                fifths
                     .take(this.accidentals)
-                    .map { it -> it.sharp() })
+                    .map { it.sharp() })
     }
 
-    private fun allNotes(): Set<Note> {
+    private fun allPitches(): Set<Pitch> {
         return when {
             this.accidentals < 0 -> flatKey()
             this.accidentals > 0 -> sharpKey()
-            else -> Companion.fifths.toSet()
+            else -> fifths.toSet()
         }
     }
 
-    fun notes(): Set<Note> {
-        val notes = allNotes()
+    fun pitches(): Set<Pitch> {
+        val notes = allPitches()
         return notes
-            .sortedBy { it.pitch() }
-            .dropWhile { it -> it != this.root }
+            .sortedBy { it.value() }
+            .dropWhile { it != this.root }
             .union(
                 notes
-                    .sortedBy { it.pitch() }
-                    .takeWhile { it -> it != this.root }
+                    .sortedBy { it.value() }
+                    .takeWhile { it != this.root }
             )
     }
 

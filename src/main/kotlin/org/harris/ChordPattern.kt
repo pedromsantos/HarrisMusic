@@ -41,7 +41,7 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     Sus4Diminished("Major", "Maj", listOf(PerfectFourth, DiminishedFifth)),
     Sus4Augmented("Major", "Maj", listOf(PerfectFourth, AugmentedFifth));
 
-    fun createChord(root: Note): ClosedChord {
+    fun createChord(root: Pitch): ClosedChord {
         return ClosedChord(root, this)
     }
 
@@ -51,12 +51,12 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
         }
     }
 
-    internal fun notes(root: Note) : Array<ChordNote> {
+    internal fun notes(root: Pitch) : Array<ChordNote> {
         return listOf(ChordNote(root, ChordNoteFunction.Root))
             .union(pattern.map{ createChordNote(it, root) })
             .toTypedArray()
     }
 
-    private fun createChordNote(it: Interval, root: Note) =
-        ChordNote(it.transpose(root), ChordNoteFunction.functionForInterval((it)))
+    private fun createChordNote(it: Interval, root: Pitch) =
+        ChordNote(root.transpose(it), ChordNoteFunction.functionForInterval((it)))
 }
