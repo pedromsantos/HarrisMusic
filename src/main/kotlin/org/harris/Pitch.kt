@@ -355,10 +355,6 @@ enum class Pitch(private val noteName: String, private val value: Int) {
 
     fun value() = value
 
-    fun equals(other: Pitch): Boolean {
-        return this.value == other.value
-    }
-
     fun absoluteDistance(to: Pitch): Int {
         if(this.value <= to.value)
             return to.value - this.value

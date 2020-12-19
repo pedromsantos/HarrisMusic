@@ -5,13 +5,13 @@ class TriadHarmonizer(private val scale: Scale) : Harmonizer {
         val thirds = scale.thirdsFrom(degree)
 
         val chordNotes = arrayOf(
-            ChordNote(thirds[0], ChordNoteFunction.Root),
-            ChordNote(thirds[1], ChordNoteFunction.Third),
-            ChordNote(thirds[2], ChordNoteFunction.Fifth)
+            ChordPitch(thirds[0], ChordFunction.Root),
+            ChordPitch(thirds[1], ChordFunction.Third),
+            ChordPitch(thirds[2], ChordFunction.Fifth)
         )
-        val intervals = ChordNotes(chordNotes).toIntervals()
+        val intervals = ChordPitches(chordNotes).toIntervals()
         val pattern =  ChordPattern.from(intervals)
-        return ClosedChord(ChordNote(thirds.first(), ChordNoteFunction.Root), pattern, ChordNotes(chordNotes))
+        return ClosedChord(ChordPitch(thirds.first(), ChordFunction.Root), pattern, ChordPitches(chordNotes))
     }
 }
 

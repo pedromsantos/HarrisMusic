@@ -1,6 +1,6 @@
 package org.harris
 
-enum class ChordNoteFunction {
+enum class ChordFunction {
     Root,
     Third,
     Fifth,
@@ -11,7 +11,7 @@ enum class ChordNoteFunction {
     Thirteenth;
 
     companion object {
-        internal fun functionForInterval(interval: Interval): ChordNoteFunction {
+        internal fun functionForInterval(interval: Interval): ChordFunction {
             return when (interval) {
                 Interval.Unison -> Root
                 Interval.MajorThird,

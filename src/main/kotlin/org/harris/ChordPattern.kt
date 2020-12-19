@@ -51,12 +51,12 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
         }
     }
 
-    internal fun notes(root: Pitch) : Array<ChordNote> {
-        return listOf(ChordNote(root, ChordNoteFunction.Root))
+    internal fun notes(root: Pitch) : Array<ChordPitch> {
+        return listOf(ChordPitch(root, ChordFunction.Root))
             .union(pattern.map{ createChordNote(it, root) })
             .toTypedArray()
     }
 
     private fun createChordNote(it: Interval, root: Pitch) =
-        ChordNote(root.transpose(it), ChordNoteFunction.functionForInterval((it)))
+        ChordPitch(root.transpose(it), ChordFunction.functionForInterval((it)))
 }
