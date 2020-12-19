@@ -13,10 +13,6 @@ class Scale {
 
     fun pitches(): Array<Pitch> = pitches
 
-    fun notes(): Array<Note> = pitches
-        .mapIndexed { i,p -> Note(p, ScaleNote(pattern, root, ScaleDegree.values()[i])) }
-        .toTypedArray()
-
     fun note(degree: ScaleDegree): Note = notes()[degree.ordinal]
 
     fun pitch(degree: ScaleDegree) : Pitch {
@@ -94,4 +90,8 @@ class Scale {
 
         return line
     }
+
+    private fun notes(): Array<Note> = pitches
+        .mapIndexed { i,p -> Note(p, ScaleNote(pattern, root, ScaleDegree.values()[i])) }
+        .toTypedArray()
 }
