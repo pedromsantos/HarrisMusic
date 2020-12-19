@@ -10,7 +10,7 @@ import io.kotest.property.exhaustive.exhaustive
 import io.kotest.property.exhaustive.ints
 import io.kotest.runner.junit4.StringSpec
 import org.harris.Interval.*
-import org.harris.Note.*
+import org.harris.Pitch.*
 import org.junit.Test
 
 val notes = listOf(C, CSharp, DFlat, D, DSharp, EFlat, E, F, FSharp, GFlat, G, AFlat, A, ASharp, BFlat, B)
@@ -18,13 +18,13 @@ val notes = listOf(C, CSharp, DFlat, D, DSharp, EFlat, E, F, FSharp, GFlat, G, A
 class NotesShould: StringSpec({
     "Sharping and flating a note results in the original note pitch" {
         checkAll(notes.exhaustive()) { note ->
-            note.sharp().flat().pitch() shouldBe note.pitch()
+            note.sharp().flat().value() shouldBe note.value()
         }
     }
 
     "Flating and sharping a note results in the original note pitch" {
         checkAll(notes.exhaustive()) { note ->
-            note.flat().sharp().pitch() shouldBe note.pitch()
+            note.flat().sharp().value() shouldBe note.value()
         }
     }
 
@@ -34,7 +34,7 @@ class NotesShould: StringSpec({
                 note.sharp() == C
             }
             else {
-                note.sharp().pitch() > note.pitch()
+                note.sharp().value() > note.value()
             }
         }
     }
@@ -45,7 +45,7 @@ class NotesShould: StringSpec({
                 note.flat() == B
             }
             else {
-                note.flat().pitch() < note.pitch()
+                note.flat().value() < note.value()
             }
         }
     }
@@ -84,22 +84,11 @@ class NotesShould: StringSpec({
         }
     }
 
-    "measure natural distance between a natural note and itself sharp to zero except for E and B" {
-        checkAll(notes.exhaustive()) { note ->
-            if(note.natural() == E || note.natural() == B) {
-                note.natural().naturalDistance(note.natural().sharp()) shouldBe 1
-            }
-            else {
-                note.natural().naturalDistance(note.natural().sharp()) shouldBe 0
-            }
-        }
-    }
-
     "measure interval between a note and itself transposed by that interval to be that interval" {
         checkAll(listOf(C, G, D, A, E, B, F, BFlat, EFlat, AFlat, DFlat, GFlat).exhaustive(), Exhaustive.enum<Interval>()) { note, interval ->
             val to = note.transpose(interval)
             println("$note:$to:$interval")
-            val resultingInterval = note.intervalBetween(to)
+            val resultingInterval = note.intervalTo(to)
             println("$note:$to:$interval -> $resultingInterval")
 
             when(interval) {
