@@ -75,18 +75,6 @@ enum class Note {
         override fun flat(): Note = F
         override fun natural(): Note = G
         override fun index() = 5
-
-        override fun intervalBetween(to: Note): Interval {
-            if (to == BSharp) {
-                return Interval.AugmentedFourth
-            }
-
-            if (to == E) {
-                return Interval.MinorSeventh
-            }
-
-            return super.intervalBetween(to)
-        }
     },
     G("G", 7, Natural) {
         override fun sharp(): Note = GSharp
@@ -167,7 +155,7 @@ enum class Note {
         return interval.transpose(this)
     }
 
-    open fun intervalBetween(to: Note): Interval {
+    fun intervalBetween(to: Note): Interval {
         val intervals = Interval.from(naturalDistance(to))
         return intervals.first { it.hasSameDistance(absoluteDistance(to)) }
     }
