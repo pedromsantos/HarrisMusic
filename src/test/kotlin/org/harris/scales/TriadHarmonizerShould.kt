@@ -1,9 +1,9 @@
-package org.harris
+package org.harris.scales
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.Pitch.*
-import org.harris.ScalePattern.*
+import org.harris.notes.Pitch.*
+import org.harris.scales.ScalePattern.*
 import org.junit.Test
 import org.junit.Before
 

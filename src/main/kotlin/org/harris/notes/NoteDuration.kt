@@ -1,4 +1,4 @@
-package org.harris
+package org.harris.notes
 
 enum class NoteDuration(private val durationName: String, private val multiplier: Float) {
     Whole("Whole", 1.0F),

@@ -1,9 +1,9 @@
-package org.harris
+package org.harris.notes
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.Interval.*
-import org.harris.Pitch.*
+import org.harris.notes.Interval.*
+import org.harris.notes.Pitch.*
 import org.junit.Test
 
 class PitchShould {

@@ -3,9 +3,10 @@ package org.harris
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import com.natpryce.hamkrest.startsWith
-import org.harris.ChordFunction.*
-import org.harris.Pitch.*
-import org.harris.ChordPattern.*
+import org.harris.chords.ChordFunction.*
+import org.harris.notes.Pitch.*
+import org.harris.chords.ChordPattern.*
+import org.harris.chords.ClosedChord
 import org.junit.Test
 
 class ChordShould {

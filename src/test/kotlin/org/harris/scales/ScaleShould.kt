@@ -1,10 +1,12 @@
-package org.harris
+package org.harris.scales
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.Pitch.*
-import org.harris.ScaleDegree.*
-import org.harris.ScalePattern.*
+import org.harris.MelodicFragment
+import org.harris.MelodicLine
+import org.harris.notes.Pitch.*
+import org.harris.scales.ScaleDegree.*
+import org.harris.scales.ScalePattern.*
 import org.junit.Test
 
 class ScaleShould {
@@ -251,7 +253,8 @@ class ScaleShould {
                 MelodicFragment(listOf(scale.note(IV), scale.note(VI))),
                 MelodicFragment(listOf(scale.note(V), scale.note(VII))),
                 MelodicFragment(listOf(scale.note(VI), scale.note(I))),
-                MelodicFragment(listOf(scale.note(VII), scale.note(II)))))
+                MelodicFragment(listOf(scale.note(VII), scale.note(II)))
+            ))
 
         assertThat(scale.thirds(), equalTo(expected))
     }
@@ -268,7 +271,8 @@ class ScaleShould {
                 MelodicFragment(listOf(scale.note(IV), scale.note(VI), scale.note(I))),
                 MelodicFragment(listOf(scale.note(V), scale.note(VII), scale.note(II))),
                 MelodicFragment(listOf(scale.note(VI), scale.note(I), scale.note(III))),
-                MelodicFragment(listOf(scale.note(VII), scale.note(II), scale.note(IV)))))
+                MelodicFragment(listOf(scale.note(VII), scale.note(II), scale.note(IV)))
+            ))
 
         assertThat(scale.triads(), equalTo(expected))
     }
@@ -285,7 +289,8 @@ class ScaleShould {
                 MelodicFragment(listOf(scale.note(IV), scale.note(VI), scale.note(I), scale.note(III))),
                 MelodicFragment(listOf(scale.note(V), scale.note(VII), scale.note(II), scale.note(IV))),
                 MelodicFragment(listOf(scale.note(VI), scale.note(I), scale.note(III), scale.note(V))),
-                MelodicFragment(listOf(scale.note(VII), scale.note(II), scale.note(IV), scale.note(VI)))))
+                MelodicFragment(listOf(scale.note(VII), scale.note(II), scale.note(IV), scale.note(VI)))
+            ))
 
         assertThat(scale.chords(), equalTo(expected))
     }
@@ -302,7 +307,8 @@ class ScaleShould {
                 MelodicFragment(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
                 MelodicFragment(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
                 MelodicFragment(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
-                MelodicFragment(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))))
+                MelodicFragment(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))
+            ))
 
         assertThat(scale.pivotChords(), equalTo(expected))
     }

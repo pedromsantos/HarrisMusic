@@ -2,9 +2,11 @@ package org.harris
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.Pitch.*
-import org.harris.ScaleDegree.*
-import org.harris.ScalePattern.*
+import org.harris.notes.Pitch.*
+import org.harris.scales.ScaleDegree.*
+import org.harris.scales.ScalePattern.*
+import org.harris.notes.Note
+import org.harris.scales.Scale
 import org.junit.Test
 
 class MelodicLineShould {

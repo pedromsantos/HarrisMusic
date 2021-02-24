@@ -1,4 +1,6 @@
-package org.harris
+package org.harris.chords
+
+import org.harris.notes.Pitch
 
 interface Chord {
     fun pitches(): Array<Pitch>

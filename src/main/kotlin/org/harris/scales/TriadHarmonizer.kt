@@ -1,4 +1,6 @@
-package org.harris
+package org.harris.scales
+
+import org.harris.chords.*
 
 class TriadHarmonizer(private val scale: Scale) : Harmonizer {
     override fun chordFor(degree: ScaleDegree): Chord {

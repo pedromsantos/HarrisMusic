@@ -1,6 +1,8 @@
-package org.harris
+package org.harris.chords
 
-import org.harris.Interval.*
+import org.harris.notes.Interval
+import org.harris.notes.Interval.*
+import org.harris.notes.Pitch
 
 enum class ChordPattern(private val patternName: String, private val abbreviation: String, private val pattern: List<Interval>) {
     Major("Major", "Maj", listOf(MajorThird, PerfectFifth)),

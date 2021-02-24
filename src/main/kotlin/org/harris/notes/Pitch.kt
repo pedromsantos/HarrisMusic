@@ -1,6 +1,6 @@
-package org.harris
+package org.harris.notes
 
-import org.harris.Interval.*
+import org.harris.notes.Interval.*
 
 enum class Pitch(private val noteName: String, private val value: Int) {
     C("C", 0) {

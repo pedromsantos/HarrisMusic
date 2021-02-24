@@ -1,6 +1,7 @@
 package org.harris
 
-import org.harris.Pitch.*
+import org.harris.notes.Pitch
+import org.harris.notes.Pitch.*
 import kotlin.math.abs
 
 enum class Key(private val root: Pitch, private val accidentals: Int) {

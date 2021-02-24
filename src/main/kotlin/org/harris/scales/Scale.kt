@@ -1,4 +1,10 @@
-package org.harris
+package org.harris.scales
+
+import org.harris.MelodicFragment
+import org.harris.MelodicLine
+import org.harris.notes.Note
+import org.harris.notes.Pitch
+import org.harris.notes.ScaleNote
 
 class Scale {
     private val pattern: ScalePattern
@@ -38,7 +44,9 @@ class Scale {
                 MelodicFragment(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)))))
+                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
+                    ))
+            )
         }
 
         return line
@@ -53,7 +61,9 @@ class Scale {
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
-                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)))))
+                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4))
+                    ))
+            )
         }
 
         return line
@@ -69,7 +79,9 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
                         Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6)))))
+                        Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6))
+                    ))
+            )
         }
 
         return line
@@ -85,7 +97,9 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6)),
                         Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)))))
+                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
+                    ))
+            )
         }
 
         return line

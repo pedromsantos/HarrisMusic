@@ -3,7 +3,7 @@ package org.harris
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.harris.Key.*
-import org.harris.Pitch.*
+import org.harris.notes.Pitch.*
 import org.junit.Test
 
 class KeyShould {

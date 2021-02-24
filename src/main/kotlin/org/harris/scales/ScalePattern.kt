@@ -1,6 +1,8 @@
-package org.harris
+package org.harris.scales
 
-import org.harris.Interval.*
+import org.harris.notes.Interval
+import org.harris.notes.Interval.*
+import org.harris.notes.Pitch
 
 enum class ScalePattern(private val pattern: Array<Interval>) {
     Ionian(

@@ -1,4 +1,4 @@
-package org.harris
+package org.harris.notes
 
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Exhaustive

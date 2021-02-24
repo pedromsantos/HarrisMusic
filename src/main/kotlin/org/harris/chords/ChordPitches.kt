@@ -1,4 +1,9 @@
-package org.harris
+package org.harris.chords
+
+import org.harris.moveElement
+import org.harris.notes.Interval
+import org.harris.notes.Pitch
+import org.harris.rotate
 
 data class ChordPitch(val pitch: Pitch, val function: ChordFunction)
 

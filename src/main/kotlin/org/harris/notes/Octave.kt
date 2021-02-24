@@ -1,4 +1,4 @@
-package org.harris
+package org.harris.notes
 
 enum class Octave(private val octaveName: String, private val value: Int, private val midiBaseValue: Int) {
     SubContra("Sub contra", -16, 0),
