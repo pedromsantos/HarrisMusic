@@ -293,7 +293,7 @@ class ChordShould {
     }
 }
 
-class ChordShouldCorrectNotesFor {
+class ChordShouldHveCorrectNotesFor {
     @Test
     fun `C Major chord`() {
         val expected = listOf(C, E, G)

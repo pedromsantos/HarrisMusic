@@ -29,19 +29,19 @@ val pitches = listOf(
 )
 
 class PitchProperties: StringSpec({
-    "Sharping and flating a note results in the original note pitch" {
+    "Sharping and flating a pitch results in the original pitch" {
         checkAll(pitches.exhaustive()) { pitch ->
             pitch.sharp().flat().value() shouldBe pitch.value()
         }
     }
 
-    "Flating and sharping a note results in the original note pitch" {
+    "Flating and sharping a pitch results in the original pitch" {
         checkAll(pitches.exhaustive()) { pitch ->
             pitch.flat().sharp().value() shouldBe pitch.value()
         }
     }
 
-    "A sharped note has a higher pitch except B" {
+    "A sharped pitch has a higher pitch except B" {
         checkAll(pitches.exhaustive()) { pitch ->
             if (pitch == Pitch.B) {
                 pitch.sharp() == Pitch.C
@@ -51,7 +51,7 @@ class PitchProperties: StringSpec({
         }
     }
 
-    "A ftated note has a lower pitch except C" {
+    "A ftated pitch has a lower pitch except C" {
         checkAll(pitches.exhaustive()) { pitch ->
             if (pitch == Pitch.C) {
                 pitch.flat() == Pitch.B
@@ -61,7 +61,7 @@ class PitchProperties: StringSpec({
         }
     }
 
-    "semitones between a note and itself sharp n times is n semitones" {
+    "semitones between a pitch and itself sharp n times is n semitones" {
         checkAll(pitches.exhaustive(), Exhaustive.ints(0..12)) { pitch, distance ->
             var transposed = pitch
 
@@ -77,7 +77,7 @@ class PitchProperties: StringSpec({
         }
     }
 
-    "semitones between a note and itself flat n times is n semitones" {
+    "semitones between a pitch and itself flat n times is n semitones" {
         checkAll(pitches.exhaustive(), Exhaustive.ints(0..12)) { pitch, distance ->
             var transposed = pitch
 
@@ -93,7 +93,7 @@ class PitchProperties: StringSpec({
         }
     }
 
-    "interval between a note and itself transposed by an interval is the interval with some exceptions" {
+    "interval between a pitch and itself transposed by an interval is the interval with some exceptions" {
         checkAll(pitches.exhaustive(), Exhaustive.enum<Interval>()) { pitch, interval ->
             val to = pitch.transpose(interval)
             val resultingInterval = pitch.intervalTo(to)
