@@ -91,9 +91,9 @@ class NotesProperties: StringSpec({
             ).exhaustive(), Exhaustive.enum<Interval>()
         ) { note, interval ->
             val to = note.transpose(interval)
-            println("$note:$to:$interval")
+            //println("$note:$to:$interval")
             val resultingInterval = note.intervalTo(to)
-            println("$note:$to:$interval -> $resultingInterval")
+            //println("$note:$to:$interval -> $resultingInterval")
 
             when (interval) {
                 Interval.MajorNinth -> resultingInterval shouldBe Interval.MajorSecond
