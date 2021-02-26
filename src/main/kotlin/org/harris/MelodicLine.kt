@@ -1,5 +1,7 @@
 package org.harris
 
+import org.harris.notes.Note
+
 data class MelodicFragment(private var notes: List<Note> = listOf()) {
     fun addHalfToneApproach() : MelodicFragment {
         return MelodicFragment(listOf(Note.chromaticNote(notes.first().flat())) + notes)
