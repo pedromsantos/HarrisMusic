@@ -5,7 +5,8 @@ name: Gradle Package
 
 on:
   push:
-    types: [created]
+    branches:
+    - main
 
 jobs:
   build:
