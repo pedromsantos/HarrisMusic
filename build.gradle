@@ -4,15 +4,15 @@ plugins {
 }
 
 group 'org.harrismusic'
-version '0.1'
+version '0.1-SNAPSHOT'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
-sourceSets {
-    main.kotlin.srcDirs += 'src/main/kotlin'
-    test.kotlin.srcDirs += 'src/test/kotlin'
+java {
+    withSourcesJar()
 }
 
 dependencies {
@@ -37,7 +37,11 @@ compileTestKotlin {
 
 publishing {
     publications {
-        release(MavenPublication) {
+        mavenJava(MavenPublication) {
+            groupId = "org.harris"
+            artifactId = "library"
+            version = "0.1"
+
             from(components["java"])
         }
     }
