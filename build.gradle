@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'org.example'
+group 'org.harrismusic'
 version '0.1'
 
 repositories {
@@ -45,7 +45,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/pedromsantos/HarrisMusic")
+            url = uri("https://maven.pkg.github.com/pedromsantos/harrismusic")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
