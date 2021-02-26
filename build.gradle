@@ -37,7 +37,7 @@ compileTestKotlin {
 
 publishing {
     publications {
-        create(MavenPublication) {
+        release(MavenPublication) {
             from(components["java"])
         }
     }
