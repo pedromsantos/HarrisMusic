@@ -1,6 +1,6 @@
 package org.harris.scales
 
-import org.harris.MelodicFragment
+import org.harris.MelodicPhrase
 import org.harris.MelodicLine
 import org.harris.notes.Note
 import org.harris.notes.Pitch
@@ -41,7 +41,7 @@ class Scale {
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
-                MelodicFragment(
+                MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
@@ -57,7 +57,7 @@ class Scale {
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
-                MelodicFragment(
+                MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
@@ -74,7 +74,7 @@ class Scale {
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
-                MelodicFragment(
+                MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
@@ -92,7 +92,7 @@ class Scale {
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
-                MelodicFragment(
+                MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6)),
