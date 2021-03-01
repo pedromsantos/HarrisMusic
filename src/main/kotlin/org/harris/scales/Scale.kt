@@ -37,7 +37,7 @@ class Scale {
     }
 
     fun thirds() : MelodicLine {
-        val line = MelodicLine(emptyList())
+        val line = MelodicLine()
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
@@ -53,7 +53,7 @@ class Scale {
     }
 
     fun triads() : MelodicLine {
-        val line = MelodicLine(emptyList())
+        val line = MelodicLine()
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
@@ -70,7 +70,7 @@ class Scale {
     }
 
     fun chords() : MelodicLine {
-        val line = MelodicLine(emptyList())
+        val line = MelodicLine()
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(
@@ -88,7 +88,7 @@ class Scale {
     }
 
     fun pivotChords() : MelodicLine {
-        val line = MelodicLine(emptyList())
+        val line = MelodicLine()
 
         for(scaleDegree in ScaleDegree.values()) {
             line.add(

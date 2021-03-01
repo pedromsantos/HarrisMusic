@@ -11,13 +11,6 @@ import org.junit.Test
 
 class MelodicLineShould {
     private val scale = Scale(Ionian, C)
-    private val b = Note(B)
-    private val db = Note(DFlat)
-    private val eb = Note(EFlat)
-    private val e = Note(E)
-    private val gb = Note(GFlat)
-    private val ab = Note(AFlat)
-    private val bb = Note(BFlat)
 
     @Test
     fun `Generate thirds melodic line for C Ionian with half tone approach from bellow`() {
