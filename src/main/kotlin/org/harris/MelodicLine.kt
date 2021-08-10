@@ -40,7 +40,7 @@ open class MelodicLine(internal var phrases : List<MelodicPhrase> = emptyList())
     }
 }
 
-class MelodicPhraseHalfToneApproach : MelodicPhrase {
+class MelodicPhraseHalfToneApproachFromBelow : MelodicPhrase {
     constructor(melodicPhrase: MelodicPhrase) : super(melodicPhrase.notes) {
         notes = listOf(Note.chromaticNote(notes.first().flat())) + notes
     }
@@ -49,7 +49,7 @@ class MelodicPhraseHalfToneApproach : MelodicPhrase {
 class MelodicLineHalfToneApproach : MelodicLine {
     constructor(melodicLine: MelodicLine) : super(melodicLine.phrases) {
         for(phrase in phrases) {
-            add(MelodicPhraseHalfToneApproach(phrase))
+            add(MelodicPhraseHalfToneApproachFromBelow(phrase))
         }
     }
 }
