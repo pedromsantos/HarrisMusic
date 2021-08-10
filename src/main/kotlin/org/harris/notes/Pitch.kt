@@ -373,6 +373,6 @@ enum class Pitch(private val noteName: String, private val value: Int) {
     abstract fun sharp(): Pitch
     abstract fun flat(): Pitch
     abstract fun natural(): Pitch
-    internal abstract fun intervals() : Map<Interval, Pitch>
+    protected abstract fun intervals() : Map<Interval, Pitch>
 }
 
