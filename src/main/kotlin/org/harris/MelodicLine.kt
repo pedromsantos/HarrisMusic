@@ -2,16 +2,12 @@ package org.harris
 
 import org.harris.notes.Note
 
-data class MelodicFragment(private var notes: List<Note> = listOf()) {
-    fun addHalfToneApproach() : MelodicFragment {
-        return MelodicFragment(listOf(Note.chromaticNote(notes.first().flat())) + notes)
-    }
-
+open class MelodicPhrase(internal var notes: List<Note> = listOf()) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as MelodicFragment
+        other as MelodicPhrase
 
         if (notes != other.notes) return false
 
@@ -23,19 +19,9 @@ data class MelodicFragment(private var notes: List<Note> = listOf()) {
     }
 }
 
-data class MelodicLine(private var fragements : List<MelodicFragment>) {
-    fun add(fragment: MelodicFragment) {
-        fragements = fragements + fragment
-    }
-
-    fun hallToneApproachBellowToFragments() : MelodicLine {
-        var line = MelodicLine(emptyList())
-
-        for(fragment in fragements) {
-            line.add(fragment.addHalfToneApproach())
-        }
-
-        return line
+open class MelodicLine(internal var phrases : List<MelodicPhrase> = emptyList()) {
+    fun add(phrase: MelodicPhrase) {
+        phrases = phrases + phrase
     }
 
     override fun equals(other: Any?): Boolean {
@@ -44,12 +30,26 @@ data class MelodicLine(private var fragements : List<MelodicFragment>) {
 
         other as MelodicLine
 
-        if (fragements != other.fragements) return false
+        if (phrases != other.phrases) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return fragements.hashCode()
+        return phrases.hashCode()
+    }
+}
+
+class MelodicPhraseHalfToneApproachFromBelow : MelodicPhrase {
+    constructor(melodicPhrase: MelodicPhrase) : super(melodicPhrase.notes) {
+        notes = listOf(Note.chromaticNote(notes.first().flat())) + notes
+    }
+}
+
+class MelodicLineHalfToneApproach : MelodicLine {
+    constructor(melodicLine: MelodicLine) : super(melodicLine.phrases) {
+        for(phrase in phrases) {
+            add(MelodicPhraseHalfToneApproachFromBelow(phrase))
+        }
     }
 }
