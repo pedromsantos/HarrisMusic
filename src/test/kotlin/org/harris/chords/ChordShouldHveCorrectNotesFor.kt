@@ -5,7 +5,7 @@ import com.natpryce.hamkrest.equalTo
 import org.harris.notes.Pitch
 import org.junit.Test
 
-class ChordShouldHveCorrectNotesFor {
+class ChordShouldHaveCorrectNotesFor {
     @Test
     fun `C Major chord`() {
         val expected = listOf(Pitch.C, Pitch.E, Pitch.G)
