@@ -1,8 +1,8 @@
-package org.harris
+package org.harris.keys
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.Key.*
+import org.harris.keys.Key.*
 import org.harris.notes.Pitch.*
 import org.junit.Test
 

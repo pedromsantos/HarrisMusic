@@ -1,4 +1,4 @@
-package org.harris
+package org.harris.keys
 
 import org.harris.notes.Pitch
 import org.harris.notes.Pitch.*
