@@ -2,8 +2,8 @@ package org.harris.scales
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.MelodicPhrase
-import org.harris.MelodicLine
+import org.harris.melodicLines.MelodicPhrase
+import org.harris.melodicLines.MelodicLine
 import org.harris.notes.Pitch.*
 import org.harris.scales.ScaleDegree.*
 import org.harris.scales.ScalePattern.*
