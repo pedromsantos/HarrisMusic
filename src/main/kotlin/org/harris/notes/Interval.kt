@@ -1,9 +1,9 @@
 package org.harris.notes
 
 enum class Interval(
-        private val intervalName: String,
-        private val abreviature: String,
-        private val distance: Int
+    private val intervalName: String,
+    private val abreviature: String,
+    private val distance: Int
 ) {
     Unison("Unisson", "U", 0) {
         override fun invert(): Interval = PerfectOctave
