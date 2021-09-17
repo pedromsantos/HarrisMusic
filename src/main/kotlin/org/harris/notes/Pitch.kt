@@ -2,7 +2,7 @@ package org.harris.notes
 
 import org.harris.notes.Interval.*
 
-enum class Pitch(private val noteName: String, private val value: Int) {
+enum class Pitch(private val pitchName: String, private val value: Int) {
     C("C", 0) {
         override fun sharp(): Pitch = CSharp
         override fun flat(): Pitch = B
@@ -363,7 +363,7 @@ enum class Pitch(private val noteName: String, private val value: Int) {
     }
 
     fun transpose(interval: Interval): Pitch {
-        return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.noteName}'")
+        return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.pitchName}'")
     }
 
     fun intervalTo(to: Pitch): Interval {
