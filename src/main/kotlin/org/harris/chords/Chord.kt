@@ -69,7 +69,7 @@ abstract class BaseChord : Chord {
     }
 
     override fun closed(): Chord {
-        return ClosedChord(root.pitch, pattern)
+        return ClosedChord(root, pattern)
     }
 
     abstract override fun remove(function: ChordFunction): Chord
@@ -78,7 +78,9 @@ abstract class BaseChord : Chord {
 
 class ClosedChord : BaseChord {
 
-    constructor(root: Pitch, pattern: ChordPattern) : super(root, pattern) {}
+    internal constructor(root: Pitch, pattern: ChordPattern) : super(root, pattern) {}
+
+    internal constructor(root: ChordPitch, pattern: ChordPattern) : super(root.pitch, pattern) {}
 
     internal constructor(
             root: ChordPitch,
