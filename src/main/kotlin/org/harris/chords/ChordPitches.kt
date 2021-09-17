@@ -57,11 +57,11 @@ class ChordPitches {
         return drop2()?.drop2()
     }
 
-    internal fun toIntervals() : List<Interval> {
+    internal fun toIntervals(): List<Interval> {
         val root = pitchForFunction(ChordFunction.Root).pitch
         var intervals = mutableListOf<Interval>()
 
-        for(pitch in pitches.drop(1)) {
+        for (pitch in pitches.drop(1)) {
             val interval = root.intervalTo(pitch.pitch)
             intervals.add(interval)
         }

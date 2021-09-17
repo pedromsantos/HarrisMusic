@@ -44,7 +44,7 @@ class KeyShould {
 
     @Test
     fun `Generate correct pitches for D flat Major key`() {
-        assertThat(DFlatMajor.pitches(), equalTo(setOf(DFlat, EFlat, F, GFlat, AFlat, BFlat, C )))
+        assertThat(DFlatMajor.pitches(), equalTo(setOf(DFlat, EFlat, F, GFlat, AFlat, BFlat, C)))
     }
 
     @Test
@@ -109,7 +109,7 @@ class KeyShould {
 
     @Test
     fun `Generate correct pitches for B flat Minor key`() {
-        assertThat(BFlatMinor.pitches(), equalTo(setOf( BFlat, C, DFlat, EFlat, F, GFlat, AFlat)))
+        assertThat(BFlatMinor.pitches(), equalTo(setOf(BFlat, C, DFlat, EFlat, F, GFlat, AFlat)))
     }
 
     @Test

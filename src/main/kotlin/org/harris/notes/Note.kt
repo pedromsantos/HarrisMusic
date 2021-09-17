@@ -5,9 +5,9 @@ import org.harris.scales.ScaleDegree
 import org.harris.scales.ScalePattern
 
 data class Note(
-        private val pitch: Pitch,
-        private val scale: ScaleNote = ScaleNote.chromaticNote(pitch),
-        private val duration: NoteDuration = Whole
+    private val pitch: Pitch,
+    private val scale: ScaleNote = ScaleNote.chromaticNote(pitch),
+    private val duration: NoteDuration = Whole
 ) {
 
     fun flat(): Note = Note(pitch.flat(), scale, duration)

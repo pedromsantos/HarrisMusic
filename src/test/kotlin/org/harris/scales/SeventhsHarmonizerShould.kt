@@ -4,12 +4,12 @@ import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.harris.notes.Pitch.*
 import org.harris.scales.ScalePattern.*
-import org.junit.Test
 import org.junit.Before
+import org.junit.Test
 
 class SeventhsHarmonizerShould {
-    private lateinit var cIonian : Scale
-    private lateinit var harmonizer : SeventhsHarmonizer
+    private lateinit var cIonian: Scale
+    private lateinit var harmonizer: SeventhsHarmonizer
 
     @Before fun setup() {
         cIonian = Ionian.createScale(C)
@@ -65,4 +65,3 @@ class SeventhsHarmonizerShould {
         assertThat(chord.pitches().toList(), equalTo(listOf(B, D, F, A)))
     }
 }
-

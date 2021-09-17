@@ -8,7 +8,7 @@ import io.kotest.property.exhaustive.exhaustive
 import io.kotest.property.exhaustive.ints
 import io.kotest.runner.junit4.StringSpec
 
-class NotesProperties: StringSpec({
+class NotesProperties : StringSpec({
     "Sharping and flating a note results in the original note pitch" {
         checkAll(notes.exhaustive()) { note ->
             note.sharp().flat().value() shouldBe note.value()
@@ -88,12 +88,13 @@ class NotesProperties: StringSpec({
                 Pitch.AFlat,
                 Pitch.DFlat,
                 Pitch.GFlat
-            ).exhaustive(), Exhaustive.enum<Interval>()
+            ).exhaustive(),
+            Exhaustive.enum<Interval>()
         ) { note, interval ->
             val to = note.transpose(interval)
-            //println("$note:$to:$interval")
+            // println("$note:$to:$interval")
             val resultingInterval = note.intervalTo(to)
-            //println("$note:$to:$interval -> $resultingInterval")
+            // println("$note:$to:$interval -> $resultingInterval")
 
             when (interval) {
                 Interval.MajorNinth -> resultingInterval shouldBe Interval.MajorSecond

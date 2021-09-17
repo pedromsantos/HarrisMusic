@@ -110,8 +110,7 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MinorSeventh
         )
     ),
-    HarmonicMinor
-        (
+    HarmonicMinor(
         arrayOf(
             Unison,
             MajorSecond,
@@ -309,13 +308,13 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
         )
     );
 
-    fun createScale(root: Pitch) : Scale {
+    fun createScale(root: Pitch): Scale {
         return Scale(this, root)
     }
 
-    fun notes(root: Pitch) : Array<Pitch> {
+    fun notes(root: Pitch): Array<Pitch> {
         return pattern
-            .map{ root.transpose(it) }
+            .map { root.transpose(it) }
             .toTypedArray()
     }
 }
@@ -327,4 +326,3 @@ enum class ScaleDegree {
         return values()[(this.ordinal + increment) % 7]
     }
 }
-

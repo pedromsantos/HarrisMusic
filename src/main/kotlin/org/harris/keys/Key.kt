@@ -32,23 +32,29 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
     EFlatMinor(EFlat, -6);
 
     private fun flatKey(): Set<Pitch> {
-        return (fifths
-            .asReversed()
-            .drop(abs(this.accidentals)))
+        return (
+            fifths
+                .asReversed()
+                .drop(abs(this.accidentals))
+            )
             .union(
                 fifths
                     .asReversed()
                     .take(abs(this.accidentals))
-                    .map { it.flat() })
+                    .map { it.flat() }
+            )
     }
 
     private fun sharpKey(): Set<Pitch> {
-        return (fifths
-            .drop(this.accidentals))
+        return (
+            fifths
+                .drop(this.accidentals)
+            )
             .union(
                 fifths
                     .take(this.accidentals)
-                    .map { it.sharp() })
+                    .map { it.sharp() }
+            )
     }
 
     private fun allPitches(): Set<Pitch> {
