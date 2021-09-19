@@ -7,7 +7,7 @@ import org.harris.scales.Scale
 
 data class Note(
     private val pitch: Pitch,
-    private val scaleNote: NoteInScale = NoteInScale.chromaticNote(pitch),
+    private val noteInScale: NoteInScale = NoteInScale.chromaticNote(pitch),
     private val duration: NoteDuration = Whole
 ) {
 
@@ -15,9 +15,9 @@ data class Note(
 
     fun sharp(): Note = Note(pitch.sharp(), NoteInScale.chromaticNote(pitch), duration)
 
-    fun above(): Note = Note(scaleNote.abovePitch(), scaleNote.above(), duration)
+    fun above(): Note = Note(noteInScale.abovePitch(), noteInScale.above(), duration)
 
-    fun below(): Note = Note(scaleNote.belowPitch(), scaleNote.below(), duration)
+    fun below(): Note = Note(noteInScale.belowPitch(), noteInScale.below(), duration)
 }
 
 data class NoteInScale(val scalePattern: ScalePattern, val root: Pitch, val degree: ScaleDegree) {

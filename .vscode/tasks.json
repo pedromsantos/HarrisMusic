@@ -18,7 +18,9 @@
       "args": "",
       "javaDebug": false,
       "problemMatcher": ["$gradle"],
-      "label": "gradle: build"
+      "presentation": {
+        "panel": "shared"
+      }
     },
     {
       "type": "gradle",
@@ -37,7 +39,10 @@
       "args": "",
       "javaDebug": false,
       "problemMatcher": ["$gradle"],
-      "label": "gradle: test"
+      "label": "gradle: test",
+      "presentation": {
+        "panel": "shared"
+      }
     }
   ]
 }
