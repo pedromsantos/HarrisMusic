@@ -3,7 +3,10 @@ package org.harris.melodicLines
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.harris.melodicLines.MelodicLine
-import org.harris.melodicLines.MelodicLineHalfToneApproach
+import org.harris.melodicLines.MelodicLineHalfToneApproachFromBelow
+import org.harris.melodicLines.MelodicLineHalfToneApproachFromAbove
+import org.harris.melodicLines.MelodicLineChromaticEnclosureApproach
+import org.harris.melodicLines.MelodicLineDiatonicEnclosureApproach
 import org.harris.melodicLines.MelodicPhrase
 import org.harris.notes.Pitch.*
 import org.harris.scales.ScaleDegree.*
@@ -18,7 +21,7 @@ class MelodicLineShould {
 
     @Test
     fun `Generate thirds melodic line for C Ionian with half tone approach from bellow`() {
-        val expected = MelodicLineHalfToneApproach(
+        val expected = MelodicLineHalfToneApproachFromBelow(
             MelodicLine(
             listOf(
                 MelodicPhrase(listOf(scale.note(I), scale.note(III))),
@@ -30,12 +33,12 @@ class MelodicLineShould {
                 MelodicPhrase(listOf(scale.note(VII), scale.note(II)))))
         )
 
-        assertThat(MelodicLineHalfToneApproach(scale.thirds()), equalTo(expected))
+        assertThat(MelodicLineHalfToneApproachFromBelow(scale.thirds()), equalTo(expected))
     }
 
     @Test
     fun `Generate triads melodic line for C Ionian with half tone approach from bellow`() {
-        val expected = MelodicLineHalfToneApproach(
+        val expected = MelodicLineHalfToneApproachFromBelow(
             MelodicLine(
             listOf(
                 MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V))),
@@ -47,12 +50,12 @@ class MelodicLineShould {
                 MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV)))))
         )
 
-        assertThat(MelodicLineHalfToneApproach(scale.triads()), equalTo(expected))
+        assertThat(MelodicLineHalfToneApproachFromBelow(scale.triads()), equalTo(expected))
     }
 
     @Test
     fun `Generate chords melodic line for C Ionian with half tone approach from bellow`() {
-        val expected = MelodicLineHalfToneApproach(
+        val expected = MelodicLineHalfToneApproachFromBelow(
             MelodicLine(
             listOf(
                 MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V), scale.note(VII))),
@@ -64,12 +67,12 @@ class MelodicLineShould {
                 MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV), scale.note(VI)))))
         )
 
-        assertThat(MelodicLineHalfToneApproach(scale.chords()), equalTo(expected))
+        assertThat(MelodicLineHalfToneApproachFromBelow(scale.chords()), equalTo(expected))
     }
 
     @Test
     fun `Generate pivot chords melodic line for C Ionian with half tone approach from bellow`() {
-        val expected = MelodicLineHalfToneApproach(
+        val expected = MelodicLineHalfToneApproachFromBelow(
             MelodicLine(
             listOf(
                 MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
@@ -81,6 +84,57 @@ class MelodicLineShould {
                 MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))))
         )
 
-        assertThat(MelodicLineHalfToneApproach(scale.pivotChords()), equalTo(expected))
+        assertThat(MelodicLineHalfToneApproachFromBelow(scale.pivotChords()), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate pivot chords melodic line for C Ionian with half tone approach from up`() {
+        val expected = MelodicLineHalfToneApproachFromAbove(
+            MelodicLine(
+            listOf(
+                MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
+                MelodicPhrase(listOf(scale.note(II), scale.note(I), scale.note(VI), scale.note(IV))),
+                MelodicPhrase(listOf(scale.note(III), scale.note(II), scale.note(VII), scale.note(V))),
+                MelodicPhrase(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
+                MelodicPhrase(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
+                MelodicPhrase(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
+                MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))))
+        )
+
+        assertThat(MelodicLineHalfToneApproachFromAbove(scale.pivotChords()), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate pivot chords melodic line for C Ionian with chromatic enclosure approach`() {
+        val expected = MelodicLineChromaticEnclosureApproach(
+            MelodicLine(
+            listOf(
+                MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
+                MelodicPhrase(listOf(scale.note(II), scale.note(I), scale.note(VI), scale.note(IV))),
+                MelodicPhrase(listOf(scale.note(III), scale.note(II), scale.note(VII), scale.note(V))),
+                MelodicPhrase(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
+                MelodicPhrase(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
+                MelodicPhrase(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
+                MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))))
+        )
+
+        assertThat(MelodicLineChromaticEnclosureApproach(scale.pivotChords()), equalTo(expected))
+    }
+
+    @Test
+    fun `Generate pivot chords melodic line for C Ionian with diatonic enclosure approach`() {
+        val expected = MelodicLineDiatonicEnclosureApproach(
+            MelodicLine(
+            listOf(
+                MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
+                MelodicPhrase(listOf(scale.note(II), scale.note(I), scale.note(VI), scale.note(IV))),
+                MelodicPhrase(listOf(scale.note(III), scale.note(II), scale.note(VII), scale.note(V))),
+                MelodicPhrase(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
+                MelodicPhrase(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
+                MelodicPhrase(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
+                MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))))
+        )
+
+        assertThat(MelodicLineDiatonicEnclosureApproach(scale.pivotChords()), equalTo(expected))
     }
 }

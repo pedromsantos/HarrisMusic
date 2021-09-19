@@ -242,6 +242,12 @@ class ScaleShould {
     }
 
     @Test
+    fun `Generate diatonic above C as D for C Ionian`() {
+        val expected = Ionian.createScale(C).note(II)
+        assertThat(Ionian.createScale(C).note(I).above(), equalTo(expected))
+    }
+
+    @Test
     fun `Generate thirds melodic line for C Ionian`() {
         val scale = Scale(Ionian, C)
 

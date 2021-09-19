@@ -3,6 +3,7 @@ package org.harris.scales
 import org.harris.notes.Interval
 import org.harris.notes.Interval.*
 import org.harris.notes.Pitch
+import kotlin.math.abs
 
 enum class ScalePattern(private val pattern: Array<Interval>) {
     Ionian(
@@ -325,4 +326,8 @@ enum class ScaleDegree {
     operator fun plus(increment: Int): ScaleDegree {
         return values()[(this.ordinal + increment) % 7]
     }
+
+    fun above(): ScaleDegree { return values()[(this.ordinal + 1) % 7] }
+
+    fun below(): ScaleDegree { return values()[(abs(this.ordinal - 1)) % 7]  }
 }
