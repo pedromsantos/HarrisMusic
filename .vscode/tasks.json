@@ -19,7 +19,9 @@
       "javaDebug": false,
       "problemMatcher": ["$gradle"],
       "presentation": {
-        "panel": "shared"
+        "panel": "shared",
+        "reveal": "silent",
+        "revealProblems": "onProblem"
       }
     },
     {
@@ -41,7 +43,9 @@
       "problemMatcher": ["$gradle"],
       "label": "gradle: test",
       "presentation": {
-        "panel": "shared"
+        "panel": "shared",
+        "reveal": "silent",
+        "revealProblems": "onProblem"
       }
     }
   ]
