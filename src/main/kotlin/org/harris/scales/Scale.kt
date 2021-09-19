@@ -4,7 +4,7 @@ import org.harris.melodicLines.MelodicLine
 import org.harris.melodicLines.MelodicPhrase
 import org.harris.notes.Note
 import org.harris.notes.Pitch
-import org.harris.notes.ScaleNote
+import org.harris.notes.NoteInScale
 
 class Scale {
     private val pattern: ScalePattern
@@ -43,8 +43,8 @@ class Scale {
             line.add(
                 MelodicPhrase(
                     listOf(
-                        Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
+                        Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2))
                     )
                 )
             )
@@ -60,9 +60,9 @@ class Scale {
             line.add(
                 MelodicPhrase(
                     listOf(
-                        Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
-                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4))
+                        Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
+                        Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4))
                     )
                 )
             )
@@ -78,10 +78,10 @@ class Scale {
             line.add(
                 MelodicPhrase(
                     listOf(
-                        Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
-                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6))
+                        Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
+                        Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4)),
+                        Note(thirdsFrom(scaleDegree)[3], NoteInScale(pattern, root, scaleDegree + 6))
                     )
                 )
             )
@@ -97,10 +97,10 @@ class Scale {
             line.add(
                 MelodicPhrase(
                     listOf(
-                        Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6)),
-                        Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
+                        Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
+                        Note(thirdsFrom(scaleDegree)[3], NoteInScale(pattern, root, scaleDegree + 6)),
+                        Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4)),
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2))
                     )
                 )
             )
@@ -110,6 +110,6 @@ class Scale {
     }
 
     private fun notes(): Array<Note> = pitches
-        .mapIndexed { i, p -> Note(p, ScaleNote(pattern, root, ScaleDegree.values()[i])) }
+        .mapIndexed { i, p -> Note(p, NoteInScale(pattern, root, ScaleDegree.values()[i])) }
         .toTypedArray()
 }
