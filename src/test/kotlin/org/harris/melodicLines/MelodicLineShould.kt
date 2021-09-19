@@ -8,7 +8,7 @@ import org.harris.melodicLines.MelodicPhrase
 import org.harris.notes.Pitch.*
 import org.harris.scales.ScaleDegree.*
 import org.harris.scales.ScalePattern.*
-mport org.harris.scales.Scale
+import org.harris.scales.Scale
 import org.harris.scales.ScaleDegree.*
 import org.harris.scales.ScalePattern.Ionian
 import org.junit.Test

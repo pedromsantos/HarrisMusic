@@ -125,4 +125,3 @@ target
 .settings/org.eclipse.buildship.core.prefs
 gradle/wrapper/gradle-wrapper.properties
 .classpath
-.vscode/
