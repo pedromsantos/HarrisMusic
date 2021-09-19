@@ -28,7 +28,7 @@ val pitches = listOf(
     Pitch.ASharp
 )
 
-class PitchProperties: StringSpec({
+class PitchProperties : StringSpec({
     "Sharping and flating a pitch results in the original pitch" {
         checkAll(pitches.exhaustive()) { pitch ->
             pitch.sharp().flat().value() shouldBe pitch.value()

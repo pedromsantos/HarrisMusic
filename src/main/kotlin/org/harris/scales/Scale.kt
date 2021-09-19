@@ -1,7 +1,7 @@
 package org.harris.scales
 
-import org.harris.MelodicPhrase
-import org.harris.MelodicLine
+import org.harris.melodicLines.MelodicLine
+import org.harris.melodicLines.MelodicPhrase
 import org.harris.notes.Note
 import org.harris.notes.Pitch
 import org.harris.notes.ScaleNote
@@ -21,11 +21,11 @@ class Scale {
 
     fun note(degree: ScaleDegree): Note = notes()[degree.ordinal]
 
-    fun pitch(degree: ScaleDegree) : Pitch {
+    fun pitch(degree: ScaleDegree): Pitch {
         return pitches[degree.ordinal]
     }
 
-    fun thirdsFrom(degree: ScaleDegree) : Array<Pitch> {
+    fun thirdsFrom(degree: ScaleDegree): Array<Pitch> {
         return pitches
             .toList()
             .drop(degree.ordinal)
@@ -36,43 +36,45 @@ class Scale {
             .toTypedArray()
     }
 
-    fun thirds() : MelodicLine {
+    fun thirds(): MelodicLine {
         val line = MelodicLine()
 
-        for(scaleDegree in ScaleDegree.values()) {
+        for (scaleDegree in ScaleDegree.values()) {
             line.add(
                 MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
-                    ))
+                    )
+                )
             )
         }
 
         return line
     }
 
-    fun triads() : MelodicLine {
+    fun triads(): MelodicLine {
         val line = MelodicLine()
 
-        for(scaleDegree in ScaleDegree.values()) {
+        for (scaleDegree in ScaleDegree.values()) {
             line.add(
                 MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], ScaleNote(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
                         Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4))
-                    ))
+                    )
+                )
             )
         }
 
         return line
     }
 
-    fun chords() : MelodicLine {
+    fun chords(): MelodicLine {
         val line = MelodicLine()
 
-        for(scaleDegree in ScaleDegree.values()) {
+        for (scaleDegree in ScaleDegree.values()) {
             line.add(
                 MelodicPhrase(
                     listOf(
@@ -80,17 +82,18 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2)),
                         Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
                         Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6))
-                    ))
+                    )
+                )
             )
         }
 
         return line
     }
 
-    fun pivotChords() : MelodicLine {
+    fun pivotChords(): MelodicLine {
         val line = MelodicLine()
 
-        for(scaleDegree in ScaleDegree.values()) {
+        for (scaleDegree in ScaleDegree.values()) {
             line.add(
                 MelodicPhrase(
                     listOf(
@@ -98,7 +101,8 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[3], ScaleNote(pattern, root, scaleDegree + 6)),
                         Note(thirdsFrom(scaleDegree)[2], ScaleNote(pattern, root, scaleDegree + 4)),
                         Note(thirdsFrom(scaleDegree)[1], ScaleNote(pattern, root, scaleDegree + 2))
-                    ))
+                    )
+                )
             )
         }
 
@@ -106,6 +110,6 @@ class Scale {
     }
 
     private fun notes(): Array<Note> = pitches
-        .mapIndexed { i,p -> Note(p, ScaleNote(pattern, root, ScaleDegree.values()[i])) }
+        .mapIndexed { i, p -> Note(p, ScaleNote(pattern, root, ScaleDegree.values()[i])) }
         .toTypedArray()
 }

@@ -48,14 +48,14 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     }
 
     companion object {
-        internal fun from(intervals: List<Interval>) : ChordPattern {
+        internal fun from(intervals: List<Interval>): ChordPattern {
             return values().first { it.pattern == intervals }
         }
     }
 
-    internal fun notes(root: Pitch) : Array<ChordPitch> {
+    internal fun notes(root: Pitch): Array<ChordPitch> {
         return listOf(ChordPitch(root, ChordFunction.Root))
-            .union(pattern.map{ createChordNote(it, root) })
+            .union(pattern.map { createChordNote(it, root) })
             .toTypedArray()
     }
 

@@ -69,7 +69,7 @@ abstract class BaseChord : Chord {
     }
 
     override fun closed(): Chord {
-        return ClosedChord(root.pitch, pattern)
+        return ClosedChord(root, pattern)
     }
 
     abstract override fun remove(function: ChordFunction): Chord
@@ -78,12 +78,14 @@ abstract class BaseChord : Chord {
 
 class ClosedChord : BaseChord {
 
-    constructor(root: Pitch, pattern: ChordPattern) : super(root, pattern) {}
+    internal constructor(root: Pitch, pattern: ChordPattern) : super(root, pattern) {}
+
+    internal constructor(root: ChordPitch, pattern: ChordPattern) : super(root.pitch, pattern) {}
 
     internal constructor(
-            root: ChordPitch,
-            pattern: ChordPattern,
-            notes: ChordPitches
+        root: ChordPitch,
+        pattern: ChordPattern,
+        notes: ChordPitches
     ) : super(root, pattern, notes) {}
 
     override fun remove(function: ChordFunction): Chord {
@@ -101,7 +103,7 @@ class ClosedChord : BaseChord {
 
 class Drop2Chord
 internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
-        BaseChord(root, pattern, notes) {
+    BaseChord(root, pattern, notes) {
 
     override fun remove(function: ChordFunction): Chord {
         return Drop2Chord(root, pattern, pitches.remove(function))
@@ -120,7 +122,7 @@ internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitche
 
 class Drop3Chord
 internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
-        BaseChord(root, pattern, notes) {
+    BaseChord(root, pattern, notes) {
 
     override fun remove(function: ChordFunction): Chord {
         return Drop3Chord(root, pattern, pitches.remove(function))
@@ -128,10 +130,10 @@ internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitche
 
     override fun invert(): Chord {
         val invertedNotes =
-                pitches.rotate(2)
-                        .rotateLastSkipFirst(2)
-                        .rotateLastSkipFirst(1)
-                        .rotateLastSkipFirst(1)
+            pitches.rotate(2)
+                .rotateLastSkipFirst(2)
+                .rotateLastSkipFirst(1)
+                .rotateLastSkipFirst(1)
 
         return Drop3Chord(root, pattern, invertedNotes)
     }

@@ -2,7 +2,7 @@ package org.harris.notes
 
 import org.harris.notes.Interval.*
 
-enum class Pitch(private val noteName: String, private val value: Int) {
+enum class Pitch(private val pitchName: String, private val value: Int) {
     C("C", 0) {
         override fun sharp(): Pitch = CSharp
         override fun flat(): Pitch = B
@@ -43,7 +43,7 @@ enum class Pitch(private val noteName: String, private val value: Int) {
         override fun flat(): Pitch = C
         override fun natural(): Pitch = C
         override fun intervals(): Map<Interval, Pitch> {
-             return C.intervals().map { it.key to it.value.sharp() }.toMap()
+            return C.intervals().map { it.key to it.value.sharp() }.toMap()
         }
     },
     DFlat("Db", 1) {
@@ -86,7 +86,7 @@ enum class Pitch(private val noteName: String, private val value: Int) {
                 AugmentedEleventh to GSharp,
                 MinorThirteenth to BFlat,
                 MajorThirteenth to B
-                )
+            )
         }
     },
     DSharp("D#", 3) {
@@ -204,34 +204,34 @@ enum class Pitch(private val noteName: String, private val value: Int) {
         override fun flat(): Pitch = GFlat
         override fun natural(): Pitch = G
         override fun intervals(): Map<Interval, Pitch> {
-                return mapOf(
-                    Unison to G,
-                    AugmentedUnison to GSharp,
-                    MinorSecond to AFlat,
-                    MajorSecond to A,
-                    MinorThird to BFlat,
-                    AugmentedSecond to ASharp,
-                    MajorThird to B,
-                    PerfectFourth to C,
-                    AugmentedFourth to CSharp,
-                    DiminishedFifth to DFlat,
-                    Tritone to DFlat,
-                    PerfectFifth to D,
-                    AugmentedFifth to DSharp,
-                    MinorSixth to EFlat,
-                    MajorSixth to E,
-                    DiminishedSeventh to E,
-                    MinorSeventh to F,
-                    MajorSeventh to FSharp,
-                    PerfectOctave to G,
-                    MinorNinth to AFlat,
-                    MajorNinth to A,
-                    AugmentedNinth to ASharp,
-                    PerfectEleventh to C,
-                    AugmentedEleventh to CSharp,
-                    MinorThirteenth to EFlat,
-                    MajorThirteenth to E
-                )
+            return mapOf(
+                Unison to G,
+                AugmentedUnison to GSharp,
+                MinorSecond to AFlat,
+                MajorSecond to A,
+                MinorThird to BFlat,
+                AugmentedSecond to ASharp,
+                MajorThird to B,
+                PerfectFourth to C,
+                AugmentedFourth to CSharp,
+                DiminishedFifth to DFlat,
+                Tritone to DFlat,
+                PerfectFifth to D,
+                AugmentedFifth to DSharp,
+                MinorSixth to EFlat,
+                MajorSixth to E,
+                DiminishedSeventh to E,
+                MinorSeventh to F,
+                MajorSeventh to FSharp,
+                PerfectOctave to G,
+                MinorNinth to AFlat,
+                MajorNinth to A,
+                AugmentedNinth to ASharp,
+                PerfectEleventh to C,
+                AugmentedEleventh to CSharp,
+                MinorThirteenth to EFlat,
+                MajorThirteenth to E
+            )
         }
     },
     GSharp("G#", 8) {
@@ -256,33 +256,33 @@ enum class Pitch(private val noteName: String, private val value: Int) {
         override fun natural(): Pitch = A
         override fun intervals(): Map<Interval, Pitch> {
             return mapOf(
-                    Unison to A,
-                    AugmentedUnison to ASharp,
-                    MinorSecond to BFlat,
-                    MajorSecond to B,
-                    MinorThird to C,
-                    AugmentedSecond to BSharp,
-                    MajorThird to CSharp,
-                    PerfectFourth to D,
-                    AugmentedFourth to DSharp,
-                    DiminishedFifth to EFlat,
-                    Tritone to EFlat,
-                    PerfectFifth to E,
-                    AugmentedFifth to ESharp,
-                    MinorSixth to F,
-                    MajorSixth to FSharp,
-                    DiminishedSeventh to FSharp,
-                    MinorSeventh to G,
-                    MajorSeventh to GSharp,
-                    PerfectOctave to A,
-                    MinorNinth to BFlat,
-                    MajorNinth to B,
-                    AugmentedNinth to BSharp,
-                    PerfectEleventh to D,
-                    AugmentedEleventh to DSharp,
-                    MinorThirteenth to F,
-                    MajorThirteenth to FSharp
-                )
+                Unison to A,
+                AugmentedUnison to ASharp,
+                MinorSecond to BFlat,
+                MajorSecond to B,
+                MinorThird to C,
+                AugmentedSecond to BSharp,
+                MajorThird to CSharp,
+                PerfectFourth to D,
+                AugmentedFourth to DSharp,
+                DiminishedFifth to EFlat,
+                Tritone to EFlat,
+                PerfectFifth to E,
+                AugmentedFifth to ESharp,
+                MinorSixth to F,
+                MajorSixth to FSharp,
+                DiminishedSeventh to FSharp,
+                MinorSeventh to G,
+                MajorSeventh to GSharp,
+                PerfectOctave to A,
+                MinorNinth to BFlat,
+                MajorNinth to B,
+                AugmentedNinth to BSharp,
+                PerfectEleventh to D,
+                AugmentedEleventh to DSharp,
+                MinorThirteenth to F,
+                MajorThirteenth to FSharp
+            )
         }
     },
     ASharp("A#", 10) {
@@ -356,14 +356,14 @@ enum class Pitch(private val noteName: String, private val value: Int) {
     fun value() = value
 
     fun absoluteDistance(to: Pitch): Int {
-        if(this.value <= to.value)
+        if (this.value <= to.value)
             return to.value - this.value
 
         return 12 + (to.value - this.value)
     }
 
     fun transpose(interval: Interval): Pitch {
-        return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.noteName}'")
+        return intervals()[interval] ?: error("Interval '${interval.name}' not found on pitch '${this.pitchName}'")
     }
 
     fun intervalTo(to: Pitch): Interval {
@@ -373,6 +373,5 @@ enum class Pitch(private val noteName: String, private val value: Int) {
     abstract fun sharp(): Pitch
     abstract fun flat(): Pitch
     abstract fun natural(): Pitch
-    protected abstract fun intervals() : Map<Interval, Pitch>
+    protected abstract fun intervals(): Map<Interval, Pitch>
 }
-
