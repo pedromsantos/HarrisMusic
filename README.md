@@ -11,11 +11,13 @@ HarrisMusic, named after Jazz Pianist and educator [Barry Harris](https://en.wik
 [![](https://jitpack.io/v/pedromsantos/HarrisMusic.svg)](https://jitpack.io/#pedromsantos/HarrisMusic)
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Maintainers
-* Pedro Santos ([@pedromsantos](https://twitter.com/pedromsantos))
 
+- Pedro Santos ([@pedromsantos](https://twitter.com/pedromsantos))
