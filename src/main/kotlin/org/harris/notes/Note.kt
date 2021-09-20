@@ -1,9 +1,9 @@
 package org.harris.notes
 
-import org.harris.notes.NoteDuration.*
+import org.harris.notes.NoteDuration.Whole
+import org.harris.scales.Scale
 import org.harris.scales.ScaleDegree
 import org.harris.scales.ScalePattern
-import org.harris.scales.Scale
 
 data class Note(
     private val pitch: Pitch,
@@ -27,7 +27,7 @@ data class NoteInScale(val scalePattern: ScalePattern, val root: Pitch, val degr
     fun above(): NoteInScale = NoteInScale(scalePattern, root, degree.above())
     fun below(): NoteInScale = NoteInScale(scalePattern, root, degree.below())
 
-    fun abovePitch(): Pitch =  Scale(scalePattern, root).pitch(degree.above())
+    fun abovePitch(): Pitch = Scale(scalePattern, root).pitch(degree.above())
     fun belowPitch(): Pitch = Scale(scalePattern, root).pitch(degree.below())
 
     companion object {

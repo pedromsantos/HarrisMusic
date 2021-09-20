@@ -6,7 +6,6 @@ class MelodicPhraseHalfToneApproachFromBelow : MelodicPhrase {
     }
 }
 
-
 class MelodicPhraseHalfToneApproachFromAbove : MelodicPhrase {
     constructor(melodicPhrase: MelodicPhrase) : super(melodicPhrase.notes) {
         notes = listOf(notes.first().sharp()) + notes

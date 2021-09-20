@@ -1,7 +1,23 @@
 package org.harris.scales
 
 import org.harris.notes.Interval
-import org.harris.notes.Interval.*
+import org.harris.notes.Interval.AugmentedFifth
+import org.harris.notes.Interval.AugmentedFourth
+import org.harris.notes.Interval.AugmentedNinth
+import org.harris.notes.Interval.AugmentedSecond
+import org.harris.notes.Interval.AugmentedUnison
+import org.harris.notes.Interval.DiminishedFifth
+import org.harris.notes.Interval.MajorSecond
+import org.harris.notes.Interval.MajorSeventh
+import org.harris.notes.Interval.MajorSixth
+import org.harris.notes.Interval.MajorThird
+import org.harris.notes.Interval.MinorSecond
+import org.harris.notes.Interval.MinorSeventh
+import org.harris.notes.Interval.MinorSixth
+import org.harris.notes.Interval.MinorThird
+import org.harris.notes.Interval.PerfectFifth
+import org.harris.notes.Interval.PerfectFourth
+import org.harris.notes.Interval.Unison
 import org.harris.notes.Pitch
 import kotlin.math.abs
 
@@ -329,5 +345,5 @@ enum class ScaleDegree {
 
     fun above(): ScaleDegree { return values()[(this.ordinal + 1) % 7] }
 
-    fun below(): ScaleDegree { return values()[(abs(this.ordinal - 1)) % 7]  }
+    fun below(): ScaleDegree { return values()[(abs(this.ordinal - 1)) % 7] }
 }

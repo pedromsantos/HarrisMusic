@@ -3,8 +3,8 @@ package org.harris.scales
 import org.harris.melodicLines.MelodicLine
 import org.harris.melodicLines.MelodicPhrase
 import org.harris.notes.Note
-import org.harris.notes.Pitch
 import org.harris.notes.NoteInScale
+import org.harris.notes.Pitch
 
 class Scale {
     private val pattern: ScalePattern

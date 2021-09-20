@@ -1,6 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.21'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+    id 'org.jlleitschuh.gradle.ktlint' version '10.2.0'
+    id 'jacoco'
     id 'maven-publish'
+    id 'java-library'
 }
 
 group 'org.harrismusic'
@@ -16,10 +19,9 @@ java {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
-    implementation "com.ginsberg:cirkle:1.0.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
     testImplementation "com.natpryce:hamkrest:1.8.0.1"
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.5.21'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.5.31'
     testImplementation 'junit:junit:4.13.2'
     testImplementation "pl.pragmatists:JUnitParams:1.1.1"
     testImplementation 'io.kotest:kotest-runner-junit4:4.6.1'
@@ -38,7 +40,50 @@ compileTestKotlin {
 tasks.withType(Test) {
   testLogging {
     exceptionFormat "full"
-    events "started", "skipped", "passed", "failed"
+    events "skipped", "failed"
     showStandardStreams true
   }
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
 }
