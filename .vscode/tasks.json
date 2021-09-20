@@ -2,50 +2,21 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "gradle",
-      "id": "c:\\Users\\pedro\\src\\HarrisMusicbuildHarrisMusic",
-      "script": "build",
-      "description": "Assembles and tests this project.",
+      "label": "build",
+      "type": "shell",
+      "command": "./gradlew build",
       "group": {
         "kind": "build",
         "isDefault": true
-      },
-      "project": "HarrisMusic",
-      "buildFile": "C:\\Users\\pedro\\src\\HarrisMusic\\build.gradle",
-      "rootProject": "HarrisMusic",
-      "projectFolder": "c:\\Users\\pedro\\src\\HarrisMusic",
-      "workspaceFolder": "c:\\Users\\pedro\\src\\HarrisMusic",
-      "args": "",
-      "javaDebug": false,
-      "problemMatcher": ["$gradle"],
-      "presentation": {
-        "panel": "shared",
-        "reveal": "silent",
-        "revealProblems": "onProblem"
       }
     },
     {
-      "type": "gradle",
-      "id": "c:\\Users\\pedro\\src\\HarrisMusictestHarrisMusic",
-      "script": "test",
-      "description": "Runs the unit tests.",
+      "label": "test",
+      "type": "shell",
+      "command": "./gradlew test",
       "group": {
         "kind": "test",
         "isDefault": true
-      },
-      "project": "HarrisMusic",
-      "buildFile": "C:\\Users\\pedro\\src\\HarrisMusic\\build.gradle",
-      "rootProject": "HarrisMusic",
-      "projectFolder": "c:\\Users\\pedro\\src\\HarrisMusic",
-      "workspaceFolder": "c:\\Users\\pedro\\src\\HarrisMusic",
-      "args": "",
-      "javaDebug": false,
-      "problemMatcher": ["$gradle"],
-      "label": "gradle: test",
-      "presentation": {
-        "panel": "shared",
-        "reveal": "silent",
-        "revealProblems": "onProblem"
       }
     }
   ]
