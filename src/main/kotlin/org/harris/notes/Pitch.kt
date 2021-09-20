@@ -1,6 +1,32 @@
 package org.harris.notes
 
-import org.harris.notes.Interval.*
+import org.harris.notes.Interval
+import org.harris.notes.Interval.AugmentedEleventh
+import org.harris.notes.Interval.AugmentedFifth
+import org.harris.notes.Interval.AugmentedNinth
+import org.harris.notes.Interval.AugmentedUnison
+import org.harris.notes.Interval.AugmentedFourth
+import org.harris.notes.Interval.AugmentedSecond
+import org.harris.notes.Interval.DiminishedFifth
+import org.harris.notes.Interval.DiminishedSeventh
+import org.harris.notes.Interval.MajorNinth
+import org.harris.notes.Interval.MajorSecond
+import org.harris.notes.Interval.MajorSeventh
+import org.harris.notes.Interval.MajorSixth
+import org.harris.notes.Interval.MajorThird
+import org.harris.notes.Interval.MajorThirteenth
+import org.harris.notes.Interval.MinorNinth
+import org.harris.notes.Interval.MinorSeventh
+import org.harris.notes.Interval.MinorSecond
+import org.harris.notes.Interval.MinorSixth
+import org.harris.notes.Interval.MinorThird
+import org.harris.notes.Interval.MinorThirteenth
+import org.harris.notes.Interval.PerfectEleventh
+import org.harris.notes.Interval.PerfectFifth
+import org.harris.notes.Interval.PerfectFourth
+import org.harris.notes.Interval.PerfectOctave
+import org.harris.notes.Interval.Unison
+import org.harris.notes.Interval.Tritone
 
 enum class Pitch(private val pitchName: String, private val value: Int) {
     C("C", 0) {

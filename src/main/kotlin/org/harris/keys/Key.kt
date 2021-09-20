@@ -1,7 +1,21 @@
 package org.harris.keys
 
 import org.harris.notes.Pitch
-import org.harris.notes.Pitch.*
+import org.harris.notes.Pitch.A
+import org.harris.notes.Pitch.AFlat
+import org.harris.notes.Pitch.B
+import org.harris.notes.Pitch.BFlat
+import org.harris.notes.Pitch.C
+import org.harris.notes.Pitch.CSharp
+import org.harris.notes.Pitch.D
+import org.harris.notes.Pitch.DFlat
+import org.harris.notes.Pitch.E
+import org.harris.notes.Pitch.EFlat
+import org.harris.notes.Pitch.F
+import org.harris.notes.Pitch.FSharp
+import org.harris.notes.Pitch.G
+import org.harris.notes.Pitch.GFlat
+import org.harris.notes.Pitch.GSharp
 import kotlin.math.abs
 
 enum class Key(private val root: Pitch, private val accidentals: Int) {
