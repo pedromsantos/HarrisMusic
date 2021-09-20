@@ -2,8 +2,47 @@ package org.harris.keys
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.keys.Key.*
-import org.harris.notes.Pitch.*
+import org.harris.keys.Key.AFlatMajor
+import org.harris.keys.Key.AMajor
+import org.harris.keys.Key.AMinor
+import org.harris.keys.Key.BFlatMajor
+import org.harris.keys.Key.BFlatMinor
+import org.harris.keys.Key.BMajor
+import org.harris.keys.Key.BMinor
+import org.harris.keys.Key.CMajor
+import org.harris.keys.Key.CMinor
+import org.harris.keys.Key.CSharpMinor
+import org.harris.keys.Key.DFlatMajor
+import org.harris.keys.Key.DMajor
+import org.harris.keys.Key.DMinor
+import org.harris.keys.Key.EFlatMajor
+import org.harris.keys.Key.EFlatMinor
+import org.harris.keys.Key.EMinor
+import org.harris.keys.Key.FMajor
+import org.harris.keys.Key.FMinor
+import org.harris.keys.Key.FSharpMajor
+import org.harris.keys.Key.FSharpMinor
+import org.harris.keys.Key.GFlatMajor
+import org.harris.keys.Key.GMajor
+import org.harris.keys.Key.GMinor
+import org.harris.keys.Key.GSharpMinor
+import org.harris.notes.Pitch.A
+import org.harris.notes.Pitch.AFlat
+import org.harris.notes.Pitch.ASharp
+import org.harris.notes.Pitch.B
+import org.harris.notes.Pitch.BFlat
+import org.harris.notes.Pitch.C
+import org.harris.notes.Pitch.CSharp
+import org.harris.notes.Pitch.D
+import org.harris.notes.Pitch.DFlat
+import org.harris.notes.Pitch.DSharp
+import org.harris.notes.Pitch.E
+import org.harris.notes.Pitch.EFlat
+import org.harris.notes.Pitch.F
+import org.harris.notes.Pitch.FSharp
+import org.harris.notes.Pitch.G
+import org.harris.notes.Pitch.GFlat
+import org.harris.notes.Pitch.GSharp
 import org.junit.Test
 
 class KeyShould {
@@ -29,7 +68,7 @@ class KeyShould {
 
     @Test
     fun `Generate correct pitches for E Major key`() {
-        assertThat(EMajor.pitches(), equalTo(setOf(E, FSharp, GSharp, A, B, CSharp, DSharp)))
+        assertThat(Key.EMajor.pitches(), equalTo(setOf(E, FSharp, GSharp, A, B, CSharp, DSharp)))
     }
 
     @Test

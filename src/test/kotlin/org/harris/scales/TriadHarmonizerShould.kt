@@ -2,8 +2,14 @@ package org.harris.scales
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.notes.Pitch.*
-import org.harris.scales.ScalePattern.*
+import org.harris.notes.Pitch.A
+import org.harris.notes.Pitch.B
+import org.harris.notes.Pitch.C
+import org.harris.notes.Pitch.D
+import org.harris.notes.Pitch.E
+import org.harris.notes.Pitch.F
+import org.harris.notes.Pitch.G
+import org.harris.scales.ScalePattern.Ionian
 import org.junit.Before
 import org.junit.Test
 

@@ -2,8 +2,42 @@ package org.harris.notes
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.harris.notes.Interval.*
-import org.harris.notes.Pitch.*
+import org.harris.notes.Interval.AugmentedFifth
+import org.harris.notes.Interval.AugmentedFourth
+import org.harris.notes.Interval.AugmentedNinth
+import org.harris.notes.Interval.AugmentedSecond
+import org.harris.notes.Interval.DiminishedFifth
+import org.harris.notes.Interval.DiminishedSeventh
+import org.harris.notes.Interval.MajorSecond
+import org.harris.notes.Interval.MajorSeventh
+import org.harris.notes.Interval.MajorSixth
+import org.harris.notes.Interval.MajorThird
+import org.harris.notes.Interval.MinorSecond
+import org.harris.notes.Interval.MinorSeventh
+import org.harris.notes.Interval.MinorSixth
+import org.harris.notes.Interval.MinorThird
+import org.harris.notes.Interval.PerfectEleventh
+import org.harris.notes.Interval.PerfectFifth
+import org.harris.notes.Interval.PerfectFourth
+import org.harris.notes.Interval.Unison
+import org.harris.notes.Pitch.A
+import org.harris.notes.Pitch.AFlat
+import org.harris.notes.Pitch.ASharp
+import org.harris.notes.Pitch.B
+import org.harris.notes.Pitch.BFlat
+import org.harris.notes.Pitch.C
+import org.harris.notes.Pitch.CSharp
+import org.harris.notes.Pitch.D
+import org.harris.notes.Pitch.DFlat
+import org.harris.notes.Pitch.DSharp
+import org.harris.notes.Pitch.E
+import org.harris.notes.Pitch.EFlat
+import org.harris.notes.Pitch.ESharp
+import org.harris.notes.Pitch.F
+import org.harris.notes.Pitch.FSharp
+import org.harris.notes.Pitch.G
+import org.harris.notes.Pitch.GFlat
+import org.harris.notes.Pitch.GSharp
 import org.junit.Test
 
 class PitchShould {
