@@ -69,3 +69,15 @@ jacocoTestReport {
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'org.harrismusic'
+            artifactId = 'library'
+            version = '1.0.2'
+
+            from components.java
+        }
+    }
+}
