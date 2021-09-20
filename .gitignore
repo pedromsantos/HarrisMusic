@@ -28,9 +28,6 @@ build/
 .idea/**/gradle.xml
 .idea/**/libraries
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
@@ -124,3 +121,6 @@ target
 [Bb]in/**
 .settings/org.eclipse.buildship.core.prefs
 .classpath
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
