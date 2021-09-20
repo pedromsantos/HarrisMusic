@@ -123,5 +123,4 @@ target
 .idea/compiler.xml
 [Bb]in/**
 .settings/org.eclipse.buildship.core.prefs
-gradle/wrapper/gradle-wrapper.properties
 .classpath
