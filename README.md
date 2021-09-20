@@ -1,14 +1,13 @@
 # HarrisMusic - Kotlin music library
 
+[![](https://jitpack.io/v/pedromsantos/HarrisMusic.svg)](https://jitpack.io/#pedromsantos/HarrisMusic)
+[![](https://jitci.com/gh/pedromsantos/HarrisMusic/svg)](https://jitci.com/gh/pedromsantos/HarrisMusic)
+
 ## About
 
 HarrisMusic, named after Jazz Pianist and educator [Barry Harris](https://en.wikipedia.org/wiki/Barry_Harris), is a library for working with music theory concepts, music notation, guitar tab notation and programmatically creating music.
 
 ## [Documentation](https://github.com/pedromsantos/HarrisMusic/wiki)
-
-## Releases
-
-[![](https://jitpack.io/v/pedromsantos/HarrisMusic.svg)](https://jitpack.io/#pedromsantos/HarrisMusic)
 
 ## Contributing
 
