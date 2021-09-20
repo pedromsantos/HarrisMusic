@@ -29,6 +29,10 @@ dependencies {
     testImplementation 'io.kotest:kotest-property:4.6.1'
 }
 
+compileJava {
+    sourceCompatibility = 1.8
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
