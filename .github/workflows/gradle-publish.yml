@@ -16,7 +16,6 @@ jobs:
         java-version: '21'
         server-id: github 
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
     - name: Build with Gradle
     - run: ./gradlew build
 
