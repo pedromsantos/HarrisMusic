@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
-          java-version: '21'
+          java-version: '17'
           server-id: github
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Build with Gradle
