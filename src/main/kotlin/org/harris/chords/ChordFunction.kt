@@ -10,7 +10,8 @@ enum class ChordFunction {
     Seventh,
     Ninth,
     Eleventh,
-    Thirteenth;
+    Thirteenth,
+    ;
 
     companion object {
         internal fun functionForInterval(interval: Interval): ChordFunction {
@@ -21,19 +22,24 @@ enum class ChordFunction {
                 Interval.MajorSecond,
                 Interval.MinorSecond,
                 Interval.PerfectFourth,
-                Interval.AugmentedFourth -> Third
+                Interval.AugmentedFourth,
+                -> Third
                 Interval.PerfectFifth,
                 Interval.DiminishedFifth,
-                Interval.AugmentedFifth -> Fifth
+                Interval.AugmentedFifth,
+                -> Fifth
                 Interval.MinorSixth,
-                Interval.MajorSixth -> Sixth
+                Interval.MajorSixth,
+                -> Sixth
                 Interval.MajorSeventh,
                 Interval.MinorSeventh,
-                Interval.DiminishedSeventh -> Seventh
+                Interval.DiminishedSeventh,
+                -> Seventh
                 Interval.MajorNinth,
                 Interval.MinorNinth,
                 Interval.PerfectEleventh,
-                Interval.AugmentedEleventh -> Eleventh
+                Interval.AugmentedEleventh,
+                -> Eleventh
                 Interval.MajorThirteenth -> Thirteenth
                 else -> Root
             }

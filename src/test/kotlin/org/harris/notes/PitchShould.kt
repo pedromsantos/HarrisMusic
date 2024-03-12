@@ -41,7 +41,6 @@ import org.harris.notes.Pitch.GSharp
 import org.junit.Test
 
 class PitchShould {
-
     @Test
     fun `sharp C to C sharp`() {
         assertThat(C.sharp(), equalTo(C.sharp()))

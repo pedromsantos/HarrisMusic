@@ -40,7 +40,7 @@ val intervals =
         DiminishedSeventh,
         MinorSeventh,
         MajorSeventh,
-        PerfectOctave
+        PerfectOctave,
     )
 
 class IntervalProperties :

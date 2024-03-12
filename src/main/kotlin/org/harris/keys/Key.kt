@@ -43,19 +43,20 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
     FSharpMinor(FSharp, 3),
     GMinor(G, -2),
     GSharpMinor(GSharp, 5),
-    EFlatMinor(EFlat, -6);
+    EFlatMinor(EFlat, -6),
+    ;
 
     private fun flatKey(): Set<Pitch> {
         return (
             fifths
                 .asReversed()
                 .drop(abs(this.accidentals))
-            )
+        )
             .union(
                 fifths
                     .asReversed()
                     .take(abs(this.accidentals))
-                    .map { it.flat() }
+                    .map { it.flat() },
             )
     }
 
@@ -63,11 +64,11 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
         return (
             fifths
                 .drop(this.accidentals)
-            )
+        )
             .union(
                 fifths
                     .take(this.accidentals)
-                    .map { it.sharp() }
+                    .map { it.sharp() },
             )
     }
 
@@ -87,19 +88,20 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
             .union(
                 notes
                     .sortedBy { it.value() }
-                    .takeWhile { it != this.root }
+                    .takeWhile { it != this.root },
             )
     }
 
     companion object {
-        private val fifths = listOf(
-            F,
-            C,
-            G,
-            D,
-            A,
-            E,
-            B
-        )
+        private val fifths =
+            listOf(
+                F,
+                C,
+                G,
+                D,
+                A,
+                E,
+                B,
+            )
     }
 }

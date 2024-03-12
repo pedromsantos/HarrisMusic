@@ -8,25 +8,26 @@ import io.kotest.property.exhaustive.exhaustive
 import io.kotest.property.exhaustive.ints
 import io.kotest.runner.junit4.StringSpec
 
-val pitches = listOf(
-    Pitch.C,
-    Pitch.G,
-    Pitch.D,
-    Pitch.A,
-    Pitch.E,
-    Pitch.B,
-    Pitch.F,
-    Pitch.BFlat,
-    Pitch.EFlat,
-    Pitch.AFlat,
-    Pitch.DFlat,
-    Pitch.GFlat,
-    Pitch.FSharp,
-    Pitch.CSharp,
-    Pitch.GSharp,
-    Pitch.DSharp,
-    Pitch.ASharp
-)
+val pitches =
+    listOf(
+        Pitch.C,
+        Pitch.G,
+        Pitch.D,
+        Pitch.A,
+        Pitch.E,
+        Pitch.B,
+        Pitch.F,
+        Pitch.BFlat,
+        Pitch.EFlat,
+        Pitch.AFlat,
+        Pitch.DFlat,
+        Pitch.GFlat,
+        Pitch.FSharp,
+        Pitch.CSharp,
+        Pitch.GSharp,
+        Pitch.DSharp,
+        Pitch.ASharp,
+    )
 
 class PitchProperties : StringSpec({
     "Sharping and flating a pitch results in the original pitch" {
@@ -111,19 +112,20 @@ class PitchProperties : StringSpec({
                     if (interval == Interval.DiminishedFifth) {
                         resultingInterval shouldBe Interval.AugmentedFourth
                     }
-                else -> when (interval) {
-                    Interval.Tritone -> resultingInterval shouldBe Interval.DiminishedFifth
-                    Interval.DiminishedSeventh -> resultingInterval shouldBe Interval.MajorSixth
-                    Interval.PerfectOctave -> resultingInterval shouldBe Interval.Unison
-                    Interval.MinorNinth -> resultingInterval shouldBe Interval.MinorSecond
-                    Interval.MajorNinth -> resultingInterval shouldBe Interval.MajorSecond
-                    Interval.AugmentedNinth -> resultingInterval shouldBe Interval.AugmentedSecond
-                    Interval.PerfectEleventh -> resultingInterval shouldBe Interval.PerfectFourth
-                    Interval.AugmentedEleventh -> resultingInterval shouldBe Interval.AugmentedFourth
-                    Interval.MinorThirteenth -> resultingInterval shouldBe Interval.MinorSixth
-                    Interval.MajorThirteenth -> resultingInterval shouldBe Interval.MajorSixth
-                    else -> resultingInterval shouldBe interval
-                }
+                else ->
+                    when (interval) {
+                        Interval.Tritone -> resultingInterval shouldBe Interval.DiminishedFifth
+                        Interval.DiminishedSeventh -> resultingInterval shouldBe Interval.MajorSixth
+                        Interval.PerfectOctave -> resultingInterval shouldBe Interval.Unison
+                        Interval.MinorNinth -> resultingInterval shouldBe Interval.MinorSecond
+                        Interval.MajorNinth -> resultingInterval shouldBe Interval.MajorSecond
+                        Interval.AugmentedNinth -> resultingInterval shouldBe Interval.AugmentedSecond
+                        Interval.PerfectEleventh -> resultingInterval shouldBe Interval.PerfectFourth
+                        Interval.AugmentedEleventh -> resultingInterval shouldBe Interval.AugmentedFourth
+                        Interval.MinorThirteenth -> resultingInterval shouldBe Interval.MinorSixth
+                        Interval.MajorThirteenth -> resultingInterval shouldBe Interval.MajorSixth
+                        else -> resultingInterval shouldBe interval
+                    }
             }
         }
     }

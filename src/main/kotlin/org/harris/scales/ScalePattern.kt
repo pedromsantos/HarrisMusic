@@ -30,8 +30,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     Dorian(
         arrayOf(
@@ -41,8 +41,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MajorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Phrygian(
         arrayOf(
@@ -52,8 +52,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MinorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Lydian(
         arrayOf(
@@ -63,8 +63,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             AugmentedFourth,
             PerfectFifth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     Mixolydian(
         arrayOf(
@@ -74,8 +74,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MajorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Aolian(
         arrayOf(
@@ -85,8 +85,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MinorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Locrian(
         arrayOf(
@@ -96,8 +96,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             DiminishedFifth,
             MinorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     MajorPentatonic(
         arrayOf(
@@ -105,8 +105,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MajorSecond,
             MajorThird,
             PerfectFifth,
-            MajorSixth
-        )
+            MajorSixth,
+        ),
     ),
     MinorPentatonic(
         arrayOf(
@@ -114,8 +114,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MinorThird,
             PerfectFourth,
             PerfectFifth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Blues(
         arrayOf(
@@ -124,8 +124,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             DiminishedFifth,
             PerfectFifth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     HarmonicMinor(
         arrayOf(
@@ -135,8 +135,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MinorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     MelodicMinor(
         arrayOf(
@@ -146,8 +146,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     DorianFlat2(
         arrayOf(
@@ -157,8 +157,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MajorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     NeapolitanMinor(
         arrayOf(
@@ -168,8 +168,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MinorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     LydianAugmented(
         arrayOf(
@@ -179,8 +179,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             AugmentedFourth,
             AugmentedFifth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     LydianDominant(
         arrayOf(
@@ -190,8 +190,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             AugmentedFourth,
             PerfectFifth,
             MajorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     MixolydianFlat6(
         arrayOf(
@@ -201,8 +201,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             PerfectFifth,
             MinorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     Bebop(
         arrayOf(
@@ -213,8 +213,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFifth,
             MajorSixth,
             MinorSeventh,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     LocrianSharp2(
         arrayOf(
@@ -224,8 +224,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFourth,
             DiminishedFifth,
             MinorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     AlteredDominant(
         arrayOf(
@@ -235,8 +235,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MajorThird,
             DiminishedFifth,
             AugmentedFifth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     HalfWholeDiminished(
         arrayOf(
@@ -247,8 +247,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             AugmentedFourth,
             PerfectFifth,
             MajorSixth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     WholeTone(
         arrayOf(
@@ -257,8 +257,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             MajorThird,
             DiminishedFifth,
             AugmentedFifth,
-            MinorSeventh
-        )
+            MinorSeventh,
+        ),
     ),
     MajorSixthDiminished(
         arrayOf(
@@ -269,8 +269,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFifth,
             MinorSixth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     MinorSixthDiminished(
         arrayOf(
@@ -281,8 +281,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFifth,
             MinorSixth,
             MajorSixth,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     DominantDiminished(
         arrayOf(
@@ -293,8 +293,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             PerfectFifth,
             MinorSixth,
             MinorSeventh,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     DominantFlat5Diminished(
         arrayOf(
@@ -305,8 +305,8 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             DiminishedFifth,
             MinorSixth,
             MinorSeventh,
-            MajorSeventh
-        )
+            MajorSeventh,
+        ),
     ),
     Chromatic(
         arrayOf(
@@ -321,9 +321,10 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
             AugmentedFifth,
             MajorSixth,
             MinorSeventh,
-            MajorSeventh
-        )
-    );
+            MajorSeventh,
+        ),
+    ),
+    ;
 
     fun createScale(root: Pitch): Scale {
         return Scale(this, root)
@@ -337,13 +338,24 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
 }
 
 enum class ScaleDegree {
-    I, II, III, IV, V, VI, VII;
+    I,
+    II,
+    III,
+    IV,
+    V,
+    VI,
+    VII,
+    ;
 
     operator fun plus(increment: Int): ScaleDegree {
         return values()[(this.ordinal + increment) % 7]
     }
 
-    fun above(): ScaleDegree { return values()[(this.ordinal + 1) % 7] }
+    fun above(): ScaleDegree {
+        return values()[(this.ordinal + 1) % 7]
+    }
 
-    fun below(): ScaleDegree { return values()[(abs(this.ordinal - 1)) % 7] }
+    fun below(): ScaleDegree {
+        return values()[(abs(this.ordinal - 1)) % 7]
+    }
 }

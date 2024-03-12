@@ -56,7 +56,7 @@ class ChordShould {
             ClosedChord(C, Major)
                 .remove(Fifth)
                 .pitches().toList(),
-            equalTo(listOf(C, E))
+            equalTo(listOf(C, E)),
         )
     }
 
@@ -67,7 +67,7 @@ class ChordShould {
                 .drop2()
                 .remove(Fifth)
                 .pitches().toList(),
-            equalTo(listOf(C, B, E))
+            equalTo(listOf(C, B, E)),
         )
     }
 
@@ -78,7 +78,7 @@ class ChordShould {
                 .drop3()
                 .remove(Fifth)
                 .pitches().toList(),
-            equalTo(listOf(C, B, E))
+            equalTo(listOf(C, B, E)),
         )
     }
 
@@ -88,7 +88,7 @@ class ChordShould {
             ClosedChord(C, Major)
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(E, G, C))
+            equalTo(listOf(E, G, C)),
         )
     }
 
@@ -99,7 +99,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(G, C, E))
+            equalTo(listOf(G, C, E)),
         )
     }
 
@@ -111,7 +111,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G))
+            equalTo(listOf(C, E, G)),
         )
     }
 
@@ -123,7 +123,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(B, C, E, G))
+            equalTo(listOf(B, C, E, G)),
         )
     }
 
@@ -133,7 +133,7 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .closed()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G, B))
+            equalTo(listOf(C, E, G, B)),
         )
     }
 
@@ -143,7 +143,7 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop2()
                 .pitches().toList(),
-            equalTo(listOf(C, G, B, E))
+            equalTo(listOf(C, G, B, E)),
         )
     }
 
@@ -153,7 +153,7 @@ class ChordShould {
             ClosedChord(C, Major)
                 .drop2()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G))
+            equalTo(listOf(C, E, G)),
         )
     }
 
@@ -164,7 +164,7 @@ class ChordShould {
                 .drop2()
                 .drop2()
                 .pitches().toList(),
-            equalTo(listOf(C, G, B, E))
+            equalTo(listOf(C, G, B, E)),
         )
     }
 
@@ -175,7 +175,7 @@ class ChordShould {
                 .drop2()
                 .closed()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G, B))
+            equalTo(listOf(C, E, G, B)),
         )
     }
 
@@ -186,7 +186,7 @@ class ChordShould {
                 .drop2()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(E, B, C, G))
+            equalTo(listOf(E, B, C, G)),
         )
     }
 
@@ -198,7 +198,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(G, C, E, B))
+            equalTo(listOf(G, C, E, B)),
         )
     }
 
@@ -211,7 +211,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(B, E, G, C))
+            equalTo(listOf(B, E, G, C)),
         )
     }
 
@@ -225,7 +225,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(C, G, B, E))
+            equalTo(listOf(C, G, B, E)),
         )
     }
 
@@ -235,7 +235,7 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop3()
                 .pitches().toList(),
-            equalTo(listOf(C, B, E, G))
+            equalTo(listOf(C, B, E, G)),
         )
     }
 
@@ -246,7 +246,7 @@ class ChordShould {
                 .drop3()
                 .closed()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G, B))
+            equalTo(listOf(C, E, G, B)),
         )
     }
 
@@ -257,7 +257,7 @@ class ChordShould {
                 .drop3()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(E, C, G, B))
+            equalTo(listOf(E, C, G, B)),
         )
     }
 
@@ -269,7 +269,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(G, E, B, C))
+            equalTo(listOf(G, E, B, C)),
         )
     }
 
@@ -282,7 +282,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(B, G, C, E))
+            equalTo(listOf(B, G, C, E)),
         )
     }
 
@@ -296,7 +296,7 @@ class ChordShould {
                 .invert()
                 .invert()
                 .pitches().toList(),
-            equalTo(listOf(C, B, E, G))
+            equalTo(listOf(C, B, E, G)),
         )
     }
 
@@ -306,7 +306,7 @@ class ChordShould {
             ClosedChord(C, Major)
                 .drop3()
                 .pitches().toList(),
-            equalTo(listOf(C, E, G))
+            equalTo(listOf(C, E, G)),
         )
     }
 
@@ -317,7 +317,7 @@ class ChordShould {
                 .drop3()
                 .drop3()
                 .pitches().toList(),
-            equalTo(listOf(C, B, E, G))
+            equalTo(listOf(C, B, E, G)),
         )
     }
 }

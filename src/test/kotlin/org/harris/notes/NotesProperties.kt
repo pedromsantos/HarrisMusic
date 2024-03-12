@@ -87,9 +87,9 @@ class NotesProperties : StringSpec({
                 Pitch.EFlat,
                 Pitch.AFlat,
                 Pitch.DFlat,
-                Pitch.GFlat
+                Pitch.GFlat,
             ).exhaustive(),
-            Exhaustive.enum<Interval>()
+            Exhaustive.enum<Interval>(),
         ) { note, interval ->
             val to = note.transpose(interval)
             // println("$note:$to:$interval")
@@ -104,24 +104,37 @@ class NotesProperties : StringSpec({
                 Interval.PerfectOctave -> resultingInterval shouldBe Interval.Unison
 
                 Interval.DiminishedSeventh -> {
-                    if (resultingInterval == Interval.MajorSixth || resultingInterval == Interval.DiminishedSeventh)
+                    if (resultingInterval == Interval.MajorSixth || resultingInterval == Interval.DiminishedSeventh) {
                         resultingInterval shouldBe resultingInterval
+                    }
                 }
                 Interval.MinorThird, Interval.AugmentedNinth, Interval.AugmentedSecond -> {
-                    if (resultingInterval == Interval.MinorThird || resultingInterval == Interval.AugmentedSecond)
+                    if (resultingInterval == Interval.MinorThird || resultingInterval == Interval.AugmentedSecond) {
                         resultingInterval shouldBe resultingInterval
+                    }
                 }
                 Interval.MinorThirteenth, Interval.MinorSixth, Interval.AugmentedFifth -> {
-                    if (resultingInterval == Interval.MinorThirteenth || resultingInterval == Interval.MinorSixth || resultingInterval == Interval.AugmentedFifth)
+                    if (resultingInterval == Interval.MinorThirteenth ||
+                        resultingInterval == Interval.MinorSixth ||
+                        resultingInterval == Interval.AugmentedFifth
+                    ) {
                         resultingInterval shouldBe resultingInterval
+                    }
                 }
                 Interval.Tritone, Interval.DiminishedFifth, Interval.AugmentedFourth -> {
-                    if (resultingInterval == Interval.AugmentedFourth || resultingInterval == Interval.DiminishedFifth)
+                    if (resultingInterval == Interval.AugmentedFourth ||
+                        resultingInterval == Interval.DiminishedFifth
+                    ) {
                         resultingInterval shouldBe resultingInterval
+                    }
                 }
                 Interval.MinorNinth, Interval.MinorSecond, Interval.AugmentedUnison -> {
-                    if (resultingInterval == Interval.MinorNinth || resultingInterval == Interval.MinorSecond || resultingInterval == Interval.AugmentedUnison)
+                    if (resultingInterval == Interval.MinorNinth ||
+                        resultingInterval == Interval.MinorSecond ||
+                        resultingInterval == Interval.AugmentedUnison
+                    ) {
                         resultingInterval shouldBe resultingInterval
+                    }
                 }
                 else -> resultingInterval shouldBe interval
             }

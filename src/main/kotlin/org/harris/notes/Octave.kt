@@ -11,5 +11,5 @@ enum class Octave(private val octaveName: String, private val value: Int, privat
     FourLine("Four line", 8, 84),
     FiveLine("Five line", 16, 96),
     SixLine("Six line", 32, 108),
-    SevenLine("Seven line", 64, 120);
+    SevenLine("Seven line", 64, 120),
 }

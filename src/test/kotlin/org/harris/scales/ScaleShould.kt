@@ -298,17 +298,18 @@ class ScaleShould {
     fun `Generate thirds melodic line for C Ionian`() {
         val scale = Scale(Ionian, C)
 
-        val expected = MelodicLine(
-            listOf(
-                MelodicPhrase(listOf(scale.note(I), scale.note(III))),
-                MelodicPhrase(listOf(scale.note(II), scale.note(IV))),
-                MelodicPhrase(listOf(scale.note(III), scale.note(V))),
-                MelodicPhrase(listOf(scale.note(IV), scale.note(VI))),
-                MelodicPhrase(listOf(scale.note(V), scale.note(VII))),
-                MelodicPhrase(listOf(scale.note(VI), scale.note(I))),
-                MelodicPhrase(listOf(scale.note(VII), scale.note(II)))
+        val expected =
+            MelodicLine(
+                listOf(
+                    MelodicPhrase(listOf(scale.note(I), scale.note(III))),
+                    MelodicPhrase(listOf(scale.note(II), scale.note(IV))),
+                    MelodicPhrase(listOf(scale.note(III), scale.note(V))),
+                    MelodicPhrase(listOf(scale.note(IV), scale.note(VI))),
+                    MelodicPhrase(listOf(scale.note(V), scale.note(VII))),
+                    MelodicPhrase(listOf(scale.note(VI), scale.note(I))),
+                    MelodicPhrase(listOf(scale.note(VII), scale.note(II))),
+                ),
             )
-        )
 
         assertThat(scale.thirds(), equalTo(expected))
     }
@@ -317,17 +318,18 @@ class ScaleShould {
     fun `Generate triads melodic line for C Ionian`() {
         val scale = Scale(Ionian, C)
 
-        val expected = MelodicLine(
-            listOf(
-                MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V))),
-                MelodicPhrase(listOf(scale.note(II), scale.note(IV), scale.note(VI))),
-                MelodicPhrase(listOf(scale.note(III), scale.note(V), scale.note(VII))),
-                MelodicPhrase(listOf(scale.note(IV), scale.note(VI), scale.note(I))),
-                MelodicPhrase(listOf(scale.note(V), scale.note(VII), scale.note(II))),
-                MelodicPhrase(listOf(scale.note(VI), scale.note(I), scale.note(III))),
-                MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV)))
+        val expected =
+            MelodicLine(
+                listOf(
+                    MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V))),
+                    MelodicPhrase(listOf(scale.note(II), scale.note(IV), scale.note(VI))),
+                    MelodicPhrase(listOf(scale.note(III), scale.note(V), scale.note(VII))),
+                    MelodicPhrase(listOf(scale.note(IV), scale.note(VI), scale.note(I))),
+                    MelodicPhrase(listOf(scale.note(V), scale.note(VII), scale.note(II))),
+                    MelodicPhrase(listOf(scale.note(VI), scale.note(I), scale.note(III))),
+                    MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV))),
+                ),
             )
-        )
 
         assertThat(scale.triads(), equalTo(expected))
     }
@@ -336,17 +338,18 @@ class ScaleShould {
     fun `Generate chords melodic line for C Ionian`() {
         val scale = Scale(Ionian, C)
 
-        val expected = MelodicLine(
-            listOf(
-                MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V), scale.note(VII))),
-                MelodicPhrase(listOf(scale.note(II), scale.note(IV), scale.note(VI), scale.note(I))),
-                MelodicPhrase(listOf(scale.note(III), scale.note(V), scale.note(VII), scale.note(II))),
-                MelodicPhrase(listOf(scale.note(IV), scale.note(VI), scale.note(I), scale.note(III))),
-                MelodicPhrase(listOf(scale.note(V), scale.note(VII), scale.note(II), scale.note(IV))),
-                MelodicPhrase(listOf(scale.note(VI), scale.note(I), scale.note(III), scale.note(V))),
-                MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV), scale.note(VI)))
+        val expected =
+            MelodicLine(
+                listOf(
+                    MelodicPhrase(listOf(scale.note(I), scale.note(III), scale.note(V), scale.note(VII))),
+                    MelodicPhrase(listOf(scale.note(II), scale.note(IV), scale.note(VI), scale.note(I))),
+                    MelodicPhrase(listOf(scale.note(III), scale.note(V), scale.note(VII), scale.note(II))),
+                    MelodicPhrase(listOf(scale.note(IV), scale.note(VI), scale.note(I), scale.note(III))),
+                    MelodicPhrase(listOf(scale.note(V), scale.note(VII), scale.note(II), scale.note(IV))),
+                    MelodicPhrase(listOf(scale.note(VI), scale.note(I), scale.note(III), scale.note(V))),
+                    MelodicPhrase(listOf(scale.note(VII), scale.note(II), scale.note(IV), scale.note(VI))),
+                ),
             )
-        )
 
         assertThat(scale.chords(), equalTo(expected))
     }
@@ -355,17 +358,18 @@ class ScaleShould {
     fun `Generate pivot chords melodic line for C Ionian`() {
         val scale = Scale(Ionian, C)
 
-        val expected = MelodicLine(
-            listOf(
-                MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
-                MelodicPhrase(listOf(scale.note(II), scale.note(I), scale.note(VI), scale.note(IV))),
-                MelodicPhrase(listOf(scale.note(III), scale.note(II), scale.note(VII), scale.note(V))),
-                MelodicPhrase(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
-                MelodicPhrase(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
-                MelodicPhrase(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
-                MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II)))
+        val expected =
+            MelodicLine(
+                listOf(
+                    MelodicPhrase(listOf(scale.note(I), scale.note(VII), scale.note(V), scale.note(III))),
+                    MelodicPhrase(listOf(scale.note(II), scale.note(I), scale.note(VI), scale.note(IV))),
+                    MelodicPhrase(listOf(scale.note(III), scale.note(II), scale.note(VII), scale.note(V))),
+                    MelodicPhrase(listOf(scale.note(IV), scale.note(III), scale.note(I), scale.note(VI))),
+                    MelodicPhrase(listOf(scale.note(V), scale.note(IV), scale.note(II), scale.note(VII))),
+                    MelodicPhrase(listOf(scale.note(VI), scale.note(V), scale.note(III), scale.note(I))),
+                    MelodicPhrase(listOf(scale.note(VII), scale.note(VI), scale.note(IV), scale.note(II))),
+                ),
             )
-        )
 
         assertThat(scale.pivotChords(), equalTo(expected))
     }

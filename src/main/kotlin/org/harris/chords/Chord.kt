@@ -4,14 +4,23 @@ import org.harris.notes.Pitch
 
 interface Chord {
     fun pitches(): Array<Pitch>
+
     fun bass(): Pitch
+
     fun lead(): Pitch
+
     fun name(): String
+
     fun pitchForFunction(function: ChordFunction): Pitch
+
     fun remove(function: ChordFunction): Chord
+
     fun invert(): Chord
+
     fun drop2(): Chord
+
     fun drop3(): Chord
+
     fun closed(): Chord
 }
 
@@ -73,11 +82,11 @@ abstract class BaseChord : Chord {
     }
 
     abstract override fun remove(function: ChordFunction): Chord
+
     abstract override fun invert(): Chord
 }
 
 class ClosedChord : BaseChord {
-
     internal constructor(root: Pitch, pattern: ChordPattern) : super(root, pattern) {}
 
     internal constructor(root: ChordPitch, pattern: ChordPattern) : super(root.pitch, pattern) {}
@@ -85,7 +94,7 @@ class ClosedChord : BaseChord {
     internal constructor(
         root: ChordPitch,
         pattern: ChordPattern,
-        notes: ChordPitches
+        notes: ChordPitches,
     ) : super(root, pattern, notes) {}
 
     override fun remove(function: ChordFunction): Chord {
@@ -102,43 +111,41 @@ class ClosedChord : BaseChord {
 }
 
 class Drop2Chord
-internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
+    internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
     BaseChord(root, pattern, notes) {
+        override fun remove(function: ChordFunction): Chord {
+            return Drop2Chord(root, pattern, pitches.remove(function))
+        }
 
-    override fun remove(function: ChordFunction): Chord {
-        return Drop2Chord(root, pattern, pitches.remove(function))
+        override fun invert(): Chord {
+            val invertedNotes = pitches.rotate(3).rotateLastSkipFirst().rotateLastSkipFirst()
+
+            return Drop2Chord(root, pattern, invertedNotes)
+        }
+
+        override fun drop2(): Chord {
+            return this
+        }
     }
-
-    override fun invert(): Chord {
-        val invertedNotes = pitches.rotate(3).rotateLastSkipFirst().rotateLastSkipFirst()
-
-        return Drop2Chord(root, pattern, invertedNotes)
-    }
-
-    override fun drop2(): Chord {
-        return this
-    }
-}
 
 class Drop3Chord
-internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
+    internal constructor(root: ChordPitch, pattern: ChordPattern, notes: ChordPitches) :
     BaseChord(root, pattern, notes) {
+        override fun remove(function: ChordFunction): Chord {
+            return Drop3Chord(root, pattern, pitches.remove(function))
+        }
 
-    override fun remove(function: ChordFunction): Chord {
-        return Drop3Chord(root, pattern, pitches.remove(function))
+        override fun invert(): Chord {
+            val invertedNotes =
+                pitches.rotate(2)
+                    .rotateLastSkipFirst(2)
+                    .rotateLastSkipFirst(1)
+                    .rotateLastSkipFirst(1)
+
+            return Drop3Chord(root, pattern, invertedNotes)
+        }
+
+        override fun drop3(): Chord {
+            return this
+        }
     }
-
-    override fun invert(): Chord {
-        val invertedNotes =
-            pitches.rotate(2)
-                .rotateLastSkipFirst(2)
-                .rotateLastSkipFirst(1)
-                .rotateLastSkipFirst(1)
-
-        return Drop3Chord(root, pattern, invertedNotes)
-    }
-
-    override fun drop3(): Chord {
-        return this
-    }
-}

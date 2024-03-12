@@ -3,7 +3,7 @@ package org.harris.notes
 enum class Interval(
     private val intervalName: String,
     private val abreviature: String,
-    private val distance: Int
+    private val distance: Int,
 ) {
     Unison("Unisson", "U", 0) {
         override fun invert(): Interval = PerfectOctave
@@ -82,7 +82,7 @@ enum class Interval(
     },
     MajorThirteenth("Major Thirteenth", "M13", 21) {
         override fun invert(): Interval = MinorThird
-    };
+    }, ;
 
     abstract fun invert(): Interval
 }

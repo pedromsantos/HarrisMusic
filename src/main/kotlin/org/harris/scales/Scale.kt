@@ -44,9 +44,9 @@ class Scale {
                 MelodicPhrase(
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
-                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2))
-                    )
-                )
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
+                    ),
+                ),
             )
         }
 
@@ -62,9 +62,9 @@ class Scale {
                     listOf(
                         Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
-                        Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4))
-                    )
-                )
+                        Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4)),
+                    ),
+                ),
             )
         }
 
@@ -81,9 +81,9 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
                         Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[3], NoteInScale(pattern, root, scaleDegree + 6))
-                    )
-                )
+                        Note(thirdsFrom(scaleDegree)[3], NoteInScale(pattern, root, scaleDegree + 6)),
+                    ),
+                ),
             )
         }
 
@@ -100,16 +100,17 @@ class Scale {
                         Note(thirdsFrom(scaleDegree)[0], NoteInScale(pattern, root, scaleDegree)),
                         Note(thirdsFrom(scaleDegree)[3], NoteInScale(pattern, root, scaleDegree + 6)),
                         Note(thirdsFrom(scaleDegree)[2], NoteInScale(pattern, root, scaleDegree + 4)),
-                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2))
-                    )
-                )
+                        Note(thirdsFrom(scaleDegree)[1], NoteInScale(pattern, root, scaleDegree + 2)),
+                    ),
+                ),
             )
         }
 
         return line
     }
 
-    private fun notes(): Array<Note> = pitches
-        .mapIndexed { i, p -> Note(p, NoteInScale(pattern, root, ScaleDegree.values()[i])) }
-        .toTypedArray()
+    private fun notes(): Array<Note> =
+        pitches
+            .mapIndexed { i, p -> Note(p, NoteInScale(pattern, root, ScaleDegree.values()[i])) }
+            .toTypedArray()
 }

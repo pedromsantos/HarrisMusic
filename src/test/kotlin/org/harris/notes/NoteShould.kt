@@ -29,7 +29,6 @@ import org.junit.Test
 val notes = listOf(C, CSharp, DFlat, D, DSharp, EFlat, E, F, FSharp, GFlat, G, AFlat, A, ASharp, BFlat, B)
 
 class NoteShould {
-
     @Test
     fun `transpose using a augmented ninth from G to A#`() {
         assertThat(G.transpose(AugmentedNinth), equalTo(ASharp))
