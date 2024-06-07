@@ -24,7 +24,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:2.0.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation "pl.pragmatists:JUnitParams:1.1.1"
-    testImplementation 'io.kotest:kotest-runner-junit4:5.9.0'
+    testImplementation 'io.kotest:kotest-runner-junit4:5.9.1'
     testImplementation 'io.kotest:kotest-assertions-core:5.9.0'
     testImplementation 'io.kotest:kotest-property:5.9.0'
 }
