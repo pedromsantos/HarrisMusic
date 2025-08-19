@@ -21,7 +21,7 @@ java {
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom:2.2.10')
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    testImplementation platform('io.kotest:kotest-bom:5.9.1')
+    testImplementation platform('io.kotest:kotest-bom:6.0.0')
     testImplementation 'io.kotest:kotest-runner-junit4'
     testImplementation 'io.kotest:kotest-assertions-core'
     testImplementation 'io.kotest:kotest-property'
