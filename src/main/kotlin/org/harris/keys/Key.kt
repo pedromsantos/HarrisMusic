@@ -18,7 +18,10 @@ import org.harris.notes.Pitch.GFlat
 import org.harris.notes.Pitch.GSharp
 import kotlin.math.abs
 
-enum class Key(private val root: Pitch, private val accidentals: Int) {
+enum class Key(
+    private val root: Pitch,
+    private val accidentals: Int,
+) {
     AFlatMajor(AFlat, -4),
     AMajor(A, 3),
     BMajor(B, 5),
@@ -46,39 +49,34 @@ enum class Key(private val root: Pitch, private val accidentals: Int) {
     EFlatMinor(EFlat, -6),
     ;
 
-    private fun flatKey(): Set<Pitch> {
-        return (
+    private fun flatKey(): Set<Pitch> =
+        (
             fifths
                 .asReversed()
                 .drop(abs(this.accidentals))
+        ).union(
+            fifths
+                .asReversed()
+                .take(abs(this.accidentals))
+                .map { it.flat() },
         )
-            .union(
-                fifths
-                    .asReversed()
-                    .take(abs(this.accidentals))
-                    .map { it.flat() },
-            )
-    }
 
-    private fun sharpKey(): Set<Pitch> {
-        return (
+    private fun sharpKey(): Set<Pitch> =
+        (
             fifths
                 .drop(this.accidentals)
+        ).union(
+            fifths
+                .take(this.accidentals)
+                .map { it.sharp() },
         )
-            .union(
-                fifths
-                    .take(this.accidentals)
-                    .map { it.sharp() },
-            )
-    }
 
-    private fun allPitches(): Set<Pitch> {
-        return when {
+    private fun allPitches(): Set<Pitch> =
+        when {
             this.accidentals < 0 -> flatKey()
             this.accidentals > 0 -> sharpKey()
             else -> fifths.toSet()
         }
-    }
 
     fun pitches(): Set<Pitch> {
         val notes = allPitches()

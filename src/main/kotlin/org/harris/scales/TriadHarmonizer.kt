@@ -10,7 +10,9 @@ import org.harris.chords.ChordPitch
 import org.harris.chords.ChordPitches
 import org.harris.chords.ClosedChord
 
-class TriadHarmonizer(private val scale: Scale) : Harmonizer {
+class TriadHarmonizer(
+    private val scale: Scale,
+) : Harmonizer {
     override fun chordFor(degree: ScaleDegree): Chord {
         val thirds = scale.thirdsFrom(degree)
 

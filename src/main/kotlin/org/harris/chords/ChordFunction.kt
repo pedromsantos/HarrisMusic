@@ -14,8 +14,8 @@ enum class ChordFunction {
     ;
 
     companion object {
-        internal fun functionForInterval(interval: Interval): ChordFunction {
-            return when (interval) {
+        internal fun functionForInterval(interval: Interval): ChordFunction =
+            when (interval) {
                 Interval.Unison -> Root
                 Interval.MajorThird,
                 Interval.MinorThird,
@@ -43,6 +43,5 @@ enum class ChordFunction {
                 Interval.MajorThirteenth -> Thirteenth
                 else -> Root
             }
-        }
     }
 }

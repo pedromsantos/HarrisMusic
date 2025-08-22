@@ -21,7 +21,9 @@ import org.harris.notes.Interval.Unison
 import org.harris.notes.Pitch
 import kotlin.math.abs
 
-enum class ScalePattern(private val pattern: Array<Interval>) {
+enum class ScalePattern(
+    private val pattern: Array<Interval>,
+) {
     Ionian(
         arrayOf(
             Unison,
@@ -326,15 +328,12 @@ enum class ScalePattern(private val pattern: Array<Interval>) {
     ),
     ;
 
-    fun createScale(root: Pitch): Scale {
-        return Scale(this, root)
-    }
+    fun createScale(root: Pitch): Scale = Scale(this, root)
 
-    fun notes(root: Pitch): Array<Pitch> {
-        return pattern
+    fun notes(root: Pitch): Array<Pitch> =
+        pattern
             .map { root.transpose(it) }
             .toTypedArray()
-    }
 }
 
 enum class ScaleDegree {
@@ -347,15 +346,9 @@ enum class ScaleDegree {
     VII,
     ;
 
-    operator fun plus(increment: Int): ScaleDegree {
-        return values()[(this.ordinal + increment) % 7]
-    }
+    operator fun plus(increment: Int): ScaleDegree = values()[(this.ordinal + increment) % 7]
 
-    fun above(): ScaleDegree {
-        return values()[(this.ordinal + 1) % 7]
-    }
+    fun above(): ScaleDegree = values()[(this.ordinal + 1) % 7]
 
-    fun below(): ScaleDegree {
-        return values()[(abs(this.ordinal - 1)) % 7]
-    }
+    fun below(): ScaleDegree = values()[(abs(this.ordinal - 1)) % 7]
 }

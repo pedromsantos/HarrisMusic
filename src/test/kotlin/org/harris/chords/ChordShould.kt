@@ -55,7 +55,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major)
                 .remove(Fifth)
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E)),
         )
     }
@@ -66,7 +67,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop2()
                 .remove(Fifth)
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, B, E)),
         )
     }
@@ -77,7 +79,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop3()
                 .remove(Fifth)
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, B, E)),
         )
     }
@@ -87,7 +90,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major)
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(E, G, C)),
         )
     }
@@ -98,7 +102,8 @@ class ChordShould {
             ClosedChord(C, Major)
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(G, C, E)),
         )
     }
@@ -110,7 +115,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G)),
         )
     }
@@ -122,7 +128,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(B, C, E, G)),
         )
     }
@@ -132,7 +139,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major7)
                 .closed()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G, B)),
         )
     }
@@ -142,7 +150,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major7)
                 .drop2()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, G, B, E)),
         )
     }
@@ -152,7 +161,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major)
                 .drop2()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G)),
         )
     }
@@ -163,7 +173,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop2()
                 .drop2()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, G, B, E)),
         )
     }
@@ -174,7 +185,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop2()
                 .closed()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G, B)),
         )
     }
@@ -185,7 +197,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop2()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(E, B, C, G)),
         )
     }
@@ -197,7 +210,8 @@ class ChordShould {
                 .drop2()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(G, C, E, B)),
         )
     }
@@ -210,7 +224,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(B, E, G, C)),
         )
     }
@@ -224,7 +239,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, G, B, E)),
         )
     }
@@ -234,7 +250,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major7)
                 .drop3()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, B, E, G)),
         )
     }
@@ -245,7 +262,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop3()
                 .closed()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G, B)),
         )
     }
@@ -256,7 +274,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop3()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(E, C, G, B)),
         )
     }
@@ -268,7 +287,8 @@ class ChordShould {
                 .drop3()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(G, E, B, C)),
         )
     }
@@ -281,7 +301,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(B, G, C, E)),
         )
     }
@@ -295,7 +316,8 @@ class ChordShould {
                 .invert()
                 .invert()
                 .invert()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, B, E, G)),
         )
     }
@@ -305,7 +327,8 @@ class ChordShould {
         assertThat(
             ClosedChord(C, Major)
                 .drop3()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, E, G)),
         )
     }
@@ -316,7 +339,8 @@ class ChordShould {
             ClosedChord(C, Major7)
                 .drop3()
                 .drop3()
-                .pitches().toList(),
+                .pitches()
+                .toList(),
             equalTo(listOf(C, B, E, G)),
         )
     }

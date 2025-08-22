@@ -21,12 +21,10 @@ class Scale {
 
     fun note(degree: ScaleDegree): Note = notes()[degree.ordinal]
 
-    fun pitch(degree: ScaleDegree): Pitch {
-        return pitches[degree.ordinal]
-    }
+    fun pitch(degree: ScaleDegree): Pitch = pitches[degree.ordinal]
 
-    fun thirdsFrom(degree: ScaleDegree): Array<Pitch> {
-        return pitches
+    fun thirdsFrom(degree: ScaleDegree): Array<Pitch> =
+        pitches
             .toList()
             .drop(degree.ordinal)
             .plus(pitches.toList())
@@ -34,7 +32,6 @@ class Scale {
             .filterIndexed { index, _ -> index % 2 == 0 }
             .take(7)
             .toTypedArray()
-    }
 
     fun thirds(): MelodicLine {
         val line = MelodicLine()

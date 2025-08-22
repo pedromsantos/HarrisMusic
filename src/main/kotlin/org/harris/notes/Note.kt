@@ -19,7 +19,11 @@ data class Note(
     fun below(): Note = Note(noteInScale.belowPitch(), noteInScale.below(), duration)
 }
 
-data class NoteInScale(val scalePattern: ScalePattern, val root: Pitch, val degree: ScaleDegree) {
+data class NoteInScale(
+    val scalePattern: ScalePattern,
+    val root: Pitch,
+    val degree: ScaleDegree,
+) {
     fun root(): Pitch = root
 
     fun above(): NoteInScale = NoteInScale(scalePattern, root, degree.above())
@@ -31,8 +35,6 @@ data class NoteInScale(val scalePattern: ScalePattern, val root: Pitch, val degr
     fun belowPitch(): Pitch = Scale(scalePattern, root).pitch(degree.below())
 
     companion object {
-        fun chromaticNote(pitch: Pitch): NoteInScale {
-            return NoteInScale(ScalePattern.Chromatic, pitch, ScaleDegree.I)
-        }
+        fun chromaticNote(pitch: Pitch): NoteInScale = NoteInScale(ScalePattern.Chromatic, pitch, ScaleDegree.I)
     }
 }

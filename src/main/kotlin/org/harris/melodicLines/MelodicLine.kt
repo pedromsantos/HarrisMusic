@@ -1,6 +1,8 @@
 package org.harris.melodicLines
 
-open class MelodicLine(internal var phrases: List<MelodicPhrase> = emptyList()) {
+open class MelodicLine(
+    internal var phrases: List<MelodicPhrase> = emptyList(),
+) {
     fun add(phrase: MelodicPhrase) {
         phrases = phrases + phrase
     }
@@ -16,7 +18,5 @@ open class MelodicLine(internal var phrases: List<MelodicPhrase> = emptyList()) 
         return true
     }
 
-    override fun hashCode(): Int {
-        return phrases.hashCode()
-    }
+    override fun hashCode(): Int = phrases.hashCode()
 }

@@ -20,7 +20,11 @@ import org.harris.notes.Interval.PerfectFifth
 import org.harris.notes.Interval.PerfectFourth
 import org.harris.notes.Pitch
 
-enum class ChordPattern(private val patternName: String, private val abbreviation: String, private val pattern: List<Interval>) {
+enum class ChordPattern(
+    private val patternName: String,
+    private val abbreviation: String,
+    private val pattern: List<Interval>,
+) {
     Major("Major", "Maj", listOf(MajorThird, PerfectFifth)),
     Augmented("Major", "Maj", listOf(MajorThird, AugmentedFifth)),
     Major6("Major", "Maj", listOf(MajorThird, PerfectFifth, MajorSixth)),
@@ -60,21 +64,16 @@ enum class ChordPattern(private val patternName: String, private val abbreviatio
     Sus4Augmented("Major", "Maj", listOf(PerfectFourth, AugmentedFifth)),
     ;
 
-    fun createChord(root: Pitch): ClosedChord {
-        return ClosedChord(root, this)
-    }
+    fun createChord(root: Pitch): ClosedChord = ClosedChord(root, this)
 
     companion object {
-        internal fun from(intervals: List<Interval>): ChordPattern {
-            return values().first { it.pattern == intervals }
-        }
+        internal fun from(intervals: List<Interval>): ChordPattern = values().first { it.pattern == intervals }
     }
 
-    internal fun notes(root: Pitch): Array<ChordPitch> {
-        return listOf(ChordPitch(root, ChordFunction.Root))
+    internal fun notes(root: Pitch): Array<ChordPitch> =
+        listOf(ChordPitch(root, ChordFunction.Root))
             .union(pattern.map { createChordNote(it, root) })
             .toTypedArray()
-    }
 
     private fun createChordNote(
         it: Interval,
