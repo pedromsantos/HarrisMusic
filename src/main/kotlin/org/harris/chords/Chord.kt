@@ -44,7 +44,6 @@ abstract class BaseChord : Chord {
     override fun pitches(): Array<Pitch> = pitches.notes()
 
     override fun bass(): Pitch = pitches.bass().pitch
-    }
 
     override fun lead(): Pitch = pitches.lead().pitch
 
