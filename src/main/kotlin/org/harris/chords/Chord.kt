@@ -43,21 +43,13 @@ abstract class BaseChord : Chord {
 
     override fun pitches(): Array<Pitch> = pitches.notes()
 
-    override fun bass(): Pitch {
-        return pitches.bass().pitch
-    }
+    override fun bass(): Pitch = return pitches.bass().pitch
 
-    override fun lead(): Pitch {
-        return pitches.lead().pitch
-    }
+    override fun lead(): Pitch = return pitches.lead().pitch
 
-    override fun name(): String {
-        return root.pitch.name + pattern.name
-    }
+    override fun name(): String = return root.pitch.name + pattern.name
 
-    override fun pitchForFunction(function: ChordFunction): Pitch {
-        return pitches.pitchForFunction(function).pitch
-    }
+    override fun pitchForFunction(function: ChordFunction): Pitch = return pitches.pitchForFunction(function).pitch
 
     override fun drop2(): Chord {
         if (pitches().size == 4) {
